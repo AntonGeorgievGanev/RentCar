@@ -1,0 +1,54 @@
+@media only screen and (max-width: 600px) {
+
+  .main-message {
+    padding: 0 1em;
+    font-size: 0.95em;
+  }
+
+  .reg-form {
+    font-size: 10px;
+    margin: 0 auto;
+  }
+
+  input,
+  input::-webkit-input-placeholder {
+    font-size: 10px;
+  }
+
+  .row > * {
+    margin-top: 0;
+  }
+
+  .form-text {
+    font-size: 12px;
+  }
+
+  button {
+    margin-top: 1em;
+  }
+
+  .select-row{
+    width: 100%;
+  }
+
+  .form-container{
+    margin-bottom: 15em;
+  }
+}
+
+@media only screen and (max-width: 380px) {
+  .social {
+    display: none;
+  }
+
+  button {
+    margin-top: 1em;
+  }
+}
+
+/* @media only screen and (max-height: 800px) {
+  .social {
+    display: none;
+  }
+
+} */

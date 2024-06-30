@@ -1,0 +1,59 @@
+spring:
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/carwash?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true&serverTimezone=UTC
+    username: root
+    password: admin
+
+  jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
+    defer-datasource-initialization: true
+    properties:
+      hibernate:
+        format_sql: true
+        show_sql: false
+    hibernate:
+      ddl-auto: update
+
+  thymeleaf:
+    cache: false
+    mode: HTML
+    encoding: UTF-8
+  messages:
+    encoding: UTF-8
+    basename: messages
+
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 3MB
+      max-request-size: 3MB
+
+  mail:
+    carwash: ${EMAIL:carwash1303@gmail.com}
+    host: smtp.gmail.com
+    port: 587
+    username: ${EMAIL:carwash1303@gmail.com}
+    password: ${EMAIL_PASSWORD:nbmpndmvsjofuvqv}
+
+  remember:
+    key: ${REMEMBER_KEY:carwash}
+
+admin:
+  username: admin
+  password: admin
+
+cloudinary:
+  name: ${CLOUDINARY_NAME:dy2y8i2de}
+  api-key: ${CLOUDINARY_API_KEY:111187215981859}
+  api-secret: ${CLOUDINARY_API_SECRET:H3gM21c_0mYpOPklNO3pR11s8HE}
+
+#logging:
+#  level:
+#    org:
+#      springframework:
+#       security: DEBUG
