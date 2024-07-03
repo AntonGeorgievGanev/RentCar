@@ -171,3 +171,19 @@ a {
   margin: 0 auto;
   margin-bottom: 30em;
 }
+
+.table-wrapper{
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-top: 8em;
+}
+
+.action-buttons{
+  display: flex;
+  gap: 1em;
+  justify-content: center;
+}
+
+.action-td{
+  text-align: center;
+}

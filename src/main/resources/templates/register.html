@@ -9,21 +9,22 @@
    <th:block th:replace="~{fragments/navigation.html}"></th:block>
 
     <div class="reg-form-container">
-        <form class="reg-form row g-3 needs-validation overflow-auto" novalidate>
+        <form class="reg-form row g-3 needs-validation overflow-auto" novalidate
+        th:action="@{/register}" th:method="post" th:object="${userRegisterDTO}">
             <h2>Registration form</h2>
             <div class="col-md-4">
                 <label for="validationCustom01" class="form-label">First name</label>
                 <input type="text" class="form-control" id="validationCustom01" value="" placeholder="First Name"
-                    name="firstName" required>
-                <div class="invalid-feedback">
+                    name="firstName" required  th:field="*{firstName}" th:errorclass="'is-invalid'">
+                <div class="invalid-feedback" th:errors="*{firstName}">
                     Please enter first name!
                 </div>
             </div>
             <div class="col-md-4">
                 <label for="validationCustom02" class="form-label">Last name</label>
                 <input type="text" class="form-control" id="validationCustom02" value="" placeholder="Last Name"
-                    name="lastName" required>
-                <div class="invalid-feedback">
+                    name="lastName" required th:field="*{lastName}" th:errorclass="'is-invalid'">
+                <div class="invalid-feedback" th:errors="*{lastName}">
                     Please enter last name!
                 </div>
             </div>
@@ -32,8 +33,8 @@
                 <div class="input-group has-validation">
                     <span class="input-group-text" id="inputGroupPrepend">@</span>
                     <input type="text" class="form-control" id="validationCustomUsername" name="username"
-                        aria-describedby="inputGroupPrepend" placeholder="Username" required>
-                    <div class="invalid-feedback">
+                        aria-describedby="inputGroupPrepend" placeholder="Username" required th:field="*{username}" th:errorclass="'is-invalid'">
+                    <div class="invalid-feedback" th:errors="*{username}">
                         Please choose a username.
                     </div>
                 </div>
@@ -41,40 +42,40 @@
             <div class="col-md-12">
                 <label for="validationCustomEmail" class="form-label">Email</label>
                 <input type="email" class="form-control" id="validationCustomEmail" value="" placeholder="Email"
-                    name="email" required>
-                <div class="invalid-feedback">
+                    name="email" required th:field="*{email}" th:errorclass="'is-invalid'">
+                <div class="invalid-feedback" th:errors="*{email}">
                     Enter valid email!
                 </div>
             </div>
             <div class="col-md-6">
                 <label for="validationCustomPhone" class="form-label">Phone number</label>
                 <input type="text" class="form-control" id="validationCustomPhone" value="" placeholder="Phone Number"
-                    name="phoneNumber" required>
-                <div class="invalid-feedback">
+                    name="phoneNumber" required th:field="*{phoneNumber}" th:errorclass="'is-invalid'">
+                <div class="invalid-feedback" th:errors="*{phoneNumber}">
                     Please enter your phone number!
                 </div>
             </div>
             <div class="col-md-6">
                 <label for="validationCustomAge" class="form-label">Age</label>
                 <input type="number" class="form-control" id="validationCustomAge" value="" placeholder="Age"
-                    name="age" required>
-                <div class="invalid-feedback">
+                    name="age" required th:field="*{age}" th:errorclass="'is-invalid'">
+                <div class="invalid-feedback" th:errors="*{age}">
                     Please enter your age!
                 </div>
             </div>
             <div class="col-md-6">
                 <label for="validationCustomPass" class="form-label">Password</label>
                 <input type="password" class="form-control" id="validationCustomPass" value="" placeholder="Password"
-                    name="password" required>
-                <div class="invalid-feedback">
+                    name="password" required th:field="*{password}" th:errorclass="'is-invalid'">
+                <div class="invalid-feedback" th:errors="*{password}">
                     Enter strong password!
                 </div>
             </div>
             <div class="col-md-6">
                 <label for="validationCustomConfirmPass" class="form-label">Confirm password</label>
                 <input type="password" class="form-control" id="validationCustomConfirmPass" value=""
-                    placeholder="Confirm password" name="confirmPassword" required>
-                <div class="invalid-feedback">
+                    placeholder="Confirm password" name="confirmPassword" required th:field="*{confirmPassword}" th:errorclass="'is-invalid'">
+                <div class="invalid-feedback" th:errors="*{confirmPassword}">
                     Confirm password!
                 </div>
             </div>
