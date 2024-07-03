@@ -8,39 +8,45 @@
     <th:block th:replace="~{fragments/navigation.html}"></th:block>
 
     <div class="add-car-form">
-        <form class="reg-form row g-3 needs-validation overflow-auto" novalidate>
+        <form class="reg-form row g-3 needs-validation overflow-auto" novalidate
+        th:action="@{/add-car}" th:method="post" th:object="${addCarDTO}">
             <h2>Add new car to the fleet</h2>
             <div class="col-md-12">
-                <label for="validationCustomBrand" class="form-label">Brand</label>
-                <input type="text" class="form-control" id="validationCustomBrand" value="" placeholder="Brand"
-                    name="brand" required>
-                <div class="invalid-feedback">
+                <label for="brand" class="form-label">Brand</label>
+                <input type="text" class="form-control" id="brand" value="" placeholder="Brand"
+                    name="brand" required th:field="*{brand}" th:errorclass="'is-invalid'">
+                <div th:errors="*{brand}" class="invalid-feedback">
                     Please enter brand!
                 </div>
             </div>
 
             <div class="col-md-12">
-                <label for="validationCustomModel" class="form-label">Model</label>
-                <input type="text" class="form-control" id="validationCustomModel" value="" placeholder="Model"
-                    name="model" required>
-                <div class="invalid-feedback">
+                <label for="model" class="form-label">Model</label>
+                <input type="text" class="form-control" id="model" value="" placeholder="Model"
+                    name="model" required th:field="*{model}" th:errorclass="'is-invalid'">
+                <div th:errors="*{model}" class="invalid-feedback">
                     Please enter model!
                 </div>
             </div>
 
             <div class="col-md-12">
-                <label for="validationCustomYear" class="form-label">Year</label>
-                <input type="number" class="form-control" id="validationCustomYear" value="" placeholder="Year"
-                    name="brand" required>
-                <div class="invalid-feedback">
+                <label for="year" class="form-label">Year</label>
+                <input type="number" class="form-control" id="year" value="" placeholder="Year"
+                    name="year" required th:field="*{year}" th:errorclass="'is-invalid'">
+                <div th:errors="*{year}" class="invalid-feedback">
                     Please enter year!
                 </div>
             </div>
 
             <div class="col-md-12">
-                <label for="validationCustomType" class="form-label">Engine Type</label>
-                <select class="col-md-12 select-row" name="transmision" id="validationCustomType">
+                <label for="engine" class="form-label">Engine Type</label>
+                <select th:errorclass="'is-invalid'" class="col-md-12 select-row browser-default custom-select"
+                        name="engineType" id="engine">
                     <option value="">Select engine type</option>
+                    <option th:each="engine : ${T(bg.rentacar.model.enums.EngineType).values()}"
+                            th:value="${engine}"
+                            th:text="${engine}"
+                            th:selected="${engine} == *{engineType}"></option>
                 </select>
                 <div class="invalid-feedback">
                     Please select Engine Type!
@@ -49,9 +55,14 @@
             
 
             <div class="col-md-12">
-                <label for="validationCustomTransmission" class="form-label">Transmission</label>
-                <select class="col-md-12 select-row" name="transmision" id="validationCustomTransmission">
+                <label for="transmission" class="form-label">Transmission</label>
+                <select th:errorclass="'is-invalid'" class="col-md-12 select-row browser-default custom-select"
+                        name="transmission" id="transmission">
                     <option value="">Select transmission</option>
+                    <option th:each="t : ${T(bg.rentacar.model.enums.Transmission).values()}"
+                            th:value="${t}"
+                            th:text="${t}"
+                            th:selected="${t} == *{transmission}"></option>
                 </select>
                 <div class="invalid-feedback">
                     Please select Transmission!
@@ -59,46 +70,61 @@
             </div>
 
             <div class="col-md-12">
-                <label for="validationCustomSeat" class="form-label">Seats</label>
-                <input type="number" class="form-control" id="validationCustomSeat" value="" placeholder="Seats"
-                    name="seat" required>
+                <label for="category" class="form-label">Category</label>
+                <select th:errorclass="'is-invalid'" class="col-md-12 select-row browser-default custom-select"
+                        name="category" id="category">
+                    <option value="">Select Category</option>
+                    <option th:each="cc : ${T(bg.rentacar.model.enums.CarCategory).values()}"
+                            th:value="${cc}"
+                            th:text="${cc}"
+                            th:selected="${cc} == *{category}"></option>
+                </select>
                 <div class="invalid-feedback">
+                    Please select Transmission!
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <label for="seats" class="form-label">Seats</label>
+                <input type="number" class="form-control" id="seats" value="" placeholder="Seats"
+                    name="seats" required th:field="*{seats}" th:errorclass="'is-invalid'">
+                <div th:errors="*{seats}" class="invalid-feedback">
                     Please enter seats!
                 </div>
             </div>
 
             <div class="col-md-12">
-                <label for="validationCustomFuel" class="form-label">Fuel consumption</label>
-                <input type="number" class="form-control" id="validationCustomFuel" value="" placeholder="Fuel consumption"
-                    name="fuelConsumption" required>
-                <div class="invalid-feedback">
+                <label for="fuelConsumption" class="form-label">Fuel consumption</label>
+                <input type="number" class="form-control" id="fuelConsumption" value="" placeholder="Fuel consumption"
+                    name="fuelConsumption" required th:field="*{fuelConsumption}" th:errorclass="'is-invalid'">
+                <div th:errors="*{fuelConsumption}" class="invalid-feedback">
                     Please enter fuel consumption!
                 </div>
             </div>
 
             <div class="col-md-12">
-                <label for="validationCustomTrunk" class="form-label">Trunk volume</label>
-                <input type="number" class="form-control" id="validationCustomTrunk" value="" placeholder="Trunk volume"
-                    name="trunkVolume" required>
-                <div class="invalid-feedback">
+                <label for="trunkVolume" class="form-label">Trunk volume</label>
+                <input type="number" class="form-control" id="trunkVolume" value="" placeholder="Trunk volume"
+                    name="trunkVolume" required th:field="*{trunkVolume}" th:errorclass="'is-invalid'">
+                <div th:errors="*{trunkVolume}" class="invalid-feedback">
                     Please enter trunk volume!
                 </div>
             </div>
 
             <div class="col-md-12">
-                <label for="validationCustomPrice" class="form-label">Price per day</label>
-                <input type="number" class="form-control" id="validationCustomPrice" value="" placeholder="Price per day"
-                    name="pricePerDay" required>
-                <div class="invalid-feedback">
+                <label for="pricePerDay" class="form-label">Price per day</label>
+                <input type="number" class="form-control" id="pricePerDay" value="" placeholder="Price per day"
+                    name="pricePerDay" required th:field="*{pricePerDay}" th:errorclass="'is-invalid'">
+                <div th:errors="*{pricePerDay}" class="invalid-feedback">
                     Please enter price per day!
                 </div>
             </div>
 
             
             <div class="col-12 register-button">
-                <form action="">
+                <div>
                     <button class="btn btn-primary register-button search-cars-btn" type="submit">Add car</button>
-                </form>
+                </div>
             </div>
         </form>
     </div>

@@ -1,51 +1,59 @@
-package bg.rentacar.model.entity;
+package bg.rentacar.model.dto;
 
 import bg.rentacar.model.enums.CarCategory;
 import bg.rentacar.model.enums.EngineType;
 import bg.rentacar.model.enums.Transmission;
-import jakarta.persistence.*;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.validation.constraints.*;
+import org.hibernate.validator.constraints.Length;
 
 import java.math.BigDecimal;
 
-@Entity
-@Table(name = "cars")
-public class Car extends BaseEntity{
-
-    @Column(nullable = false)
+public class AddCarDTO {
+    @NotBlank(message = "Please enter brand!")
+    @Size(min = 2, max = 40, message = "Brand length must be between 2 and 40 characters!")
     private String brand;
 
-    @Column(nullable = false)
+    @NotBlank(message = "Please enter model!")
+    @Size(min = 2, max = 40, message = "Model length must be between 2 and 40 characters!")
     private String model;
 
-    @Column(nullable = false)
+    @NotNull(message = "Please enter year!")
+    @Positive
+    @Min(value = 2017, message = "We don`t offer cars before 2017!")
     private int year;
 
-    @Column(nullable = false)
+    @NotNull(message = "Select engine type!")
     @Enumerated(EnumType.STRING)
     private EngineType engineType;
 
-    @Column(nullable = false)
+    @NotNull(message = "Select transmission type!")
     @Enumerated(EnumType.STRING)
     private Transmission transmission;
 
-    @Column(nullable = false)
+    @NotNull(message = "Select category!")
     @Enumerated(EnumType.STRING)
     private CarCategory category;
 
-    @Column(nullable = false)
+    @NotNull
+    @Min(value = 2, message = "Minimum seats 2")
+    @Max(value = 7, message = "Maximum seats 7")
     private int seats;
 
-    @Column(nullable = false)
+    @NotNull
+    @Positive
     private int fuelConsumption;
 
-    @Column(nullable = false)
+    @NotNull
+    @Positive
+    @Min(value = 200, message = "Minimum trunk volume 200 liters!")
+    @Max(value = 1000, message = "Maximum trunk volume 200 liters!")
     private int trunkVolume;
 
-    @Column(nullable = false)
+    @NotNull
+    @Positive
     private BigDecimal pricePerDay;
-
-    @Column
-    private boolean isAvailable;
 
     public String getBrand() {
         return brand;
@@ -117,14 +125,6 @@ public class Car extends BaseEntity{
 
     public void setPricePerDay(BigDecimal pricePerDay) {
         this.pricePerDay = pricePerDay;
-    }
-
-    public boolean isAvailable() {
-        return isAvailable;
-    }
-
-    public void setAvailable(boolean available) {
-        isAvailable = available;
     }
 
     public CarCategory getCategory() {

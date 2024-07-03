@@ -15,7 +15,7 @@ import org.springframework.security.web.authentication.AuthenticationFailureHand
 @Configuration
 public class SecurityConfig {
 
-    private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
+//    private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
@@ -31,7 +31,7 @@ public class SecurityConfig {
                     formLogin.passwordParameter("password");
                     formLogin.defaultSuccessUrl("/", true);
                     formLogin.failureUrl("/login-error");
-                    formLogin.failureHandler(authenticationFailureHandler());
+//                    formLogin.failureHandler(authenticationFailureHandler());
                 })
                 .logout(logout -> {
                     logout.logoutUrl("/logout");
@@ -41,13 +41,13 @@ public class SecurityConfig {
                 .build();
     }
 
-    @Bean
-    public AuthenticationFailureHandler authenticationFailureHandler() {
-        return (request, response, exception) -> {
-            logger.info("Authentication failed: {}", exception.getMessage());
-            response.sendRedirect("/login-error");
-        };
-    }
+//    @Bean
+//    public AuthenticationFailureHandler authenticationFailureHandler() {
+//        return (request, response, exception) -> {
+//            logger.info("Authentication failed: {}", exception.getMessage());
+//            response.sendRedirect("/login-error");
+//        };
+//    }
 
     @Bean
     public PasswordEncoder passwordEncoder(){
