@@ -1,5 +1,6 @@
 package bg.rentacar.service.user.impl;
 
+import bg.rentacar.model.dto.UserLoginDTO;
 import bg.rentacar.model.dto.UserRegisterDTO;
 import bg.rentacar.model.entity.User;
 import bg.rentacar.model.entity.UserRole;
@@ -10,6 +11,8 @@ import bg.rentacar.service.user.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -30,6 +33,9 @@ public class UserServiceImpl implements UserService {
     @Override
     public void register(UserRegisterDTO userRegisterDTO) {
         User user = mapper.map(userRegisterDTO, User.class);
+        user.setPassword(encoder.encode(userRegisterDTO.getPassword()));
+        UserRole role = userRoleRepository.findByRole(Role.USER).get();
+        user.getRoles().add(role);
         userRepository.save(user);
     }
 
@@ -63,5 +69,15 @@ public class UserServiceImpl implements UserService {
                 userRoleRepository.save(userRole);
             }
         }
+    }
+
+    @Override
+    public boolean validateLogin(UserLoginDTO userLoginDTO) {
+       Optional<User> userOpt =  userRepository.findByUsername(userLoginDTO.getUsername());
+       if (userOpt.isPresent()){
+           User user = userOpt.get();
+           return encoder.matches(userLoginDTO.getPassword(), user.getPassword());
+       }
+        return false;
     }
 }

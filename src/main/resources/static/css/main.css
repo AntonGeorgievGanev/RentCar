@@ -187,3 +187,8 @@ a {
 .action-td{
   text-align: center;
 }
+
+.logout-btn{
+  background-color: transparent;
+  border: none;
+}
