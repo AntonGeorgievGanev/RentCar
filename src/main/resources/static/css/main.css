@@ -192,3 +192,12 @@ a {
   background-color: transparent;
   border: none;
 }
+
+.login-error{
+      color: #d70f21;
+      font-size: 1em;
+      margin: 0 auto;
+      margin-top: 1em;
+      max-width: 350px;
+      text-align: center;
+}

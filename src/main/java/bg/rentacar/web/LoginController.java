@@ -1,38 +1,29 @@
 package bg.rentacar.web;
 
 import bg.rentacar.model.dto.UserLoginDTO;
-import bg.rentacar.service.user.UserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class LoginController {
 
-    private final UserService userService;
-
-    public LoginController(UserService userService) {
-        this.userService = userService;
-    }
-
-    @ModelAttribute("userLoginDTO")
-    private UserLoginDTO userLoginDTO(){
-        return new UserLoginDTO();
-    }
+    private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 
     @GetMapping("/login")
-    public String login(){
-        return "login";
+    public String login(Model model){
+        model.addAttribute("userLoginDTO", new UserLoginDTO());
+        return "/login";
     }
 
     @GetMapping("/login-error")
-    public ModelAndView viewLoginError() {
-        ModelAndView modelAndView = new ModelAndView("login");
-
-        modelAndView.addObject("badCredential", true);
-        modelAndView.addObject("userLoginDTO", userLoginDTO());
-
-        return modelAndView;
+    public String loginError(Model model){
+        logger.info("Login error detected");
+        model.addAttribute("badCredentials", true);
+        model.addAttribute("userLoginDTO", new UserLoginDTO());
+        return "/login";
     }
+
 }

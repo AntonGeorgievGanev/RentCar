@@ -9,36 +9,32 @@
 <th:block th:replace="~{fragments/navigation.html}"></th:block>
 
 <div class="form-container">
+
     <form class="login-form row g-3 needs-validation overflow-auto d-flex justify-content-center" novalidate
           th:method="post" th:action="@{/login}" th:object="${userLoginDTO}">
         <h2 class="form-title-text">Login</h2>
-        <div class="col-md-10">
-            <div th:if="${badCredential == true }" class="text-danger">Incorrect username or password!</div>
 
-            <label for="validationCustom01" class="form-label">Username</label>
-            <input type="text" class="form-control" id="validationCustom01" value="" placeholder="Username"
-                   name="username" required th:field="*{username}" th:errorclass="'is-invalid'">
-            <div class="invalid-feedback">
-                Please enter username!
-            </div>
+        <div class="login-error" th:if="${badCredentials}" th:text="'Incorrect username or password!'"></div>
+
+        <div class="col-md-10">
+            <label class="form-label" for="username">Username</label>
+            <input type="text" class="form-control" id="username" placeholder="Username"
+                   name="username" required th:field="*{username}">
         </div>
         <div class="col-md-10">
-            <label for="validationCustom02" class="form-label">Password</label>
-            <input type="password" class="form-control" id="validationCustom02" value="" placeholder="Password"
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" placeholder="Password"
                    name="password"
-                   required th:field="*{password}" th:errorclass="'is-invalid'">
-            <div class="invalid-feedback">
-                Please enter password!
-            </div>
+                   required th:field="*{password}">
         </div>
+
         <div class="col-md-10">
-            <form action="">
-                <button class="btn btn-primary register-button login-btn" type="submit">Login</button>
-            </form>
+            <button class="btn btn-primary register-button login-btn" type="submit">Login</button>
         </div>
-        <p class="form-text">If you don`t have an account &nbsp;<span><a href="register.html">Register</a></span> now!
-        </p>
+
     </form>
+    <p class="form-text">If you don`t have an account &nbsp;<span><a th:href="@{register}">Register</a></span> now!
+    </p>
 </div>
 
 
