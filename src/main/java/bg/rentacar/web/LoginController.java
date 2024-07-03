@@ -15,7 +15,7 @@ public class LoginController {
     @GetMapping("/login")
     public String login(Model model){
         model.addAttribute("userLoginDTO", new UserLoginDTO());
-        return "/login";
+        return "login";
     }
 
     @GetMapping("/login-error")
@@ -23,7 +23,6 @@ public class LoginController {
         logger.info("Login error detected");
         model.addAttribute("badCredentials", true);
         model.addAttribute("userLoginDTO", new UserLoginDTO());
-        return "/login";
+        return "login";
     }
-
 }
