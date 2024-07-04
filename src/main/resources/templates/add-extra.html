@@ -9,21 +9,22 @@
 <th:block th:replace="~{fragments/navigation.html}"></th:block>
 
 <div class="form-container">
-    <form class="login-form row g-3 needs-validation overflow-auto d-flex justify-content-center" novalidate>
+    <form class="login-form row g-3 needs-validation overflow-auto d-flex justify-content-center" novalidate
+    th:action="@{/add-extra}" th:method="post" th:object="${addExtraDTO}">
         <h2 class="form-title-text">Add extra</h2>
         <div class="col-md-10">
-            <label for="validationCustom01" class="form-label">Name</label>
-            <input type="text" class="form-control" id="validationCustom01" value="" placeholder="Name" name="name"
-                   required>
-            <div class="invalid-feedback">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name" value="" placeholder="Name" name="name"
+                   required th:field="*{name}" th:errorclass="'is-invalid'">
+            <div th:errors="*{name}" class="invalid-feedback">
                 Please enter name!
             </div>
         </div>
         <div class="col-md-10">
-            <label for="validationCustom02" class="form-label">Price</label>
-            <input type="number" class="form-control" id="validationCustom02" value="" placeholder="price" name="price"
-                   required>
-            <div class="invalid-feedback">
+            <label for="price" class="form-label">Price</label>
+            <input type="number" class="form-control" id="price" value="" placeholder="price" name="price"
+                   required th:field="*{price}" th:errorclass="'is-invalid'">
+            <div th:errors="*{price}" class="invalid-feedback">
                 Please enter price!
             </div>
         </div>
