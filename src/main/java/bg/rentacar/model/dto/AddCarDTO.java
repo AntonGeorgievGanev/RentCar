@@ -10,6 +10,9 @@ import jakarta.validation.constraints.*;
 import java.math.BigDecimal;
 
 public class AddCarDTO {
+
+    private Long id;
+
     @NotBlank(message = "Please enter brand!")
     @Size(min = 2, max = 40, message = "Brand length must be between 2 and 40 characters!")
     private String brand;
@@ -132,5 +135,19 @@ public class AddCarDTO {
 
     public void setCategory(CarCategory category) {
         this.category = category;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return brand + " " + model + " | Year: " + year + " | Category: " + category + " | Engine: " + engineType + " | Seats: " + seats + " | Fuel consumption: " + fuelConsumption + " l/100 km |" +
+                trunkVolume + " liters trunk | Price for day: " + pricePerDay + " $";
     }
 }

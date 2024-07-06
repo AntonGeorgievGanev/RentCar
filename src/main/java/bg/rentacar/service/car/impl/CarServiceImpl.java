@@ -1,6 +1,7 @@
 package bg.rentacar.service.car.impl;
 
 import bg.rentacar.model.dto.AddCarDTO;
+import bg.rentacar.model.dto.AllCarsDTO;
 import bg.rentacar.model.entity.Car;
 import bg.rentacar.repository.CarRepository;
 import bg.rentacar.service.car.CarService;
@@ -17,6 +18,7 @@ import java.util.stream.Collectors;
 public class CarServiceImpl implements CarService {
 
     private final CarRepository carRepository;
+
     private final ModelMapper mapper;
 
     private final RestClient carsRestClient;
@@ -45,7 +47,7 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public List<AddCarDTO> getAllCars() {
+    public List<AddCarDTO> getAllCarsRest() {
         List<Car> allCars = carRepository.findAll();
         return allCars.stream().map(car -> mapper.map(car, AddCarDTO.class))
                 .collect(Collectors.toList());
@@ -56,4 +58,12 @@ public class CarServiceImpl implements CarService {
         carRepository.deleteById(id);
     }
 
+    @Override
+    public AllCarsDTO getAllCarsDTO() {
+        AllCarsDTO allCarsDTO = new AllCarsDTO();
+        List<Car> carsFromDb = carRepository.findAllByisAvailable(true);
+        List<AddCarDTO> carsDTO = carsFromDb.stream().map(car -> mapper.map(car, AddCarDTO.class)).toList();
+        allCarsDTO.setAllCarsDTO(carsDTO);
+        return allCarsDTO;
+    }
 }

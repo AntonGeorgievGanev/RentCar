@@ -26,7 +26,7 @@ public class User extends BaseEntity {
     @Column(nullable = false)
     private String password;
     @OneToMany
-    private List<Rent> rentOrders;
+    private List<Order> orders;
     @ManyToMany
     @JoinTable(
             name = "users_roles",
@@ -36,7 +36,7 @@ public class User extends BaseEntity {
     private List<UserRole> roles;
 
     public User() {
-        this.rentOrders = new ArrayList<>();
+        this.orders = new ArrayList<>();
         this.roles = new ArrayList<>();
     }
 
@@ -96,12 +96,12 @@ public class User extends BaseEntity {
         this.password = password;
     }
 
-    public List<Rent> getRentOrders() {
-        return rentOrders;
+    public List<Order> getOrders() {
+        return orders;
     }
 
-    public void setRentOrders(List<Rent> rentOrders) {
-        this.rentOrders = rentOrders;
+    public void setOrders(List<Order> rentOrders) {
+        this.orders = rentOrders;
     }
 
     public List<UserRole> getRoles() {

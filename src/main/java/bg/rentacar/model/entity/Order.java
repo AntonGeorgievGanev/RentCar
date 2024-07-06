@@ -5,10 +5,11 @@ import jakarta.persistence.*;
 
 import java.sql.Time;
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Entity
-@Table(name = "rents")
-public class Rent extends BaseEntity {
+@Table(name = "orders")
+public class Order extends BaseEntity {
     @Column(nullable = false)
     private String location;
     @Column(nullable = false)
@@ -16,9 +17,9 @@ public class Rent extends BaseEntity {
     @Column(nullable = false)
     private LocalDate dropOffDate;
     @Column(nullable = false)
-    private Time pickUpTime;
+    private LocalTime pickUpTime;
     @Column(nullable = false)
-    private Time dropOffTime;
+    private LocalTime dropOffTime;
     @Column(nullable = false)
     private String returnLocation;
 
@@ -28,7 +29,7 @@ public class Rent extends BaseEntity {
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private RentOrderStatus status;
-    @OneToOne(optional = false)
+    @OneToOne
     private Car car;
 
     public String getLocation() {
@@ -55,19 +56,19 @@ public class Rent extends BaseEntity {
         this.dropOffDate = dropOffDate;
     }
 
-    public Time getPickUpTime() {
+    public LocalTime getPickUpTime() {
         return pickUpTime;
     }
 
-    public void setPickUpTime(Time pickUpTime) {
+    public void setPickUpTime(LocalTime pickUpTime) {
         this.pickUpTime = pickUpTime;
     }
 
-    public Time getDropOffTime() {
+    public LocalTime getDropOffTime() {
         return dropOffTime;
     }
 
-    public void setDropOffTime(Time dropOffTime) {
+    public void setDropOffTime(LocalTime dropOffTime) {
         this.dropOffTime = dropOffTime;
     }
 

@@ -18,7 +18,7 @@ public class Extra extends BaseEntity{
     private BigDecimal price;
 
     @OneToMany(mappedBy = "extra")
-    private List<Rent> rents;
+    private List<Order> rents;
 
     public String getName() {
         return name;
@@ -36,11 +36,11 @@ public class Extra extends BaseEntity{
         this.price = price;
     }
 
-    public List<Rent> getRents() {
+    public List<Order> getRents() {
         return rents;
     }
 
-    public void setRents(List<Rent> rents) {
+    public void setRents(List<Order> rents) {
         this.rents = rents;
     }
 }

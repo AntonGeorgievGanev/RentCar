@@ -44,7 +44,7 @@ public class SecurityConfig {
 //                .csrf(csrf -> csrf
 //                        .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()) // Enables CSRF with a cookie-based repository
 //                )
-                .csrf(AbstractHttpConfigurer::disable)
+//                .csrf(AbstractHttpConfigurer::disable)
                 .build();
     }
 

@@ -1,9 +1,9 @@
 package bg.rentacar.repository;
 
-import bg.rentacar.model.entity.Rent;
+import bg.rentacar.model.entity.Order;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface RentRepository extends JpaRepository<Rent, Long> {
+public interface OrderRepository extends JpaRepository<Order, Long> {
 }

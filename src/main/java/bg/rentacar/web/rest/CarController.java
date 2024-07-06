@@ -2,7 +2,6 @@ package bg.rentacar.web.rest;
 
 import bg.rentacar.model.dto.AddCarDTO;
 import bg.rentacar.service.car.CarService;
-import com.google.gson.Gson;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,7 +25,7 @@ public class CarController {
 
     @GetMapping
     public ResponseEntity<List<AddCarDTO>> getAllCars(){
-        return ResponseEntity.ok(carService.getAllCars());
+        return ResponseEntity.ok(carService.getAllCarsRest());
     }
 
     @PostMapping
