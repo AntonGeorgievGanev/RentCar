@@ -7,10 +7,12 @@ import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
+import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 
 @Configuration
 public class SecurityConfig {
@@ -22,7 +24,8 @@ public class SecurityConfig {
                 .authorizeHttpRequests(
                         authorizedRequest -> authorizedRequest
                                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-                                .requestMatchers("/", "/login", "/register", "/fleet", "/login-error").permitAll()
+                                .requestMatchers("/", "/login", "/register", "/fleet",
+                                        "/login-error", "/api/cars/**").permitAll()
                                 .anyRequest().authenticated()
                 )
                 .formLogin(formLogin -> {
@@ -38,6 +41,10 @@ public class SecurityConfig {
                     logout.logoutSuccessUrl("/");
                     logout.invalidateHttpSession(true);
                 })
+//                .csrf(csrf -> csrf
+//                        .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()) // Enables CSRF with a cookie-based repository
+//                )
+                .csrf(AbstractHttpConfigurer::disable)
                 .build();
     }
 

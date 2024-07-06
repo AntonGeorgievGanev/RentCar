@@ -6,7 +6,6 @@ import bg.rentacar.model.enums.Transmission;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.validation.constraints.*;
-import org.hibernate.validator.constraints.Length;
 
 import java.math.BigDecimal;
 
