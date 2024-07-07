@@ -1,6 +1,6 @@
 package bg.rentacar.web;
 
-import bg.rentacar.model.dto.AddCarDTO;
+import bg.rentacar.model.dto.CarDTO;
 import bg.rentacar.service.car.CarService;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
@@ -20,8 +20,8 @@ public class AddCarController {
     }
 
     @ModelAttribute("addCarDTO")
-    private AddCarDTO addCarDTO(){
-        return new AddCarDTO();
+    private CarDTO addCarDTO(){
+        return new CarDTO();
     }
 
     @GetMapping("add-car")
@@ -30,7 +30,7 @@ public class AddCarController {
     }
 
     @PostMapping("/add-car")
-    public String addCar(@Valid AddCarDTO addCarDTO,
+    public String addCar(@Valid CarDTO addCarDTO,
                          BindingResult bindingResult,
                          RedirectAttributes redirectAttributes){
 

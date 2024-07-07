@@ -26,6 +26,9 @@ public class Order extends BaseEntity {
     @ManyToOne
     private Extra extra;
 
+    @ManyToOne
+    private User user;
+
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private RentOrderStatus status;
@@ -102,5 +105,12 @@ public class Order extends BaseEntity {
 
     public void setExtra(Extra extra) {
         this.extra = extra;
+    }
+
+    public User getUser() {
+        return user;
+    }
+    public void setUser(User user) {
+        this.user = user;
     }
 }

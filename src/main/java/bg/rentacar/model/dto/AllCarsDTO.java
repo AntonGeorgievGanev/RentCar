@@ -4,17 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AllCarsDTO {
-    private List<AddCarDTO> allCarsDTO;
+    private List<CarDTO> allCarsDTO;
 
     public AllCarsDTO() {
         this.allCarsDTO = new ArrayList<>();
     }
 
-    public List<AddCarDTO> getAllCarsDTO() {
+    public List<CarDTO> getAllCarsDTO() {
         return allCarsDTO;
     }
 
-    public void setAllCarsDTO(List<AddCarDTO> allCarsDTO) {
+    public void setAllCarsDTO(List<CarDTO> allCarsDTO) {
         this.allCarsDTO = allCarsDTO;
     }
 }

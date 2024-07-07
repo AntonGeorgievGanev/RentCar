@@ -25,7 +25,7 @@ public class User extends BaseEntity {
     private int age;
     @Column(nullable = false)
     private String password;
-    @OneToMany
+    @OneToMany(mappedBy = "user")
     private List<Order> orders;
     @ManyToMany
     @JoinTable(

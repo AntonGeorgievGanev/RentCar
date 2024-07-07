@@ -1,6 +1,6 @@
 package bg.rentacar.web.rest;
 
-import bg.rentacar.model.dto.AddCarDTO;
+import bg.rentacar.model.dto.CarDTO;
 import bg.rentacar.service.car.CarService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,23 +19,23 @@ public class CarController {
 
 
     @GetMapping("/{id}")
-    public ResponseEntity<AddCarDTO> getCarById(@PathVariable Long id){
+    public ResponseEntity<CarDTO> getCarById(@PathVariable Long id){
         return ResponseEntity.ok(carService.getCarById(id));
     }
 
     @GetMapping
-    public ResponseEntity<List<AddCarDTO>> getAllCars(){
+    public ResponseEntity<List<CarDTO>> getAllCars(){
         return ResponseEntity.ok(carService.getAllCarsRest());
     }
 
     @PostMapping
-    public ResponseEntity<AddCarDTO> addCar(@RequestBody AddCarDTO addCarDTO){
+    public ResponseEntity<CarDTO> addCar(@RequestBody CarDTO addCarDTO){
         carService.addNewCar(addCarDTO);
         return ResponseEntity.ok().build();
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<AddCarDTO> deleteCar(@PathVariable Long id){
+    public ResponseEntity<CarDTO> deleteCar(@PathVariable Long id){
         carService.deleteCar(id);
         return ResponseEntity.ok().build();
     }

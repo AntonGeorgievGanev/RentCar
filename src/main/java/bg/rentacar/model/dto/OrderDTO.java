@@ -8,10 +8,8 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 public class OrderDTO {
-
     @NotBlank
     private String location;
-
     @FutureOrPresent
     @NotNull
     private LocalDate pickUpDate;
@@ -24,7 +22,10 @@ public class OrderDTO {
     private LocalTime dropOffTime;
     @NotNull
     private String returnLocation;
+    @NotNull
     private Long carId;
+
+    private Long extraId;
 
     public String getLocation() {
         return location;
@@ -80,5 +81,13 @@ public class OrderDTO {
 
     public void setCarId(Long carId) {
         this.carId = carId;
+    }
+
+    public Long getExtraId() {
+        return extraId;
+    }
+
+    public void setExtraId(Long extraId) {
+        this.extraId = extraId;
     }
 }

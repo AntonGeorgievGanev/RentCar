@@ -7,8 +7,8 @@ import jakarta.validation.constraints.Size;
 
 import java.math.BigDecimal;
 
-public class AddExtraDTO {
-
+public class ExtraDTO {
+    private Long extraId;
     @NotBlank(message = "Name must not be empty!")
     @Size(min = 3, max = 30, message = "Extra name length must be between 3 and 30 characters!")
     private String name;
@@ -31,5 +31,18 @@ public class AddExtraDTO {
 
     public void setPrice(BigDecimal price) {
         this.price = price;
+    }
+
+    public Long getExtraId() {
+        return extraId;
+    }
+
+    public void setExtraId(Long extraId) {
+        this.extraId = extraId;
+    }
+
+    @Override
+    public String toString() {
+        return name + " price: " + price + " $";
     }
 }

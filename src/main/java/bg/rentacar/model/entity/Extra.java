@@ -1,9 +1,6 @@
 package bg.rentacar.model.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -11,15 +8,13 @@ import java.util.List;
 @Entity
 @Table(name = "extras")
 public class Extra extends BaseEntity{
-
     @Column(nullable = false)
     private String name;
     @Column(nullable = false)
     private BigDecimal price;
 
     @OneToMany(mappedBy = "extra")
-    private List<Order> rents;
-
+    private List<Order> orders;
     public String getName() {
         return name;
     }
@@ -36,11 +31,12 @@ public class Extra extends BaseEntity{
         this.price = price;
     }
 
-    public List<Order> getRents() {
-        return rents;
+    public List<Order> getOrders() {
+        return orders;
     }
 
-    public void setRents(List<Order> rents) {
-        this.rents = rents;
+    public void setOrders(List<Order> rents) {
+        this.orders = rents;
     }
+
 }

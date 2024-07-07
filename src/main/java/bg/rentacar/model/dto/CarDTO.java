@@ -9,10 +9,8 @@ import jakarta.validation.constraints.*;
 
 import java.math.BigDecimal;
 
-public class AddCarDTO {
-
+public class CarDTO {
     private Long id;
-
     @NotBlank(message = "Please enter brand!")
     @Size(min = 2, max = 40, message = "Brand length must be between 2 and 40 characters!")
     private String brand;

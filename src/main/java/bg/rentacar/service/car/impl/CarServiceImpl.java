@@ -1,6 +1,6 @@
 package bg.rentacar.service.car.impl;
 
-import bg.rentacar.model.dto.AddCarDTO;
+import bg.rentacar.model.dto.CarDTO;
 import bg.rentacar.model.dto.AllCarsDTO;
 import bg.rentacar.model.entity.Car;
 import bg.rentacar.repository.CarRepository;
@@ -29,27 +29,27 @@ public class CarServiceImpl implements CarService {
         this.carsRestClient = carsRestClient;
     }
     @Override
-    public void addNewCar(AddCarDTO addCarDTO) {
+    public void addNewCar(CarDTO addCarDTO) {
         Car car = mapper.map(addCarDTO, Car.class);
         car.setAvailable(true);
         carRepository.save(car);
     }
 
     @Override
-    public AddCarDTO getCarById(Long id) {
+    public CarDTO getCarById(Long id) {
         Optional<Car> carOpt = carRepository.findById(id);
         if (carOpt.isEmpty()){
             //TODO: errorHandling
             throw new NoSuchElementException("Sorry! There is no such car!");
         }
 
-        return mapper.map(carOpt.get(), AddCarDTO.class);
+        return mapper.map(carOpt.get(), CarDTO.class);
     }
 
     @Override
-    public List<AddCarDTO> getAllCarsRest() {
+    public List<CarDTO> getAllCarsRest() {
         List<Car> allCars = carRepository.findAll();
-        return allCars.stream().map(car -> mapper.map(car, AddCarDTO.class))
+        return allCars.stream().map(car -> mapper.map(car, CarDTO.class))
                 .collect(Collectors.toList());
     }
 
@@ -62,7 +62,7 @@ public class CarServiceImpl implements CarService {
     public AllCarsDTO getAllCarsDTO() {
         AllCarsDTO allCarsDTO = new AllCarsDTO();
         List<Car> carsFromDb = carRepository.findAllByisAvailable(true);
-        List<AddCarDTO> carsDTO = carsFromDb.stream().map(car -> mapper.map(car, AddCarDTO.class)).toList();
+        List<CarDTO> carsDTO = carsFromDb.stream().map(car -> mapper.map(car, CarDTO.class)).toList();
         allCarsDTO.setAllCarsDTO(carsDTO);
         return allCarsDTO;
     }

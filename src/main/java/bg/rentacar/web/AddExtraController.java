@@ -1,6 +1,6 @@
 package bg.rentacar.web;
 
-import bg.rentacar.model.dto.AddExtraDTO;
+import bg.rentacar.model.dto.ExtraDTO;
 import bg.rentacar.service.extra.ExtraService;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
@@ -20,8 +20,8 @@ public class AddExtraController {
     }
 
     @ModelAttribute("addExtraDTO")
-    private AddExtraDTO addExtraDTO(){
-        return new AddExtraDTO();
+    private ExtraDTO addExtraDTO(){
+        return new ExtraDTO();
     }
 
     @GetMapping("/add-extra")
@@ -30,7 +30,7 @@ public class AddExtraController {
     }
 
     @PostMapping("/add-extra")
-    public String addExtra(@Valid AddExtraDTO addExtraDTO,
+    public String addExtra(@Valid ExtraDTO addExtraDTO,
                            BindingResult bindingResult,
                            RedirectAttributes redirectAttributes){
         if (bindingResult.hasErrors()){

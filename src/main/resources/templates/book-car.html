@@ -74,6 +74,19 @@
           </select>
         </div>
 
+        <div class="col-md-12">
+            <p>Select some extra</p>
+            <select class="col-md-12 select-row" th:field="*{extraId}">
+                <option value="">Select extra</option>
+                <option th:each="extra : ${allExtrasDTO.getAllExtrasDTO()}"
+                        th:text="${extra}"
+                        th:value="${extra.extraId}">
+                </option>
+
+                </option>
+            </select>
+        </div>
+
         <div class="col-12 register-button search-cars">
             <form action="">
                 <button class="btn btn-primary register-button search-cars-btn" type="submit">Submit</button>
