@@ -11,7 +11,6 @@ import bg.rentacar.repository.ExtraRepository;
 import bg.rentacar.repository.OrderRepository;
 import bg.rentacar.repository.UserRepository;
 import bg.rentacar.service.order.OrderService;
-import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -24,14 +23,12 @@ public class OrderServiceImpl implements OrderService {
 
     private final ExtraRepository extraRepository;
 
-    private final ModelMapper mapper;
-
-    public OrderServiceImpl(OrderRepository orderRepository, CarRepository carRepository, UserRepository userRepository, ExtraRepository extraRepository, ModelMapper mapper) {
+    public OrderServiceImpl(OrderRepository orderRepository, CarRepository carRepository,
+                            UserRepository userRepository, ExtraRepository extraRepository) {
         this.orderRepository = orderRepository;
         this.carRepository = carRepository;
         this.userRepository = userRepository;
         this.extraRepository = extraRepository;
-        this.mapper = mapper;
     }
 
     @Override

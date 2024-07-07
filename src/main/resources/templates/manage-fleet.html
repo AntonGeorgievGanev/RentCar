@@ -9,6 +9,7 @@
 <th:block th:replace="~{fragments/navigation.html}"></th:block>
 
 <div class="table-wrapper">
+    <h2 class="form-title-text">Manage cars</h2>
     <table class="table table-dark table-hover">
         <thead>
         <tr>
@@ -21,35 +22,12 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td scope="row">Renault</td>
-            <td>Clio</td>
-            <td>2022</td>
-            <td>Diesel</td>
-            <td>120 $</td>
-            <td>
-                <div class="action-buttons">
-                    <form action="">
-                        <button class="btn btn-primary" type="submit">
-                            Edit
-                        </button>
-                    </form>
-
-                    <form action="">
-                        <button class="btn btn-danger" type="submit">
-                            Delete
-                        </button>
-                    </form>
-                </div>
-            </td>
-        </tr>
-
-        <tr>
-            <td scope="row">Renault</td>
-            <td>Clio</td>
-            <td>2022</td>
-            <td>Diesel</td>
-            <td>120 $</td>
+        <tr th:each="car : ${allCarsDTO.getAllCarsDTO()}">
+            <td th:text="${car.brand}">Brand</td>
+            <td th:text="${car.model}">Model</td>
+            <td th:text="${car.year}">Year</td>
+            <td th:text="${car.engineType}">Engine Type</td>
+            <td th:text="${car.pricePerDay + ' $'}">Price $</td>
             <td>
                 <div class="action-buttons">
                     <form action="">

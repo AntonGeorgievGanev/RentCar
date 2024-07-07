@@ -86,7 +86,9 @@ a {
 
 .form-title-text {
   text-align: center;
+  color: white;
   margin: 0;
+  margin-bottom: 0.5em;
 }
 
 .form-text {
