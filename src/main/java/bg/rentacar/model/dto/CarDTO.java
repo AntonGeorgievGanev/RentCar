@@ -145,7 +145,7 @@ public class CarDTO {
 
     @Override
     public String toString() {
-        return brand + " " + model + " | Year: " + year + " | Category: " + category + " | Engine: " + engineType + " | Seats: " + seats + " | Fuel consumption: " + fuelConsumption + " l/100 km |" +
+        return brand + " " + model + " | Year: " + year + " | Category: " + category + " | Engine: " + engineType + " | Seats: " + seats + " | Fuel consumption: " + fuelConsumption + " l/100 km | " +
                 trunkVolume + " liters trunk | Price for day: " + pricePerDay + " $";
     }
 }

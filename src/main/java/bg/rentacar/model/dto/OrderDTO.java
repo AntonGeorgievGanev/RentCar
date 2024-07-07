@@ -8,21 +8,21 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 public class OrderDTO {
-    @NotBlank
+    @NotBlank(message = "Please enter location for pick up!")
     private String location;
-    @FutureOrPresent
-    @NotNull
+    @FutureOrPresent(message = "Pick up date cannot be in the past!")
+    @NotNull(message = "Please select a date for pick up!")
     private LocalDate pickUpDate;
-    @FutureOrPresent
-    @NotNull
+    @FutureOrPresent(message = "Drop off date cannot be in the past!")
+    @NotNull(message = "Please select a date to return!")
     private LocalDate dropOffDate;
-    @NotNull
+    @NotNull(message = "Please select a time for pick up!")
     private LocalTime pickUpTime;
-    @NotNull
+    @NotNull(message = "Please select a time return!")
     private LocalTime dropOffTime;
-    @NotNull
+    @NotBlank(message = "Please enter return location!")
     private String returnLocation;
-    @NotNull
+    @NotNull(message = "Select a car!")
     private Long carId;
 
     private Long extraId;

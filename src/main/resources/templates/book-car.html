@@ -8,8 +8,11 @@
 <th:block th:replace="~{fragments/navigation.html}"></th:block>
 
 <div class="reg-form-container">
-    <form class="reg-form row g-3 needs-validation" novalidate th:action="@{/book-car}" th:method="post" th:object="${orderDTO}">
+    <form class="reg-form row g-3 needs-validation" novalidate th:action="@{/book-car}" th:method="post"
+          th:object="${orderDTO}">
+
         <h2 class="form-title-text">Book now</h2>
+
         <div class="col-md-12">
             <label for="location" class="form-label">Location</label>
             <input type="text" class="form-control" id="location" value="" placeholder="Location"
@@ -18,6 +21,7 @@
                 Enter location.
             </div>
         </div>
+
         <div class="col-md-6">
             <label for="pickUpDate" class="form-label">Pick-up date</label>
             <input type="date" class="form-control" id="pickUpDate" value="" name="pickUpDate" required
@@ -26,6 +30,7 @@
                 Select pick up date.
             </div>
         </div>
+
         <div class="col-md-6">
             <label for="pickUpTime" class="form-label">Pick-up time</label>
             <input type="time" class="form-control" id="pickUpTime" value="" name="pickUpDate" required
@@ -43,6 +48,7 @@
                 Select drop off date.
             </div>
         </div>
+
         <div class="col-md-6">
             <label for="dropOffTime" class="form-label">Drop off time</label>
             <input type="time" class="form-control" id="dropOffTime" value="" name="dropOffTime" required
@@ -51,31 +57,33 @@
                 Select drop off time.
             </div>
         </div>
+
         <div class="col-md-12">
-            <label for="returnLocation" class="form-label">Return location</label>
+            <label for="returnLocation" class="form-label">Location</label>
             <input type="text" class="form-control" id="returnLocation" value="" placeholder="Return location"
                    name="returnLocation" required th:field="*{returnLocation}" th:errorclass="'is-invalid'">
             <div th:errors="*{returnLocation}" class="invalid-feedback">
-                Enter location.
+                Enter return location.
             </div>
         </div>
 
         <div class="col-md-12">
             <p>Select from available cars</p>
-          <select class="col-md-12 select-row" th:field="*{carId}">
-              <option value="">Select Car</option>
-              <option th:each="car : ${allCarsDTO.getAllCarsDTO()}"
-                      th:text="${car}"
-                      th:value="${car.id}">
-<!--                      th:selected="(${car.id} == *{car.id})"-->
-                      </option>
-
-              </option>
-          </select>
+            <select class="col-md-12 select-row" th:field="*{carId}" th:errorclass="'is-invalid'">
+                <option value="">Select Car</option>
+                <option th:each="car : ${allCarsDTO.getAllCarsDTO()}"
+                        th:text="${car}"
+                        th:value="${car.id}">
+                    <!--                      th:selected="(${car.id} == *{car.id})"-->
+                </option>
+            </select>
+            <div th:errors="*{carId}" class="invalid-feedback">
+                Enter location.
+            </div>
         </div>
 
         <div class="col-md-12">
-            <p>Select some extra</p>
+            <p>Select some extra (optional)</p>
             <select class="col-md-12 select-row" th:field="*{extraId}">
                 <option value="">Select extra</option>
                 <option th:each="extra : ${allExtrasDTO.getAllExtrasDTO()}"
