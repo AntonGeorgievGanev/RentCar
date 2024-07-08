@@ -123,10 +123,10 @@
             <div class="col-md-12">
                 <label for="carImage" class="form-label">Upload image</label>
                 <input type="file" class="form-control" id="carImage" value="" placeholder="Upload image"
-                       name="carImage" required>
-<!--                <div th:errors="*{pricePerDay}" class="invalid-feedback">-->
-<!--                    Please enter price per day!-->
-<!--                </div>-->
+                       name="carImage"  th:field="*{carImage}" th:errorclass="'is-invalid'">
+                <div th:errors="*{carImage}" class="invalid-feedback">
+                    Please upload an image!
+                </div>
             </div>
 
             

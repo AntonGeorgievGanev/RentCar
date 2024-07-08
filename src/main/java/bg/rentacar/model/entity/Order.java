@@ -12,14 +12,19 @@ import java.time.LocalTime;
 public class Order extends BaseEntity {
     @Column(nullable = false)
     private String location;
+
     @Column(nullable = false)
     private LocalDate pickUpDate;
+
     @Column(nullable = false)
     private LocalDate dropOffDate;
+
     @Column(nullable = false)
     private LocalTime pickUpTime;
+
     @Column(nullable = false)
     private LocalTime dropOffTime;
+
     @Column(nullable = false)
     private String returnLocation;
 
@@ -32,6 +37,7 @@ public class Order extends BaseEntity {
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private RentOrderStatus status;
+
     @OneToOne
     private Car car;
 

@@ -1,12 +1,15 @@
 package bg.rentacar.model.dto;
 
+import bg.rentacar.model.entity.Image;
 import bg.rentacar.model.enums.CarCategory;
 import bg.rentacar.model.enums.EngineType;
 import bg.rentacar.model.enums.Transmission;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.validation.constraints.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.math.BigDecimal;
 
 public class CarDTO {
@@ -54,6 +57,9 @@ public class CarDTO {
     @NotNull
     @Positive
     private BigDecimal pricePerDay;
+
+    @NotNull(message = "Please upload an image!")
+    private MultipartFile carImage;
 
     public String getBrand() {
         return brand;
@@ -141,6 +147,14 @@ public class CarDTO {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public @NotNull(message = "Please upload an image!") MultipartFile getCarImage() {
+        return carImage;
+    }
+
+    public void setCarImage(@NotNull(message = "Please upload an image!") MultipartFile carImage) {
+        this.carImage = carImage;
     }
 
     @Override
