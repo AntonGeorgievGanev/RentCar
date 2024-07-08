@@ -9,7 +9,7 @@
 
     <div class="add-car-form">
         <form class="reg-form row g-3 needs-validation overflow-auto" novalidate
-        th:action="@{/add-car}" th:method="post" th:object="${addCarDTO}">
+        th:action="@{/add-car}" th:method="post" th:object="${addCarDTO}" enctype="multipart/form-data">
             <h2>Add new car to the fleet</h2>
             <div class="col-md-12">
                 <label for="brand" class="form-label">Brand</label>
@@ -118,6 +118,15 @@
                 <div th:errors="*{pricePerDay}" class="invalid-feedback">
                     Please enter price per day!
                 </div>
+            </div>
+
+            <div class="col-md-12">
+                <label for="carImage" class="form-label">Upload image</label>
+                <input type="file" class="form-control" id="carImage" value="" placeholder="Upload image"
+                       name="carImage" required>
+<!--                <div th:errors="*{pricePerDay}" class="invalid-feedback">-->
+<!--                    Please enter price per day!-->
+<!--                </div>-->
             </div>
 
             

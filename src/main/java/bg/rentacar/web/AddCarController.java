@@ -8,12 +8,17 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.io.IOException;
 
 @Controller
 public class AddCarController {
 
     private final CarService carService;
+
 
     public AddCarController(CarService carService) {
         this.carService = carService;
@@ -32,7 +37,8 @@ public class AddCarController {
     @PostMapping("/add-car")
     public String addCar(@Valid CarDTO addCarDTO,
                          BindingResult bindingResult,
-                         RedirectAttributes redirectAttributes){
+                         RedirectAttributes redirectAttributes,
+                         @RequestParam("carImage")MultipartFile file) throws IOException {
 
         if (bindingResult.hasErrors()){
             redirectAttributes.addFlashAttribute("addCarDTO", addCarDTO)
@@ -41,7 +47,7 @@ public class AddCarController {
             return "redirect:/add-car";
         }
 
-        carService.addNewCar(addCarDTO);
+        carService.addCarWithImage(addCarDTO, file);
         return "redirect:/fleet";
     }
 }

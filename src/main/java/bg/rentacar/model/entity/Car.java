@@ -47,6 +47,9 @@ public class Car extends BaseEntity{
     @Column
     private boolean isAvailable;
 
+    @OneToOne
+    private Image image;
+
     public String getBrand() {
         return brand;
     }
@@ -133,5 +136,13 @@ public class Car extends BaseEntity{
 
     public void setCategory(CarCategory category) {
         this.category = category;
+    }
+
+    public Image getImage() {
+        return image;
+    }
+
+    public void setImage(Image image) {
+        this.image = image;
     }
 }
