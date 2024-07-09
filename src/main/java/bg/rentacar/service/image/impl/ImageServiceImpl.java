@@ -9,6 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.UUID;
 
@@ -25,13 +26,13 @@ public class ImageServiceImpl implements ImageService {
     @Override
     public void initDefaultCarImageInDb() {
         if (imageRepository.count() == 0) {
-            String uploadDirectory = "src/main/resources/static/images/default-car.jpg";
-            String fileName = "default_car_image78456321";
+            String uploadDirectory = "/images/";
+            String fileName = "default_car_image78456321.jpg";
 
             Path uploadPath = Path.of(uploadDirectory);
             Path filePath = uploadPath.resolve(fileName);
 
-            String location = filePath.toAbsolutePath().toString();
+            String location = filePath.toString();
 
             Image image = new Image();
             image.setName(fileName);
@@ -44,7 +45,7 @@ public class ImageServiceImpl implements ImageService {
     public String save(String uploadDirectory, MultipartFile image) throws IOException {
         String fileName = UUID.randomUUID() + "_" + image.getOriginalFilename();
 
-        Path uploadPath = Path.of(uploadDirectory);
+        Path uploadPath = Paths.get(uploadDirectory);
         Path filePath = uploadPath.resolve(fileName);
 
         if (!Files.exists(uploadPath)) {
@@ -52,6 +53,6 @@ public class ImageServiceImpl implements ImageService {
         }
 
         Files.copy(image.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
-        return filePath.toAbsolutePath().toString();
+        return "src/uploads/images/cars/" + fileName;
     }
 }

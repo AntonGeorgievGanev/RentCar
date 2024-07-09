@@ -48,6 +48,6 @@ public class AddCarController {
         }
 
         carService.addCarWithImage(addCarDTO, file);
-        return "redirect:/fleet";
+        return "redirect:/";
     }
 }

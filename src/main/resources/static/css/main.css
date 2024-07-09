@@ -167,6 +167,7 @@ a {
 
 .fleet-wrapper{
   margin-top: 5em;
+  margin-bottom: 5em;
 }
 
 .home-container{
@@ -207,4 +208,11 @@ a {
 .price-list{
   margin-bottom: 0;
   padding: 0;
+}
+
+.fleet-list{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2em;
+  justify-content: center;
 }

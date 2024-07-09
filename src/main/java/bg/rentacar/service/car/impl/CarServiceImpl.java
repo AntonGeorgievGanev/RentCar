@@ -2,8 +2,10 @@ package bg.rentacar.service.car.impl;
 
 import bg.rentacar.model.dto.CarDTO;
 import bg.rentacar.model.dto.AllCarsDTO;
+import bg.rentacar.model.dto.CarsByCategoryDTO;
 import bg.rentacar.model.entity.Car;
 import bg.rentacar.model.entity.Image;
+import bg.rentacar.model.enums.CarCategory;
 import bg.rentacar.repository.CarRepository;
 import bg.rentacar.repository.ImageRepository;
 import bg.rentacar.service.car.CarService;
@@ -14,6 +16,7 @@ import org.springframework.web.client.RestClient;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
@@ -86,10 +89,12 @@ public class CarServiceImpl implements CarService {
         Image image = new Image();
 
         if (!file.isEmpty()) {
-            String uploadDirectory = "src/main/resources/static/images/cars/"
-                    + carDTO.getBrand() + "_" + carDTO.getModel()  + UUID.randomUUID();
-            image.setName(UUID.randomUUID() + "_" + file.getOriginalFilename());
-            image.setLocation(imageService.save(uploadDirectory, file));
+            String uploadDirectory = "src/uploads/images/cars/";
+            String relativePath = imageService.save(uploadDirectory, file);
+
+            image.setName(Paths.get(relativePath).getFileName().toString());
+            image.setLocation(relativePath);
+
             imageRepository.save(image);
 
         }else{
@@ -100,5 +105,24 @@ public class CarServiceImpl implements CarService {
 
         car.setAvailable(true);
         carRepository.save(car);
+    }
+
+    @Override
+    public CarsByCategoryDTO getCarsByCategory() {
+
+        List<CarDTO> compactCarsDTO = carRepository.findAll().stream()
+                .filter(car -> car.getCategory().equals(CarCategory.COMPACT))
+                .map(carFromDb -> mapper.map(carFromDb, CarDTO.class)).toList();
+
+        List<CarDTO> estateCarsDTO = carRepository.findAll().stream()
+                .filter(car -> car.getCategory().equals(CarCategory.ESTATE))
+                .map(carFromDb -> mapper.map(carFromDb, CarDTO.class)).toList();
+
+        List<CarDTO> suvCarsDTO = carRepository.findAll().stream()
+                .filter(car -> car.getCategory().equals(CarCategory.SUV))
+                .map(carFromDb -> mapper.map(carFromDb, CarDTO.class)).toList();
+
+
+        return new CarsByCategoryDTO(compactCarsDTO, estateCarsDTO, suvCarsDTO);
     }
 }

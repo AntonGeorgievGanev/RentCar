@@ -1,5 +1,6 @@
 package bg.rentacar.model.dto;
 
+import bg.rentacar.model.entity.Image;
 import bg.rentacar.model.enums.CarCategory;
 import bg.rentacar.model.enums.EngineType;
 import bg.rentacar.model.enums.Transmission;
@@ -58,6 +59,8 @@ public class CarDTO {
 
     @NotNull(message = "Please upload an image!")
     private MultipartFile carImage;
+
+    private Image imageLocation;
 
     public String getBrand() {
         return brand;
@@ -159,5 +162,13 @@ public class CarDTO {
     public String toString() {
         return brand + " " + model + " | Year: " + year + " | Category: " + category + " | Engine: " + engineType + " | Seats: " + seats + " | Fuel consumption: " + fuelConsumption + " l/100 km | " +
                 trunkVolume + " liters trunk | Price for day: " + pricePerDay + " $";
+    }
+
+    public Image getImageLocation() {
+        return imageLocation;
+    }
+
+    public void setImageLocation(Image imageLocation) {
+        this.imageLocation = imageLocation;
     }
 }

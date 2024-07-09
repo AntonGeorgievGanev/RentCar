@@ -3,9 +3,11 @@ package bg.rentacar.model.entity;
 import bg.rentacar.model.enums.RentOrderStatus;
 import jakarta.persistence.*;
 
+import java.math.BigDecimal;
 import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.temporal.ChronoUnit;
 
 @Entity
 @Table(name = "orders")
@@ -116,7 +118,19 @@ public class Order extends BaseEntity {
     public User getUser() {
         return user;
     }
+
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public BigDecimal getTotalPrice(){
+        long days = ChronoUnit.DAYS.between(pickUpDate, dropOffDate);
+        BigDecimal extraPrice = extra.getPrice();
+        BigDecimal totalPrice = car.getPricePerDay().multiply(BigDecimal.valueOf(days)) ;
+        if (extraPrice != null){
+            totalPrice = totalPrice.add(extraPrice);
+        }
+
+        return totalPrice;
     }
 }
