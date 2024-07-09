@@ -16,7 +16,6 @@ public class ImageServiceImpl implements ImageService {
         this.imageRepository = imageRepository;
     }
 
-
     @Override
     public void initDefaultCarImageInDb() {
         if (imageRepository.count() == 0) {

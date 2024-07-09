@@ -24,7 +24,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(
                         authorizedRequest -> authorizedRequest
                                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-                                .requestMatchers("/", "/login", "/register", "/fleet",
+                                .requestMatchers("/", "/login", "/register",
                                         "/login-error", "/api/cars/**").permitAll()
                                 .anyRequest().authenticated()
                 )
