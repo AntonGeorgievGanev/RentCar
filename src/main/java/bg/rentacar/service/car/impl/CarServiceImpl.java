@@ -1,7 +1,7 @@
 package bg.rentacar.service.car.impl;
 
-import bg.rentacar.model.dto.CarDTO;
 import bg.rentacar.model.dto.AllCarsDTO;
+import bg.rentacar.model.dto.CarDTO;
 import bg.rentacar.model.dto.CarsByCategoryDTO;
 import bg.rentacar.model.entity.Car;
 import bg.rentacar.model.entity.Image;
@@ -9,6 +9,7 @@ import bg.rentacar.model.enums.CarCategory;
 import bg.rentacar.repository.CarRepository;
 import bg.rentacar.repository.ImageRepository;
 import bg.rentacar.service.car.CarService;
+import bg.rentacar.service.cloudinary.CloudinaryService;
 import bg.rentacar.service.image.ImageService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -16,11 +17,9 @@ import org.springframework.web.client.RestClient;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.nio.file.Paths;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
-import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
@@ -36,12 +35,15 @@ public class CarServiceImpl implements CarService {
 
     private final ImageRepository imageRepository;
 
-    public CarServiceImpl(CarRepository carRepository, ModelMapper mapper, ImageService imageService, RestClient carsRestClient, ImageRepository imageRepository) {
+    private final CloudinaryService cloudinaryService;
+
+    public CarServiceImpl(CarRepository carRepository, ModelMapper mapper, ImageService imageService, RestClient carsRestClient, ImageRepository imageRepository, CloudinaryService cloudinaryService) {
         this.carRepository = carRepository;
         this.mapper = mapper;
         this.imageService = imageService;
         this.carsRestClient = carsRestClient;
         this.imageRepository = imageRepository;
+        this.cloudinaryService = cloudinaryService;
     }
 
     @Override
@@ -89,11 +91,10 @@ public class CarServiceImpl implements CarService {
         Image image = new Image();
 
         if (!file.isEmpty()) {
-            String uploadDirectory = "src/uploads/images/cars/";
-            String relativePath = imageService.save(uploadDirectory, file);
+            String imageUrl = cloudinaryService.uploadImage(file);
 
-            image.setName(Paths.get(relativePath).getFileName().toString());
-            image.setLocation(relativePath);
+            image.setName(file.getOriginalFilename());
+            image.setLocation(imageUrl);
 
             imageRepository.save(image);
 
@@ -102,7 +103,6 @@ public class CarServiceImpl implements CarService {
         }
 
         car.setImage(image);
-
         car.setAvailable(true);
         carRepository.save(car);
     }
