@@ -1,5 +1,6 @@
 package bg.rentacar.service.image.impl;
 
+import bg.rentacar.model.entity.Image;
 import bg.rentacar.repository.ImageRepository;
 import bg.rentacar.service.image.ImageService;
 import org.springframework.stereotype.Service;
@@ -18,6 +19,25 @@ public class ImageServiceImpl implements ImageService {
 
     public ImageServiceImpl(ImageRepository imageRepository) {
         this.imageRepository = imageRepository;
+    }
+
+
+    @Override
+    public void initDefaultCarImageInDb() {
+        if (imageRepository.count() == 0) {
+            String uploadDirectory = "src/main/resources/static/images/default-car.jpg";
+            String fileName = "default_car_image78456321";
+
+            Path uploadPath = Path.of(uploadDirectory);
+            Path filePath = uploadPath.resolve(fileName);
+
+            String location = filePath.toAbsolutePath().toString();
+
+            Image image = new Image();
+            image.setName(fileName);
+            image.setLocation(location);
+            imageRepository.save(image);
+        }
     }
 
     @Override

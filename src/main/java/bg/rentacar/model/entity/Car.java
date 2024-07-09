@@ -47,7 +47,7 @@ public class Car extends BaseEntity{
     @Column
     private boolean isAvailable;
 
-    @OneToOne
+    @ManyToOne
     private Image image;
 
     public String getBrand() {

@@ -69,7 +69,7 @@
 
         <div class="col-md-12">
             <p>Select from available cars</p>
-            <select class="col-md-12 select-row" th:field="*{carId}" th:errorclass="'is-invalid'">
+            <select th:onchange="price()" class="col-md-12 select-row" th:field="*{carId}" th:errorclass="'is-invalid'">
                 <option value="">Select Car</option>
                 <option th:each="car : ${allCarsDTO.getAllCarsDTO()}"
                         th:text="${car}"
@@ -84,15 +84,21 @@
 
         <div class="col-md-12">
             <p>Select some extra (optional)</p>
-            <select class="col-md-12 select-row" th:field="*{extraId}">
+            <select th:onchange="price()" class="col-md-12 select-row" th:field="*{extraId}">
                 <option value="">Select extra</option>
                 <option th:each="extra : ${allExtrasDTO.getAllExtrasDTO()}"
                         th:text="${extra}"
                         th:value="${extra.extraId}">
                 </option>
-
-                </option>
             </select>
+        </div>
+
+        <div class="result">
+            <ul class="price-list">
+                <li id="carPrice">Price for the car: </li>
+                <li id="extraPrice">Price for extra: </li>
+                <li id="totalPrice">Total price: </li>
+            </ul>
         </div>
 
         <div class="col-12 register-button search-cars">
@@ -106,6 +112,8 @@
 <th:block th:replace="~{fragments/social.html}"></th:block>
 
 <th:block th:replace="~{fragments/footer.html}"></th:block>
+
+<script type="text/javascript" th:src="@{/js/bookCarPrice.js}"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"

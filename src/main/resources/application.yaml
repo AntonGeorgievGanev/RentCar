@@ -5,6 +5,10 @@ spring:
     username: root
     password: admin
 
+  sql:
+    init:
+      mode: never
+
   jpa:
     database-platform: org.hibernate.dialect.MySQLDialect
     defer-datasource-initialization: true
@@ -34,23 +38,20 @@ spring:
       max-request-size: 3MB
 
   mail:
-    carwash: ${EMAIL:carwash1303@gmail.com}
+    rentCar: ${EMAIL:}
     host: smtp.gmail.com
     port: 587
-    username: ${EMAIL:carwash1303@gmail.com}
-    password: ${EMAIL_PASSWORD:nbmpndmvsjofuvqv}
+    username: ${EMAIL:@gmail.com}
+    password: ${EMAIL_PASSWORD:}
 
-  remember:
-    key: ${REMEMBER_KEY:carwash}
+#  remember:
+#    key: ${}
 
-admin:
-  username: admin
-  password: admin
 
-cloudinary:
-  name: ${CLOUDINARY_NAME:dy2y8i2de}
-  api-key: ${CLOUDINARY_API_KEY:111187215981859}
-  api-secret: ${CLOUDINARY_API_SECRET:H3gM21c_0mYpOPklNO3pR11s8HE}
+#cloudinary:
+#  name: ${CLOUDINARY_NAME:}
+#  api-key: ${CLOUDINARY_API_KEY:}
+#  api-secret: ${CLOUDINARY_API_SECRET:}
 
 #logging:
 #  level:

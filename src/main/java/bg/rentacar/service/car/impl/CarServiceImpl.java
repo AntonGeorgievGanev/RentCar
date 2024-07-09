@@ -83,15 +83,20 @@ public class CarServiceImpl implements CarService {
     @Override
     public void addCarWithImage(CarDTO carDTO, MultipartFile file) throws IOException {
         Car car = mapper.map(carDTO, Car.class);
+        Image image = new Image();
 
         if (!file.isEmpty()) {
-            String uploadDirectory = "src/main/resources/static/images/cars/" + carDTO.getBrand() + "_" + carDTO.getModel();
-            Image image = new Image();
+            String uploadDirectory = "src/main/resources/static/images/cars/"
+                    + carDTO.getBrand() + "_" + carDTO.getModel()  + UUID.randomUUID();
             image.setName(UUID.randomUUID() + "_" + file.getOriginalFilename());
             image.setLocation(imageService.save(uploadDirectory, file));
             imageRepository.save(image);
-            car.setImage(image);
+
+        }else{
+            image = imageRepository.findById(1L).get();
         }
+
+        car.setImage(image);
 
         car.setAvailable(true);
         carRepository.save(car);

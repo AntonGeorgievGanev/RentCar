@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.util.List;
 
 public interface CarService {
-
     void addNewCar(CarDTO addCarDTO);
     CarDTO getCarById(Long id);
     List<CarDTO> getAllCarsRest();

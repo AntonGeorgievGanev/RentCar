@@ -19,6 +19,7 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
 
     private final UserRoleRepository userRoleRepository;
+
     private final ModelMapper mapper;
 
     private final PasswordEncoder encoder;
@@ -61,8 +62,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void initUserRole() {
-        if (userRoleRepository.count() == 0){
-            for (int i = 0; i < Role.values().length  ; i++) {
+        if (userRoleRepository.count() == 0) {
+            for (int i = 0; i < Role.values().length; i++) {
                 UserRole userRole = new UserRole();
                 Role role = Role.values()[i];
                 userRole.setRole(role);
@@ -73,11 +74,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean validateLogin(UserLoginDTO userLoginDTO) {
-       Optional<User> userOpt =  userRepository.findByUsername(userLoginDTO.getUsername());
-       if (userOpt.isPresent()){
-           User user = userOpt.get();
-           return encoder.matches(userLoginDTO.getPassword(), user.getPassword());
-       }
+        Optional<User> userOpt = userRepository.findByUsername(userLoginDTO.getUsername());
+        if (userOpt.isPresent()) {
+            User user = userOpt.get();
+            return encoder.matches(userLoginDTO.getPassword(), user.getPassword());
+        }
         return false;
     }
 

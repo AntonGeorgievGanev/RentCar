@@ -10,18 +10,24 @@ import java.time.LocalTime;
 public class OrderDTO {
     @NotBlank(message = "Please enter location for pick up!")
     private String location;
+
     @FutureOrPresent(message = "Pick up date cannot be in the past!")
     @NotNull(message = "Please select a date for pick up!")
     private LocalDate pickUpDate;
+
     @FutureOrPresent(message = "Drop off date cannot be in the past!")
     @NotNull(message = "Please select a date to return!")
     private LocalDate dropOffDate;
+
     @NotNull(message = "Please select a time for pick up!")
     private LocalTime pickUpTime;
+
     @NotNull(message = "Please select a time return!")
     private LocalTime dropOffTime;
+
     @NotBlank(message = "Please enter return location!")
     private String returnLocation;
+
     @NotNull(message = "Select a car!")
     private Long carId;
 
