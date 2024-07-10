@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
@@ -8,37 +8,34 @@
 
 <th:block th:replace="~{fragments/navigation.html}"></th:block>
 
-<section class="ftco-section">
-    <div class="table-wrapper">
-        <h2 class="form-title-text">My Orders</h2>
-        <table class="table table-dark table-hover">
-            <thead>
-            <tr>
-                <th>Location</th>
-                <th>Pick up date</th>
-                <th>Pick up time</th>
-                <th>Drop off date</th>
-                <th>Drop off time</th>
-                <th>Return location</th>
-                <th>Total Price</th>
-                <th>Status</th>
-            </tr>
-            </thead>
-            <tbody id="tbody">
-            <tr th:each="order : ${allUserOrders.userOrders}">
-                <td th:text="${order.location}">Stara Zagora</td>
-                <td th:text="${order.pickUpDate}">date</td>
-                <td th:text="${order.pickUpTime}">time</td>
-                <td th:text="${order.dropOffDate}">date</td>
-                <td th:text="${order.dropOffTime}">time</td>
-                <td th:text="${order.returnLocation}">Stara Zagora</td>
-                <td th:text="${order.totalPrice} + ' $'">360 $</td>
-                <td th:text="${order.status}">APPROVED</td>
-            </tbody>
-        </table>
-    </div>
-
-</section>
+<div class="table-wrapper mt-5 pt-5">
+    <h2 class="form-title-text">My Orders</h2>
+    <table class="table table-dark table-hover">
+        <thead>
+        <tr>
+            <th>Location</th>
+            <th>Pick up date</th>
+            <th>Pick up time</th>
+            <th>Drop off date</th>
+            <th>Drop off time</th>
+            <th>Return location</th>
+            <th>Total Price</th>
+            <th>Status</th>
+        </tr>
+        </thead>
+        <tbody id="tbody">
+        <tr th:each="order : ${allUserOrders.userOrders}">
+            <td th:text="${order.location}">Stara Zagora</td>
+            <td th:text="${order.pickUpDate}">date</td>
+            <td th:text="${order.pickUpTime}">time</td>
+            <td th:text="${order.dropOffDate}">date</td>
+            <td th:text="${order.dropOffTime}">time</td>
+            <td th:text="${order.returnLocation}">Stara Zagora</td>
+            <td th:text="${order.totalPrice} + ' $'">360 $</td>
+            <td th:text="${order.status}">APPROVED</td>
+        </tbody>
+    </table>
+</div>
 
 <section class="social mb-4 text-center">
     <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
@@ -53,7 +50,10 @@
 
 <th:block th:replace="~{fragments/footer}"></th:block>
 
-<th:block th:replace="~{fragments/footer}"></th:block>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
 
 </body>
+
 </html>

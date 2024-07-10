@@ -30,7 +30,7 @@
                     <a class="nav-link p-2" th:href="@{/manage-fleet}">Manage fleet</a>
                 </li>
                 <li class="nav-item" sec:authorize="hasRole('ROLE_ADMIN')">
-                    <a class="nav-link p-2" th:href="@{/orders}">Orders</a>
+                    <a class="nav-link p-2" th:href="@{/manage-orders}">Manage orders</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link p-2" th:href="@{/my-orders}" sec:authorize="hasRole('ROLE_USER')">My orders</a>

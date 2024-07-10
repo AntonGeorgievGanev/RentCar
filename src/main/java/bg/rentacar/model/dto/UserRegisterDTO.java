@@ -15,7 +15,7 @@ public class UserRegisterDTO {
     @Size(min = 3, max = 20, message = "First name length must be between 3 and 20 characters!")
     private String lastName;
 
-    @NotBlank(message = "Username name must not be empty!")
+    @NotBlank(message = "Username must not be empty!")
     @UniqueUsername
     @Size(min = 3, max = 20, message = "First name length must be between 3 and 20 characters!")
     private String username;
@@ -27,11 +27,11 @@ public class UserRegisterDTO {
 
     @NotBlank(message = "Phone number must not be empty!")
     @UniquePhoneNumber
-    @Size(min = 10, max = 10)
+    @Size(min = 10, max = 13, message = "Phone number length must be between 10 and 13 characters!")
     private String phoneNumber;
 
     @NotNull(message = "Your age is required!")
-    @Positive
+    @Positive(message = "Age must be a positive number!")
     @Over18
     private int age;
 
