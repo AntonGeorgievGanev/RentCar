@@ -28,18 +28,16 @@ public class CarServiceImpl implements CarService {
 
     private final ModelMapper mapper;
 
-    private final RestClient carsRestClient;
 
     private final ImageRepository imageRepository;
 
     private final CloudinaryService cloudinaryService;
 
     public CarServiceImpl(CarRepository carRepository, ModelMapper mapper,
-                          RestClient carsRestClient, ImageRepository imageRepository,
+                          ImageRepository imageRepository,
                           CloudinaryService cloudinaryService) {
         this.carRepository = carRepository;
         this.mapper = mapper;
-        this.carsRestClient = carsRestClient;
         this.imageRepository = imageRepository;
         this.cloudinaryService = cloudinaryService;
     }

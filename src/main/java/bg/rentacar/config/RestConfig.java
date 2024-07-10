@@ -10,10 +10,10 @@ import java.awt.*;
 @Configuration
 public class RestConfig {
 
-    @Bean("carsRestClient")
+    @Bean("reviewRestClient")
     public RestClient carRestClient(){
         return RestClient.builder()
-                .baseUrl("http://localhost:8080/api/cars")
+                .baseUrl("http://localhost:8081/api/reviews")
                 .defaultHeader("Content-type", MediaType.APPLICATION_JSON_VALUE)
                 .build();
     }
