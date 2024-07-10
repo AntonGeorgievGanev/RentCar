@@ -1,9 +1,13 @@
 package bg.rentacar.model.dto;
 
+import bg.rentacar.model.enums.RentOrderStatus;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -27,6 +31,11 @@ public class OrderDTO {
 
     @NotBlank(message = "Please enter return location!")
     private String returnLocation;
+
+    @Enumerated(EnumType.STRING)
+    private RentOrderStatus status;
+
+    private BigDecimal totalPrice;
 
     @NotNull(message = "Select a car!")
     private Long carId;
@@ -95,5 +104,21 @@ public class OrderDTO {
 
     public void setExtraId(Long extraId) {
         this.extraId = extraId;
+    }
+
+    public RentOrderStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(RentOrderStatus status) {
+        this.status = status;
+    }
+
+    public BigDecimal getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(BigDecimal totalPrice) {
+        this.totalPrice = totalPrice;
     }
 }

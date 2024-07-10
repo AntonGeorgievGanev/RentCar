@@ -25,15 +25,15 @@
             </tr>
             </thead>
             <tbody id="tbody">
-            <tr>
-                <td>Stara Zagora</td>
-                <td>date</td>
-                <td>time</td>
-                <td>date</td>
-                <td>time</td>
-                <td>Stara Zagora</td>
-                <td>360 $</td>
-                <td>APPROVED</td>
+            <tr th:each="order : ${allUserOrders.userOrders}">
+                <td th:text="${order.location}">Stara Zagora</td>
+                <td th:text="${order.pickUpDate}">date</td>
+                <td th:text="${order.pickUpTime}">time</td>
+                <td th:text="${order.dropOffDate}">date</td>
+                <td th:text="${order.dropOffTime}">time</td>
+                <td th:text="${order.returnLocation}">Stara Zagora</td>
+                <td th:text="${order.totalPrice} + ' $'">360 $</td>
+                <td th:text="${order.status}">APPROVED</td>
             </tbody>
         </table>
     </div>
