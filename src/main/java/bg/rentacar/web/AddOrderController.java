@@ -49,7 +49,7 @@ public class AddOrderController {
 
     @GetMapping("/book-car")
     public String bookCar(Model model){
-        model.addAttribute("allCarsDTO", carService.getAllCarsDTO());
+        model.addAttribute("allCarsDTO", carService.getAllAvailableCarsDTO());
         model.addAttribute("allExtrasDTO", extraService.getAllExtras());
         return "book-car";
     }

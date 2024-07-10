@@ -23,7 +23,7 @@ public class ManageFleetController {
 
     @GetMapping("/manage-fleet")
     public String manageFleet(Model model){
-        model.addAttribute("allCarsDTO", carService.getAllCarsDTO());
+        model.addAttribute("allCarsDTO", carService.getAllAvailableCarsDTO());
         return "manage-fleet";
     }
 }

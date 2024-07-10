@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<th:block th:replace="~{fragments/head.html}"></th:block>
+
+<body>
+
+<th:block th:replace="~{fragments/navigation.html}"></th:block>
+
+<section class="ftco-section">
+    <div class="table-wrapper">
+        <h2 class="form-title-text">My Orders</h2>
+        <table class="table table-dark table-hover">
+            <thead>
+            <tr>
+                <th>Location</th>
+                <th>Pick up date</th>
+                <th>Pick up time</th>
+                <th>Drop off date</th>
+                <th>Drop off time</th>
+                <th>Return location</th>
+                <th>Total Price</th>
+                <th>Status</th>
+            </tr>
+            </thead>
+            <tbody id="tbody">
+            <tr>
+                <td>Stara Zagora</td>
+                <td>date</td>
+                <td>time</td>
+                <td>date</td>
+                <td>time</td>
+                <td>Stara Zagora</td>
+                <td>360 $</td>
+                <td>APPROVED</td>
+            </tbody>
+        </table>
+    </div>
+
+</section>
+
+<section class="social mb-4 text-center">
+    <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
+            class="fab fa-facebook-f"></i></a>
+    <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-google"></i></a>
+    <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
+            class="fab fa-instagram"></i></a>
+    <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
+            class="fab fa-linkedin-in"></i></a>
+    <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-github"></i></a>
+</section>
+
+<th:block th:replace="~{fragments/footer}"></th:block>
+
+<th:block th:replace="~{fragments/footer}"></th:block>
+
+</body>
+</html>

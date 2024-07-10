@@ -10,7 +10,6 @@ import bg.rentacar.repository.CarRepository;
 import bg.rentacar.repository.ImageRepository;
 import bg.rentacar.service.car.CarService;
 import bg.rentacar.service.cloudinary.CloudinaryService;
-import bg.rentacar.service.image.ImageService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
@@ -29,18 +28,17 @@ public class CarServiceImpl implements CarService {
 
     private final ModelMapper mapper;
 
-    private final ImageService imageService;
-
     private final RestClient carsRestClient;
 
     private final ImageRepository imageRepository;
 
     private final CloudinaryService cloudinaryService;
 
-    public CarServiceImpl(CarRepository carRepository, ModelMapper mapper, ImageService imageService, RestClient carsRestClient, ImageRepository imageRepository, CloudinaryService cloudinaryService) {
+    public CarServiceImpl(CarRepository carRepository, ModelMapper mapper,
+                          RestClient carsRestClient, ImageRepository imageRepository,
+                          CloudinaryService cloudinaryService) {
         this.carRepository = carRepository;
         this.mapper = mapper;
-        this.imageService = imageService;
         this.carsRestClient = carsRestClient;
         this.imageRepository = imageRepository;
         this.cloudinaryService = cloudinaryService;
@@ -77,7 +75,7 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public AllCarsDTO getAllCarsDTO() {
+    public AllCarsDTO getAllAvailableCarsDTO() {
         AllCarsDTO allCarsDTO = new AllCarsDTO();
         List<Car> carsFromDb = carRepository.findAllByisAvailable(true);
         List<CarDTO> carsDTO = carsFromDb.stream().map(car -> mapper.map(car, CarDTO.class)).toList();
@@ -92,13 +90,11 @@ public class CarServiceImpl implements CarService {
 
         if (!file.isEmpty()) {
             String imageUrl = cloudinaryService.uploadImage(file);
-
             image.setName(file.getOriginalFilename());
             image.setLocation(imageUrl);
-
             imageRepository.save(image);
 
-        }else{
+        } else {
             image = imageRepository.findById(1L).get();
         }
 

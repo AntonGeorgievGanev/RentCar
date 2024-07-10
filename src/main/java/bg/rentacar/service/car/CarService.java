@@ -13,7 +13,7 @@ public interface CarService {
     CarDTO getCarById(Long id);
     List<CarDTO> getAllCarsRest();
     void deleteCar(Long id);
-    AllCarsDTO getAllCarsDTO();
+    AllCarsDTO getAllAvailableCarsDTO();
     void addCarWithImage(CarDTO carDTO, MultipartFile file) throws IOException;
     CarsByCategoryDTO getCarsByCategory();
 }
