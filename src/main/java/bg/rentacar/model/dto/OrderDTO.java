@@ -12,6 +12,9 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 public class OrderDTO {
+
+    private Long id;
+
     @NotBlank(message = "Please enter location for pick up!")
     private String location;
 
@@ -41,6 +44,8 @@ public class OrderDTO {
     private Long carId;
 
     private Long extraId;
+
+    private String user;
 
     public String getLocation() {
         return location;
@@ -120,5 +125,21 @@ public class OrderDTO {
 
     public void setTotalPrice(BigDecimal totalPrice) {
         this.totalPrice = totalPrice;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
     }
 }

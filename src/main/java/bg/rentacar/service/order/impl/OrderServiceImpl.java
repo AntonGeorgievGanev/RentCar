@@ -1,5 +1,6 @@
 package bg.rentacar.service.order.impl;
 
+import bg.rentacar.model.dto.AllOrdersByStatus;
 import bg.rentacar.model.dto.AllUserOrdersDTO;
 import bg.rentacar.model.dto.OrderDTO;
 import bg.rentacar.model.entity.Car;
@@ -82,6 +83,50 @@ public class OrderServiceImpl implements OrderService {
 
         return new AllUserOrdersDTO(userOrdersDTO);
     }
+
+    @Override
+    public AllOrdersByStatus getAllOrdersByStatus() {
+        List<OrderDTO> pendingOrdersDTO = new ArrayList<>();
+        List<OrderDTO> approvedOrdersDTO = new ArrayList<>();
+        List<OrderDTO> canceledOrdersDTO = new ArrayList<>();
+        List<OrderDTO> finishedOrdersDTO = new ArrayList<>();
+
+        orderRepository.findAll().stream().filter(order -> order.getStatus().equals(RentOrderStatus.PENDING))
+                .forEach(orderFromDb -> {
+                    OrderDTO orderDTO = mapper.map(orderFromDb, OrderDTO.class);
+                    orderDTO.setTotalPrice(orderFromDb.getTotalPrice());
+                    orderDTO.setUser(orderFromDb.getUser().getUsername());
+                    pendingOrdersDTO.add(orderDTO);
+                });
+
+        orderRepository.findAll().stream().filter(order -> order.getStatus().equals(RentOrderStatus.APPROVED))
+                .forEach(orderFromDb -> {
+                    OrderDTO orderDTO = mapper.map(orderFromDb, OrderDTO.class);
+                    orderDTO.setTotalPrice(orderFromDb.getTotalPrice());
+                    orderDTO.setUser(orderFromDb.getUser().getUsername());
+                    approvedOrdersDTO.add(orderDTO);
+                });
+
+        orderRepository.findAll().stream().filter(order -> order.getStatus().equals(RentOrderStatus.CANCELED))
+                .forEach(orderFromDb -> {
+                    OrderDTO orderDTO = mapper.map(orderFromDb, OrderDTO.class);
+                    orderDTO.setTotalPrice(orderFromDb.getTotalPrice());
+                    orderDTO.setUser(orderFromDb.getUser().getUsername());
+                    canceledOrdersDTO.add(orderDTO);
+                });
+
+        orderRepository.findAll().stream().filter(order -> order.getStatus().equals(RentOrderStatus.FINISHED))
+                .forEach(orderFromDb -> {
+                    OrderDTO orderDTO = mapper.map(orderFromDb, OrderDTO.class);
+                    orderDTO.setTotalPrice(orderFromDb.getTotalPrice());
+                    orderDTO.setUser(orderFromDb.getUser().getUsername());
+                    finishedOrdersDTO.add(orderDTO);
+                });
+
+
+        return new AllOrdersByStatus(pendingOrdersDTO, approvedOrdersDTO, canceledOrdersDTO, finishedOrdersDTO);
+    }
+
 
     private Order customMapDtoToEntity(OrderDTO orderDTO){
         Order order = new Order();

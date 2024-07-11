@@ -36,15 +36,15 @@
   }
 }
 
-@media only screen and (max-width: 380px) {
-  .social {
-    display: none;
-  }
+/*@media only screen and (max-width: 380px) {*/
+/*  .social {*/
+/*    display: none;*/
+/*  }*/
 
-  button {
-    margin-top: 1em;
-  }
-}
+/*  button {*/
+/*    margin-top: 1em;*/
+/*  }*/
+/*}*/
 
 /* @media only screen and (max-height: 800px) {
   .social {
