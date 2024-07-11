@@ -12,4 +12,6 @@ public interface OrderService {
     Order getOrderById(Long id);
     AllUserOrdersDTO getAllUserOrders(Principal principal);
     AllOrdersByStatus getAllOrdersByStatus();
+    void approveOrder(Long id);
+    void cancelOrder(Long id);
 }

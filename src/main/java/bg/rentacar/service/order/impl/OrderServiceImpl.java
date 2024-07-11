@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class OrderServiceImpl implements OrderService {
@@ -125,6 +126,26 @@ public class OrderServiceImpl implements OrderService {
 
 
         return new AllOrdersByStatus(pendingOrdersDTO, approvedOrdersDTO, canceledOrdersDTO, finishedOrdersDTO);
+    }
+
+    @Override
+    public void approveOrder(Long id) {
+        Optional<Order> optionalOrder = orderRepository.findById(id);
+        if (optionalOrder.isPresent()){
+            Order order = optionalOrder.get();
+            order.setStatus(RentOrderStatus.APPROVED);
+            orderRepository.save(order);
+        }
+    }
+
+    @Override
+    public void cancelOrder(Long id) {
+        Optional<Order> optionalOrder = orderRepository.findById(id);
+        if (optionalOrder.isPresent()){
+            Order order = optionalOrder.get();
+            order.setStatus(RentOrderStatus.CANCELED);
+            orderRepository.save(order);
+        }
     }
 
 
