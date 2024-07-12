@@ -11,49 +11,49 @@
 <div class="admin-tables-wrapper mb-5 mt-2em">
     <div class="table-wrapper mt-4 pt-5">
         <h2 class="form-title-text">Pending Orders</h2>
-        <table class="table table-dark table-hover">
-            <thead>
-            <tr>
-                <th>Location</th>
-                <th>Pick up date</th>
-                <th>Pick up time</th>
-                <th>Drop off date</th>
-                <th>Drop off time</th>
-                <th>Return location</th>
-                <th>Total Price</th>
-                <th>Status</th>
-                <th>User</th>
-                <th>Action</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr  th:each="pending : ${allOrdersByStatus.pendingOrders}">
-                <td th:text="${pending.location}">Stara Zagora</td>
-                <td th:text="${pending.pickUpDate}">date</td>
-                <td th:text="${pending.pickUpTime}">time</td>
-                <td th:text="${pending.dropOffDate}">date</td>
-                <td th:text="${pending.dropOffTime}">time</td>
-                <td th:text="${pending.returnLocation}">Stara Zagora</td>
-                <td th:text="${pending.totalPrice} + ' $'">360 $</td>
-                <td th:text="${pending.user}">User</td>
-                <td th:text="${pending.status}">PENDING</td>
-                <td>
-                    <div class="action-buttons">
-                        <form th:action="@{/manage-orders/approve/{id}(id=${pending.id})}" th:method="post">
-                            <button class="btn btn-primary" type="submit">
-                                Approve
-                            </button>
-                        </form>
+            <table class="table table-dark table-hover">
+                <thead>
+                <tr>
+                    <th scope="col">Location</th>
+                    <th scope="col">Pick up date</th>
+                    <th scope="col">Pick up time</th>
+                    <th scope="col">Drop off date</th>
+                    <th scope="col">Drop off time</th>
+                    <th scope="col">Return location</th>
+                    <th scope="col">Total Price</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">User</th>
+                    <th scope="col">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="pending : ${allOrdersByStatus.pendingOrders}">
+                    <td th:text="${pending.location}">Stara Zagora</td>
+                    <td th:text="${pending.pickUpDate}">date</td>
+                    <td th:text="${pending.pickUpTime}">time</td>
+                    <td th:text="${pending.dropOffDate}">date</td>
+                    <td th:text="${pending.dropOffTime}">time</td>
+                    <td th:text="${pending.returnLocation}">Stara Zagora</td>
+                    <td th:text="${pending.totalPrice} + ' $'">360 $</td>
+                    <td th:text="${pending.user}">User</td>
+                    <td th:text="${pending.status}">PENDING</td>
+                    <td>
+                        <div class="action-buttons">
+                            <form th:action="@{/manage-orders/approve/{id}(id=${pending.id})}" th:method="post">
+                                <button class="btn btn-primary" type="submit">
+                                    Approve
+                                </button>
+                            </form>
 
-                        <form th:action="@{/manage-orders/cancel/{id}(id=${pending.id})}" th:method="post">
-                            <button class="btn btn-danger" type="submit">
-                                Cancel
-                            </button>
-                        </form>
-                    </div>
-                </td>
-            </tbody>
-        </table>
+                            <form th:action="@{/manage-orders/cancel/{id}(id=${pending.id})}" th:method="post">
+                                <button class="btn btn-danger" type="submit">
+                                    Cancel
+                                </button>
+                            </form>
+                        </div>
+                    </td>
+                </tbody>
+            </table>
     </div>
 
     <div class="table-wrapper mt-1 pt-5">
@@ -61,15 +61,15 @@
         <table class="table table-dark table-hover">
             <thead>
             <tr>
-                <th>Location</th>
-                <th>Pick up date</th>
-                <th>Pick up time</th>
-                <th>Drop off date</th>
-                <th>Drop off time</th>
-                <th>Return location</th>
-                <th>Total Price</th>
-                <th>User</th>
-                <th>Status</th>
+                <th scope="col">Location</th>
+                <th scope="col">Pick up date</th>
+                <th scope="col">Pick up time</th>
+                <th scope="col">Drop off date</th>
+                <th scope="col">Drop off time</th>
+                <th scope="col">Return location</th>
+                <th scope="col">Total Price</th>
+                <th scope="col">User</th>
+                <th scope="col">Status</th>
             </tr>
             </thead>
             <tbody>
@@ -92,15 +92,15 @@
         <table class="table table-dark table-hover">
             <thead>
             <tr>
-                <th>Location</th>
-                <th>Pick up date</th>
-                <th>Pick up time</th>
-                <th>Drop off date</th>
-                <th>Drop off time</th>
-                <th>Return location</th>
-                <th>Total Price</th>
-                <th>User</th>
-                <th>Status</th>
+                <th scope="col">Location</th>
+                <th scope="col">Pick up date</th>
+                <th scope="col">Pick up time</th>
+                <th scope="col">Drop off date</th>
+                <th scope="col">Drop off time</th>
+                <th scope="col">Return location</th>
+                <th scope="col">Total Price</th>
+                <th scope="col">User</th>
+                <th scope="col">Status</th>
             </tr>
             </thead>
             <tbody>
@@ -123,28 +123,28 @@
         <table class="table table-dark table-hover">
             <thead>
             <tr>
-                <th>Location</th>
-                <th>Pick up date</th>
-                <th>Pick up time</th>
-                <th>Drop off date</th>
-                <th>Drop off time</th>
-                <th>Return location</th>
-                <th>Total Price</th>
-                <th>User</th>
-                <th>Status</th>
+                <th scope="col">Location</th>
+                <th scope="col">Pick up date</th>
+                <th scope="col">Pick up time</th>
+                <th scope="col">Drop off date</th>
+                <th scope="col">Drop off time</th>
+                <th scope="col">Return location</th>
+                <th scope="col">Total Price</th>
+                <th scope="col">User</th>
+                <th scope="col">Status</th>
             </tr>
             </thead>
             <tbody>
-            <tr th:each="finiched : ${allOrdersByStatus.finishedOrders}">
-                <td th:text="${finiched.location}">Stara Zagora</td>
-                <td th:text="${finiched.pickUpDate}">date</td>
-                <td th:text="${finiched.pickUpTime}">time</td>
-                <td th:text="${finiched.dropOffDate}">date</td>
-                <td th:text="${finiched.dropOffTime}">time</td>
-                <td th:text="${finiched.returnLocation}">Stara Zagora</td>
-                <td th:text="${finiched.totalPrice} + ' $'">360 $</td>
-                <td th:text="${finiched.user}">User</td>
-                <td th:text="${finiched.status}">FINISHED</td>
+            <tr th:each="finished : ${allOrdersByStatus.finishedOrders}">
+                <td th:text="${finished.location}">Stara Zagora</td>
+                <td th:text="${finished.pickUpDate}">date</td>
+                <td th:text="${finished.pickUpTime}">time</td>
+                <td th:text="${finished.dropOffDate}">date</td>
+                <td th:text="${finished.dropOffTime}">time</td>
+                <td th:text="${finished.returnLocation}">Stara Zagora</td>
+                <td th:text="${finished.totalPrice} + ' $'">360 $</td>
+                <td th:text="${finished.user}">User</td>
+                <td th:text="${finished.status}">FINISHED</td>
             </tbody>
         </table>
     </div>
