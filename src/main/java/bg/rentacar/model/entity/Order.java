@@ -29,6 +29,8 @@ public class Order extends BaseEntity {
     @Column(nullable = false)
     private String returnLocation;
 
+    private BigDecimal totalPrice;
+
     @ManyToOne
     private Extra extra;
 
@@ -122,7 +124,7 @@ public class Order extends BaseEntity {
         this.user = user;
     }
 
-    public BigDecimal getTotalPrice(){
+    public BigDecimal calculateTotalPrice(){
         long days = ChronoUnit.DAYS.between(pickUpDate, dropOffDate);
         BigDecimal totalPrice = car.getPricePerDay().multiply(BigDecimal.valueOf(days)) ;
 
@@ -131,6 +133,14 @@ public class Order extends BaseEntity {
             totalPrice = totalPrice.add(extraPrice);
         }
 
+        return totalPrice;
+    }
+
+    public void setTotalPrice(BigDecimal totalPrice) {
+        this.totalPrice = totalPrice;
+    }
+
+    public BigDecimal getTotalPrice() {
         return totalPrice;
     }
 }

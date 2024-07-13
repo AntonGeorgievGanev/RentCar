@@ -13,10 +13,14 @@ import bg.rentacar.repository.ExtraRepository;
 import bg.rentacar.repository.OrderRepository;
 import bg.rentacar.repository.UserRepository;
 import bg.rentacar.service.order.OrderService;
+import bg.rentacar.web.LoginController;
 import org.modelmapper.ModelMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.security.Principal;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -32,6 +36,8 @@ public class OrderServiceImpl implements OrderService {
     private final ExtraRepository extraRepository;
 
     private final ModelMapper mapper;
+
+    private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 
     public OrderServiceImpl(OrderRepository orderRepository, CarRepository carRepository,
                             UserRepository userRepository, ExtraRepository extraRepository, ModelMapper mapper) {
@@ -60,6 +66,8 @@ public class OrderServiceImpl implements OrderService {
 
         car.setAvailable(false);
         carRepository.save(car);
+
+        order.setTotalPrice(order.calculateTotalPrice());
         orderRepository.save(order);
     }
 
@@ -131,7 +139,7 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public void approveOrder(Long id) {
         Optional<Order> optionalOrder = orderRepository.findById(id);
-        if (optionalOrder.isPresent()){
+        if (optionalOrder.isPresent()) {
             Order order = optionalOrder.get();
             order.setStatus(RentOrderStatus.APPROVED);
             orderRepository.save(order);
@@ -141,15 +149,42 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public void cancelOrder(Long id) {
         Optional<Order> optionalOrder = orderRepository.findById(id);
-        if (optionalOrder.isPresent()){
+        if (optionalOrder.isPresent()) {
             Order order = optionalOrder.get();
+            Car car = order.getCar();
+            order.setCar(null);
+            car.setAvailable(true);
+            carRepository.save(car);
             order.setStatus(RentOrderStatus.CANCELED);
             orderRepository.save(order);
         }
     }
 
+    @Override
+    public void finishOrder() {
+        List<Order> approvedOrders = orderRepository.findAllByStatus(RentOrderStatus.APPROVED);
+        if (!approvedOrders.isEmpty()) {
+            LocalDateTime now = LocalDateTime.parse("2024-07-24T07:20");
 
-    private Order customMapDtoToEntity(OrderDTO orderDTO){
+            for (Order order : approvedOrders) {
+                LocalDateTime dropOffDateTime = LocalDateTime.of(order.getDropOffDate(), order.getDropOffTime());
+                if (dropOffDateTime.isBefore(now)) {
+                    Car car = order.getCar();
+                    order.setStatus(RentOrderStatus.FINISHED);
+
+                    order.setCar(null);
+                    orderRepository.save(order);
+
+                    car.setAvailable(true);
+                    carRepository.save(car);
+                    logger.info("Order with id: {} has been finished", order.getId());
+                }
+            }
+        }
+    }
+
+
+    private Order customMapDtoToEntity(OrderDTO orderDTO) {
         Order order = new Order();
         order.setLocation(orderDTO.getLocation());
         order.setPickUpDate(orderDTO.getPickUpDate());

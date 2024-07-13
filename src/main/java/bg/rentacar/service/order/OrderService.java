@@ -14,4 +14,5 @@ public interface OrderService {
     AllOrdersByStatus getAllOrdersByStatus();
     void approveOrder(Long id);
     void cancelOrder(Long id);
+    void finishOrder();
 }
