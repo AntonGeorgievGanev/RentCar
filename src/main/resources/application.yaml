@@ -37,12 +37,12 @@ spring:
       max-file-size: 3MB
       max-request-size: 3MB
 
-  mail:
-    rentCar: ${EMAIL:}
-    host: smtp.gmail.com
-    port: 587
-    username: ${EMAIL:@gmail.com}
-    password: ${EMAIL_PASSWORD:}
+#  mail:
+#    rentCar: ${EMAIL:}
+#    host: smtp.gmail.com
+#    port: 587
+#    username: ${EMAIL:@gmail.com}
+#    password: ${EMAIL_PASSWORD:}
 
 #  remember:
 #    key: ${}

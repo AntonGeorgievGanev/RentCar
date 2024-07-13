@@ -164,7 +164,8 @@ public class OrderServiceImpl implements OrderService {
     public void finishOrder() {
         List<Order> approvedOrders = orderRepository.findAllByStatus(RentOrderStatus.APPROVED);
         if (!approvedOrders.isEmpty()) {
-            LocalDateTime now = LocalDateTime.parse("2024-07-24T07:20");
+            LocalDateTime now = LocalDateTime.now();
+//            LocalDateTime now = LocalDateTime.parse("2024-07-24T07:20"); testing
 
             for (Order order : approvedOrders) {
                 LocalDateTime dropOffDateTime = LocalDateTime.of(order.getDropOffDate(), order.getDropOffTime());

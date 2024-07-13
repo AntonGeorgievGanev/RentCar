@@ -45,6 +45,6 @@ public class AddCarController {
         }
 
         carService.addCarWithImage(addCarDTO, file);
-        return "redirect:/manage-fleet";
+        return "redirect:/fleet";
     }
 }

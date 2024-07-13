@@ -13,7 +13,6 @@ import bg.rentacar.service.car.CarService;
 import bg.rentacar.service.cloudinary.CloudinaryService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestClient;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -149,5 +148,4 @@ public class CarServiceImpl implements CarService {
         editCarDTO.setFuelConsumption(car.getFuelConsumption());
         return editCarDTO;
     }
-
 }

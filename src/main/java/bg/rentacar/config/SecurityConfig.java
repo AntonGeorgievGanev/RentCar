@@ -18,8 +18,8 @@ public class SecurityConfig {
                 .authorizeHttpRequests(
                         authorizedRequest -> authorizedRequest
                                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-                                .requestMatchers("/", "/login", "/register",
-                                        "/login-error", "/api/cars/**").permitAll()
+                                .requestMatchers("/", "/login", "/register", "/fleet",
+                                        "/login-error").permitAll()
                                 .requestMatchers("/add-car", "/add-extra","/manage-fleet",
                                         "/manage-fleet/**", "/manage-orders", "/manage-orders/**").hasRole(Role.ADMIN.name())
                                 .anyRequest().authenticated()
