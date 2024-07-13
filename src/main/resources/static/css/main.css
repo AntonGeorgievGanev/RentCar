@@ -226,3 +226,18 @@ a {
   gap: 2em;
   justify-content: center;
 }
+
+.edit-car-form{
+  max-width: 800px;
+  margin: 0 auto;
+  margin-top: 7em;
+  margin-bottom: 7em;
+  color: white;
+  background-color: rgb(29 28 28 / 75%);
+  padding: 2em;
+  border-radius: 1em;
+}
+
+.welcome-username{
+  color: red;
+}

@@ -1,5 +1,6 @@
 package bg.rentacar.config;
 
+import bg.rentacar.model.enums.Role;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,6 +20,8 @@ public class SecurityConfig {
                                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
                                 .requestMatchers("/", "/login", "/register",
                                         "/login-error", "/api/cars/**").permitAll()
+                                .requestMatchers("/add-car", "/add-extra","/manage-fleet",
+                                        "/manage-fleet/**", "/manage-orders", "/manage-orders/**").hasRole(Role.ADMIN.name())
                                 .anyRequest().authenticated()
                 )
                 .formLogin(formLogin -> {

@@ -3,6 +3,7 @@ package bg.rentacar.service.car.impl;
 import bg.rentacar.model.dto.AllCarsDTO;
 import bg.rentacar.model.dto.CarDTO;
 import bg.rentacar.model.dto.CarsByCategoryDTO;
+import bg.rentacar.model.dto.EditCarDTO;
 import bg.rentacar.model.entity.Car;
 import bg.rentacar.model.entity.Image;
 import bg.rentacar.model.enums.CarCategory;
@@ -119,4 +120,34 @@ public class CarServiceImpl implements CarService {
 
         return new CarsByCategoryDTO(compactCarsDTO, estateCarsDTO, suvCarsDTO);
     }
+
+    @Override
+    public void editCar(Long id, EditCarDTO editCarDTO) {
+        Car car = carRepository.findById(id).get();
+        car.setBrand(editCarDTO.getBrand());
+        car.setModel(editCarDTO.getModel());
+        car.setYear(editCarDTO.getYear());
+        car.setPricePerDay(editCarDTO.getPricePerDay());
+        car.setFuelConsumption(editCarDTO.getFuelConsumption());
+
+        carRepository.save(car);
+    }
+
+    @Override
+    public EditCarDTO getCarForEdit(Long id) {
+        Car car = carRepository.findById(id).get();
+        return mapToEditCarDTO(car);
+    }
+
+    private EditCarDTO mapToEditCarDTO(Car car) {
+        EditCarDTO editCarDTO = new EditCarDTO();
+        editCarDTO.setId(car.getId());
+        editCarDTO.setBrand(car.getBrand());
+        editCarDTO.setModel(car.getModel());
+        editCarDTO.setYear(car.getYear());
+        editCarDTO.setPricePerDay(car.getPricePerDay());
+        editCarDTO.setFuelConsumption(car.getFuelConsumption());
+        return editCarDTO;
+    }
+
 }

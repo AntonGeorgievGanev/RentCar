@@ -39,13 +39,13 @@
                     <td th:text="${pending.status}">PENDING</td>
                     <td>
                         <div class="action-buttons">
-                            <form th:action="@{/manage-orders/approve/{id}(id=${pending.id})}" th:method="post">
+                            <form th:action="@{/manage-orders/approve/{id}(id=${pending.id})}" th:method="POST">
                                 <button class="btn btn-primary" type="submit">
                                     Approve
                                 </button>
                             </form>
 
-                            <form th:action="@{/manage-orders/cancel/{id}(id=${pending.id})}" th:method="post">
+                            <form th:action="@{/manage-orders/cancel/{id}(id=${pending.id})}" th:method="POST">
                                 <button class="btn btn-danger" type="submit">
                                     Cancel
                                 </button>
@@ -106,8 +106,8 @@
             <tbody>
             <tr th:each="canceled : ${allOrdersByStatus.canceledOrders}">
                 <td th:text="${canceled.location}">Stara Zagora</td>
-                <td th:text="${canceled.location}">date</td>
-                <td th:text="${canceled.pickUpDate}">time</td>
+                <td th:text="${canceled.pickUpDate}">date</td>
+                <td th:text="${canceled.pickUpTime}">time</td>
                 <td th:text="${canceled.dropOffDate}">date</td>
                 <td th:text="${canceled.dropOffTime}">time</td>
                 <td th:text="${canceled.returnLocation}">Stara Zagora</td>
@@ -149,6 +149,8 @@
         </table>
     </div>
 </div>
+
+<th:block th:replace="~{fragments/social}"></th:block>
 
 <th:block th:replace="~{fragments/footer}"></th:block>
 

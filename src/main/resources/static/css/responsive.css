@@ -7,7 +7,7 @@
 
   .reg-form {
     font-size: 10px;
-    margin: 0 auto;
+    /*margin: 0 auto;*/
   }
 
   input,
@@ -33,6 +33,14 @@
 
   .form-container{
     margin-bottom: 15em;
+  }
+
+  .social-relative{
+    display: none;
+  }
+
+  .social{
+    display: none;
   }
 }
 

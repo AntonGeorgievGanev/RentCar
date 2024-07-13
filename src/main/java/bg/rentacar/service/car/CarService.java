@@ -3,6 +3,7 @@ package bg.rentacar.service.car;
 import bg.rentacar.model.dto.CarDTO;
 import bg.rentacar.model.dto.AllCarsDTO;
 import bg.rentacar.model.dto.CarsByCategoryDTO;
+import bg.rentacar.model.dto.EditCarDTO;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -16,4 +17,6 @@ public interface CarService {
     AllCarsDTO getAllAvailableCarsDTO();
     void addCarWithImage(CarDTO carDTO, MultipartFile file) throws IOException;
     CarsByCategoryDTO getCarsByCategory();
+    void editCar(Long id, EditCarDTO editCarDTO);
+    EditCarDTO getCarForEdit(Long id);
 }
