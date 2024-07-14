@@ -9,26 +9,31 @@
 
 <div class="edit-car-form">
     <h2 class="form-title-text">Edit Car</h2>
-    <form th:action="@{/manage-fleet/edit/{id}(id=${editCarDTO.id})}" th:object="${editCarDTO}" th:method="post">
+    <form th:action="@{/manage-fleet/edit/{id}(id=${editCarDTO.id})}" th:object="${editCarDTO}" th:method="post" novalidate>
         <div class="mb-3">
             <label for="brand" class="form-label">Brand</label>
-            <input type="text" class="form-control" id="brand" th:field="*{brand}" required>
+            <input type="text" class="form-control" id="brand" th:field="*{brand}" th:errorclass="'is-invalid'" required>
+            <div th:errors="*{brand}" class="invalid-feedback"></div>
         </div>
         <div class="mb-3">
             <label for="model" class="form-label">Model</label>
-            <input type="text" class="form-control" id="model" th:field="*{model}" required>
+            <input type="text" class="form-control" id="model" th:field="*{model}" th:errorclass="'is-invalid'" required>
+            <div th:errors="*{model}" class="invalid-feedback"></div>
         </div>
         <div class="mb-3">
             <label for="year" class="form-label">Year</label>
-            <input type="number" class="form-control" id="year" th:field="*{year}" required>
+            <input type="number" class="form-control" id="year" th:field="*{year}" th:errorclass="'is-invalid'" required>
+            <div th:errors="*{year}" class="invalid-feedback"></div>
         </div>
         <div class="mb-3">
             <label for="fuelConsumption" class="form-label">Fuel consumption</label>
-            <input type="number" class="form-control" id="fuelConsumption" th:field="*{fuelConsumption}" required>
+            <input type="number" class="form-control" id="fuelConsumption" th:field="*{fuelConsumption}" th:errorclass="'is-invalid'" required>
+            <div th:errors="*{fuelConsumption}" class="invalid-feedback"></div>
         </div>
         <div class="mb-3">
             <label for="pricePerDay" class="form-label">Price per Day</label>
-            <input type="number" class="form-control" id="pricePerDay" th:field="*{pricePerDay}" required>
+            <input type="number" class="form-control" id="pricePerDay" th:field="*{pricePerDay}" th:errorclass="'is-invalid'" required>
+            <div th:errors="*{pricePerDay}" class="invalid-feedback"></div>
         </div>
         <button type="submit" class="btn btn-primary register-button">Save</button>
     </form>
