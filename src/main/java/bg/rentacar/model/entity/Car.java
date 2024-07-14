@@ -18,7 +18,7 @@ public class Car extends BaseEntity{
     private String model;
 
     @Column(nullable = false)
-    private int year;
+    private Integer year;
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
@@ -33,13 +33,13 @@ public class Car extends BaseEntity{
     private CarCategory category;
 
     @Column(nullable = false)
-    private int seats;
+    private Integer seats;
 
     @Column(nullable = false)
-    private int fuelConsumption;
+    private Integer fuelConsumption;
 
     @Column(nullable = false)
-    private int trunkVolume;
+    private Integer trunkVolume;
 
     @Column(nullable = false)
     private BigDecimal pricePerDay;
@@ -66,11 +66,11 @@ public class Car extends BaseEntity{
         this.model = model;
     }
 
-    public int getYear() {
+    public Integer getYear() {
         return year;
     }
 
-    public void setYear(int year) {
+    public void setYear(Integer year) {
         this.year = year;
     }
 
@@ -90,27 +90,27 @@ public class Car extends BaseEntity{
         this.transmission = transmission;
     }
 
-    public int getSeats() {
+    public Integer getSeats() {
         return seats;
     }
 
-    public void setSeats(int seats) {
+    public void setSeats(Integer seats) {
         this.seats = seats;
     }
 
-    public int getFuelConsumption() {
+    public Integer getFuelConsumption() {
         return fuelConsumption;
     }
 
-    public void setFuelConsumption(int fuelConsumption) {
+    public void setFuelConsumption(Integer fuelConsumption) {
         this.fuelConsumption = fuelConsumption;
     }
 
-    public int getTrunkVolume() {
+    public Integer getTrunkVolume() {
         return trunkVolume;
     }
 
-    public void setTrunkVolume(int trunkVolume) {
+    public void setTrunkVolume(Integer trunkVolume) {
         this.trunkVolume = trunkVolume;
     }
 

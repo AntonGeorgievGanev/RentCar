@@ -1,15 +1,16 @@
 package bg.rentacar.model.dto;
 
+import bg.rentacar.constant.UserConstants;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
 public class UserLoginDTO {
-    @NotBlank(message = "Username cannot be empty!")
-    @Size(min = 3, max = 20, message = "Username length must be between 3 and 20 characters!")
+    @NotBlank(message = UserConstants.USER_USERNAME_EMPTY)
+    @Size(min = 3, max = 20, message = UserConstants.USER_USERNAME_LENGTH)
     private String username;
 
-    @NotBlank(message = "Password must not be empty!")
-    @Size(min = 6, message = "Password must be at least 6 characters!")
+    @NotBlank(message = UserConstants.USER_PASSWORD_EMPTY)
+    @Size(min = 6, message = UserConstants.USER_PASSWORD_LENGTH)
     private String password;
 
     public String getUsername() {

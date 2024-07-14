@@ -1,5 +1,6 @@
 package bg.rentacar.model.dto;
 
+import bg.rentacar.constant.CarConstants;
 import jakarta.validation.constraints.*;
 
 import java.math.BigDecimal;
@@ -7,26 +8,26 @@ import java.math.BigDecimal;
 public class EditCarDTO {
     private Long id;
 
-    @NotBlank(message = "Please enter brand!")
-    @Size(min = 2, max = 40, message = "Brand length must be between 2 and 40 characters!")
+    @NotBlank(message = CarConstants.CAR_EMPTY_BRAND)
+    @Size(min = 2, max = 40, message = CarConstants.CAR_BRAND_LENGTH)
     private String brand;
 
-    @NotBlank(message = "Please enter model!")
-    @Size(min = 2, max = 40, message = "Model length must be between 2 and 40 characters!")
+    @NotBlank(message = CarConstants.CAR_EMPTY_MODEL)
+    @Size(min = 2, max = 40, message = CarConstants.CAR_MODEL_LENGTH)
     private String model;
 
-    @NotNull(message = "Please enter year!")
-    @Positive(message = "Year cant be negative!")
-    @Min(value = 2017, message = "We don`t offer cars before 2017!")
-    private int year;
+    @NotNull(message = CarConstants.CAR_EMPTY_YEAR)
+    @Positive(message = CarConstants.CAR_NEGATIVE_YEAR)
+    @Min(value = 2017, message = CarConstants.CAR_MIN_YEAR)
+    private Integer year;
 
-    @NotNull(message = "Please enter price!")
-    @Positive(message = "Price cant be negative!")
+    @NotNull(message = CarConstants.CAR_EMPTY_PRICE)
+    @Positive(message = CarConstants.CAR_NEGATIVE_PRICE)
     private BigDecimal pricePerDay;
 
-    @NotNull(message = "Please enter fuel consumption!")
-    @Positive(message = "Fuel consumption cant be negative!")
-    private int fuelConsumption;
+    @NotNull(message = CarConstants.CAR_EMPTY_FUEL)
+    @Positive(message = CarConstants.CAR_NEGATIVE_FUEL)
+    private Integer fuelConsumption;
 
     public Long getId() {
         return id;
@@ -68,11 +69,15 @@ public class EditCarDTO {
         this.pricePerDay = pricePerDay;
     }
 
-    public int getFuelConsumption() {
+    public void setYear(Integer year) {
+        this.year = year;
+    }
+
+    public Integer getFuelConsumption() {
         return fuelConsumption;
     }
 
-    public void setFuelConsumption(int fuelConsumption) {
+    public void setFuelConsumption(Integer fuelConsumption) {
         this.fuelConsumption = fuelConsumption;
     }
 }

@@ -1,5 +1,6 @@
 package bg.rentacar.model.dto;
 
+import bg.rentacar.constant.CarConstants;
 import bg.rentacar.model.entity.Image;
 import bg.rentacar.model.enums.CarCategory;
 import bg.rentacar.model.enums.EngineType;
@@ -13,51 +14,50 @@ import java.math.BigDecimal;
 
 public class CarDTO {
     private Long id;
-    @NotBlank(message = "Please enter brand!")
-    @Size(min = 2, max = 40, message = "Brand length must be between 2 and 40 characters!")
+    @NotBlank(message = CarConstants.CAR_EMPTY_BRAND)
+    @Size(min = 2, max = 40, message = CarConstants.CAR_BRAND_LENGTH)
     private String brand;
 
-    @NotBlank(message = "Please enter model!")
-    @Size(min = 2, max = 40, message = "Model length must be between 2 and 40 characters!")
+    @NotBlank(message = CarConstants.CAR_EMPTY_MODEL)
+    @Size(min = 2, max = 40, message = CarConstants.CAR_MODEL_LENGTH)
     private String model;
 
-    @NotNull(message = "Please enter year!")
-    @Positive
-    @Min(value = 2017, message = "We don`t offer cars before 2017!")
-    private int year;
+    @NotNull(message = CarConstants.CAR_EMPTY_YEAR)
+    @Positive(message = CarConstants.CAR_NEGATIVE_YEAR)
+    @Min(value = 2017, message = CarConstants.CAR_MIN_YEAR)
+    private Integer year;
 
-    @NotNull(message = "Select engine type!")
+    @NotNull(message = CarConstants.CAR_EMPTY_ENGINE_TYPE)
     @Enumerated(EnumType.STRING)
     private EngineType engineType;
 
-    @NotNull(message = "Select transmission type!")
+    @NotNull(message = CarConstants.CAR_EMPTY_TRANSMISSION_TYPE)
     @Enumerated(EnumType.STRING)
     private Transmission transmission;
 
-    @NotNull(message = "Select category!")
+    @NotNull(message = CarConstants.CAR_EMPTY_CATEGORY)
     @Enumerated(EnumType.STRING)
     private CarCategory category;
 
-    @NotNull
-    @Min(value = 2, message = "Minimum seats 2")
-    @Max(value = 7, message = "Maximum seats 7")
-    private int seats;
+    @NotNull(message = CarConstants.CAR_EMPTY_SEATS)
+    @Min(value = 2, message = CarConstants.CAR_MIN_SEATS)
+    @Max(value = 7, message = CarConstants.CAR_MAX_SEATS)
+    private Integer seats;
 
-    @NotNull
-    @Positive
-    private int fuelConsumption;
+    @NotNull(message = CarConstants.CAR_EMPTY_FUEL)
+    @Positive(message = CarConstants.CAR_NEGATIVE_FUEL)
+    private Integer fuelConsumption;
 
-    @NotNull
-    @Positive
-    @Min(value = 200, message = "Minimum trunk volume 200 liters!")
-    @Max(value = 1000, message = "Maximum trunk volume 200 liters!")
-    private int trunkVolume;
+    @NotNull(message = CarConstants.CAR_EMPTY_TRUNK)
+    @Positive(message = CarConstants.CAR_NEGATIVE_TRUNK)
+    @Min(value = 200, message = CarConstants.CAR_MIN_TRUNK)
+    @Max(value = 1000, message = CarConstants.CAR_MAX_TRUNK)
+    private Integer trunkVolume;
 
-    @NotNull
-    @Positive
+    @NotNull(message = CarConstants.CAR_EMPTY_PRICE)
+    @Positive(message = CarConstants.CAR_NEGATIVE_PRICE)
     private BigDecimal pricePerDay;
 
-    @NotNull(message = "Please upload an image!")
     private MultipartFile carImage;
 
     private Image imageLocation;
@@ -78,14 +78,6 @@ public class CarDTO {
         this.model = model;
     }
 
-    public int getYear() {
-        return year;
-    }
-
-    public void setYear(int year) {
-        this.year = year;
-    }
-
     public EngineType getEngineType() {
         return engineType;
     }
@@ -102,27 +94,35 @@ public class CarDTO {
         this.transmission = transmission;
     }
 
-    public int getSeats() {
+    public Integer getYear() {
+        return year;
+    }
+
+    public void setYear(Integer year) {
+        this.year = year;
+    }
+
+    public Integer getSeats() {
         return seats;
     }
 
-    public void setSeats(int seats) {
+    public void setSeats(Integer seats) {
         this.seats = seats;
     }
 
-    public int getFuelConsumption() {
+    public Integer getFuelConsumption() {
         return fuelConsumption;
     }
 
-    public void setFuelConsumption(int fuelConsumption) {
+    public void setFuelConsumption(Integer fuelConsumption) {
         this.fuelConsumption = fuelConsumption;
     }
 
-    public int getTrunkVolume() {
+    public Integer getTrunkVolume() {
         return trunkVolume;
     }
 
-    public void setTrunkVolume(int trunkVolume) {
+    public void setTrunkVolume(Integer trunkVolume) {
         this.trunkVolume = trunkVolume;
     }
 
@@ -150,18 +150,12 @@ public class CarDTO {
         this.id = id;
     }
 
-    public @NotNull(message = "Please upload an image!") MultipartFile getCarImage() {
+    public MultipartFile getCarImage() {
         return carImage;
     }
 
-    public void setCarImage(@NotNull(message = "Please upload an image!") MultipartFile carImage) {
+    public void setCarImage(MultipartFile carImage) {
         this.carImage = carImage;
-    }
-
-    @Override
-    public String toString() {
-        return brand + " " + model + " | Year: " + year + " | Category: " + category + " | Engine: " + engineType + " | Seats: " + seats + " | Fuel consumption: " + fuelConsumption + " l/100 km | " +
-                trunkVolume + " liters trunk | Price for day: " + pricePerDay + " $";
     }
 
     public Image getImageLocation() {
@@ -171,4 +165,11 @@ public class CarDTO {
     public void setImageLocation(Image imageLocation) {
         this.imageLocation = imageLocation;
     }
+
+    @Override
+    public String toString() {
+        return brand + " " + model + " | Year: " + year + " | Category: " + category + " | Engine: " + engineType + " | Seats: " + seats + " | Fuel consumption: " + fuelConsumption + " l/100 km | " +
+                trunkVolume + " liters trunk | Price for day: " + pricePerDay + " $";
+    }
+
 }

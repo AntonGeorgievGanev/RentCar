@@ -12,21 +12,29 @@ public class User extends BaseEntity {
 
     @Column(nullable = false)
     private String firstName;
+
     @Column(nullable = false)
     private String lastName;
+
     @Column(nullable = false, unique = true)
     private String username;
+
     @Column(nullable = false, unique = true)
     @Email
     private String email;
+
     @Column(nullable = false, unique = true)
     private String phoneNumber;
+
     @Column(nullable = false)
-    private int age;
+    private Integer age;
+
     @Column(nullable = false)
     private String password;
+
     @OneToMany(mappedBy = "user")
     private List<Order> orders;
+
     @ManyToMany
     @JoinTable(
             name = "users_roles",
@@ -80,11 +88,11 @@ public class User extends BaseEntity {
         this.phoneNumber = phoneNumber;
     }
 
-    public int getAge() {
+    public Integer getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(Integer age) {
         this.age = age;
     }
 

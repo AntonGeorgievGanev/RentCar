@@ -1,5 +1,6 @@
 package bg.rentacar.model.dto;
 
+import bg.rentacar.constant.OrderConstants;
 import bg.rentacar.model.enums.RentOrderStatus;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -15,24 +16,24 @@ public class OrderDTO {
 
     private Long id;
 
-    @NotBlank(message = "Please enter location for pick up!")
+    @NotBlank(message = OrderConstants.ORDER_PICK_UP_LOCATION_EMPTY)
     private String location;
 
-    @FutureOrPresent(message = "Pick up date cannot be in the past!")
-    @NotNull(message = "Please select a date for pick up!")
+    @FutureOrPresent(message = OrderConstants.ORDER_PICK_UP_DATE_PAST)
+    @NotNull(message = OrderConstants.ORDER_PICK_UP_DATE_EMPTY)
     private LocalDate pickUpDate;
 
-    @FutureOrPresent(message = "Drop off date cannot be in the past!")
-    @NotNull(message = "Please select a date to return!")
+    @FutureOrPresent(message = OrderConstants.ORDER_DROP_OFF_DATE_PAST)
+    @NotNull(message = OrderConstants.ORDER_DROP_OFF_DATE_EMPTY)
     private LocalDate dropOffDate;
 
-    @NotNull(message = "Please select a time for pick up!")
+    @NotNull(message = OrderConstants.ORDER_PICK_UP_TIME_EMPTY)
     private LocalTime pickUpTime;
 
-    @NotNull(message = "Please select a time return!")
+    @NotNull(message = OrderConstants.ORDER_DROP_OFF_TIME_EMPTY)
     private LocalTime dropOffTime;
 
-    @NotBlank(message = "Please enter return location!")
+    @NotBlank(message = OrderConstants.ORDER_RETURN_LOCATION_EMPTY)
     private String returnLocation;
 
     @Enumerated(EnumType.STRING)
@@ -40,7 +41,7 @@ public class OrderDTO {
 
     private BigDecimal totalPrice;
 
-    @NotNull(message = "Select a car!")
+    @NotNull(message = OrderConstants.ORDER_CAR_EMPTY)
     private Long carId;
 
     private Long extraId;

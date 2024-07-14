@@ -1,5 +1,7 @@
 package bg.rentacar.model.dto;
 
+import bg.rentacar.constant.ExtraConstants;
+import bg.rentacar.model.entity.Extra;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
@@ -9,12 +11,12 @@ import java.math.BigDecimal;
 
 public class ExtraDTO {
     private Long extraId;
-    @NotBlank(message = "Name must not be empty!")
-    @Size(min = 3, max = 30, message = "Extra name length must be between 3 and 30 characters!")
+    @NotBlank(message = ExtraConstants.EXTRA_NAME_EMPTY)
+    @Size(min = 3, max = 30, message = ExtraConstants.EXTRA_NAME_LENGTH)
     private String name;
 
-    @NotNull(message = "Price must not be empty!")
-    @Positive(message = "Price must be positive number!")
+    @NotNull(message = ExtraConstants.EXTRA_PRICE_EMPTY)
+    @Positive(message = ExtraConstants.EXTRA_PRICE_NEGATIVE)
     private BigDecimal price;
 
     public String getName() {
