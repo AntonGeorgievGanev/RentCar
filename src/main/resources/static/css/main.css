@@ -241,3 +241,7 @@ a {
 .welcome-username{
   color: red;
 }
+
+#lang{
+  border-radius: 10px;
+}
