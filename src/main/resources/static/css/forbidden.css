@@ -1,0 +1,23 @@
+body {
+    background-image: url("../images/background_403.gif");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    font-family: Verdana;
+}
+
+.go_home{
+    display: flex;
+    justify-content: center;
+}
+
+.error-text{
+    font-size: 2em;
+    color: greenyellow;
+}
+
+a{
+    text-decoration: none;
+    color: green;
+}

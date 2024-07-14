@@ -22,12 +22,12 @@ public class AddCarController {
     }
 
     @ModelAttribute("addCarDTO")
-    private CarDTO addCarDTO(){
+    private CarDTO addCarDTO() {
         return new CarDTO();
     }
 
     @GetMapping("add-car")
-    public String addCar(){
+    public String addCar() {
         return "add-car";
     }
 
@@ -35,9 +35,9 @@ public class AddCarController {
     public String addCar(@Valid CarDTO addCarDTO,
                          BindingResult bindingResult,
                          RedirectAttributes redirectAttributes,
-                         @RequestParam("carImage")MultipartFile file) throws IOException {
+                         @RequestParam("carImage") MultipartFile file) throws IOException {
 
-        if (bindingResult.hasErrors()){
+        if (bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("addCarDTO", addCarDTO)
                     .addFlashAttribute("org.springframework.validation.BindingResult.addCarDTO", bindingResult);
 

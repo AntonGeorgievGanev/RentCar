@@ -90,6 +90,4 @@ public class UserServiceImpl implements UserService {
         return userRepository.findByUsername(name)
                 .orElseThrow(() -> new ObjectNotFound("This object cannot be found."));
     }
-
-
 }
