@@ -1,5 +1,6 @@
 package bg.rentacar.service.car.impl;
 
+import bg.rentacar.exception.ObjectNotFound;
 import bg.rentacar.model.dto.AllCarsDTO;
 import bg.rentacar.model.dto.CarDTO;
 import bg.rentacar.model.dto.CarsByCategoryDTO;
@@ -17,8 +18,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -51,13 +50,10 @@ public class CarServiceImpl implements CarService {
 
     @Override
     public CarDTO getCarById(Long id) {
-        Optional<Car> carOpt = carRepository.findById(id);
-        if (carOpt.isEmpty()) {
-            //TODO: errorHandling
-            throw new NoSuchElementException("Sorry! There is no such car!");
-        }
+       Car car = carRepository.findById(id)
+               .orElseThrow(() -> new ObjectNotFound("This object cannot be found."));
 
-        return mapper.map(carOpt.get(), CarDTO.class);
+        return mapper.map(car, CarDTO.class);
     }
 
     @Override
@@ -93,7 +89,8 @@ public class CarServiceImpl implements CarService {
             imageRepository.save(image);
 
         } else {
-            image = imageRepository.findById(1L).get();
+            image = imageRepository.findById(1L)
+                    .orElseThrow(() -> new ObjectNotFound("This object cannot be found."));
         }
 
         car.setImage(image);
@@ -122,7 +119,8 @@ public class CarServiceImpl implements CarService {
 
     @Override
     public void editCar(Long id, EditCarDTO editCarDTO) {
-        Car car = carRepository.findById(id).get();
+        Car car = carRepository.findById(id)
+                .orElseThrow(() -> new ObjectNotFound("This object cannot be found."));
         car.setBrand(editCarDTO.getBrand());
         car.setModel(editCarDTO.getModel());
         car.setYear(editCarDTO.getYear());
@@ -134,7 +132,8 @@ public class CarServiceImpl implements CarService {
 
     @Override
     public EditCarDTO getCarForEdit(Long id) {
-        Car car = carRepository.findById(id).get();
+        Car car = carRepository.findById(id)
+                .orElseThrow(() -> new ObjectNotFound("This object cannot be found."));
         return mapToEditCarDTO(car);
     }
 

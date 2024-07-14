@@ -1,5 +1,6 @@
 package bg.rentacar.service.order.impl;
 
+import bg.rentacar.exception.ObjectNotFound;
 import bg.rentacar.model.dto.AllOrdersByStatus;
 import bg.rentacar.model.dto.AllUserOrdersDTO;
 import bg.rentacar.model.dto.OrderDTO;
@@ -52,11 +53,14 @@ public class OrderServiceImpl implements OrderService {
     public void registerOrder(OrderDTO orderDTO, String name) {
         Order order = customMapDtoToEntity(orderDTO);
 
-        Car car = carRepository.findById(orderDTO.getCarId()).get();
-        User user = userRepository.findByUsername(name).get();
+        Car car = carRepository.findById(orderDTO.getCarId())
+                .orElseThrow(() -> new ObjectNotFound("This object cannot be found."));
+        User user = userRepository.findByUsername(name)
+                .orElseThrow(() -> new ObjectNotFound("This object cannot be found."));
 
         if (orderDTO.getExtraId() != null) {
-            Extra extra = extraRepository.findById(orderDTO.getExtraId()).get();
+            Extra extra = extraRepository.findById(orderDTO.getExtraId())
+                    .orElseThrow(() -> new ObjectNotFound("This object cannot be found."));
             order.setExtra(extra);
         }
 
@@ -73,12 +77,14 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Order getOrderById(Long id) {
-        return orderRepository.findById(id).get();
+        return orderRepository.findById(id)
+                .orElseThrow(() -> new ObjectNotFound("This object cannot be found."));
     }
 
     @Override
     public AllUserOrdersDTO getAllUserOrders(Principal principal) {
-        User user = userRepository.findByUsername(principal.getName()).get();
+        User user = userRepository.findByUsername(principal.getName())
+                .orElseThrow(() -> new ObjectNotFound("This object cannot be found."));
         List<Order> userOrdersFromDb = orderRepository.findAll().stream()
                 .filter(order -> order.getUser().getId().equals(user.getId())).toList();
 

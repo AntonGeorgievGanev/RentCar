@@ -58,3 +58,6 @@ cloudinary:
 #    org:
 #      springframework:
 #       security: DEBUG
+
+admin:
+  password: ${ADMIN_PASSWORD}

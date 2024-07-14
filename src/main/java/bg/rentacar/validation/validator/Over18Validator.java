@@ -9,6 +9,9 @@ public class Over18Validator implements ConstraintValidator<Over18, Integer> {
 
     @Override
     public boolean isValid(Integer value, ConstraintValidatorContext context) {
+        if (value == null){
+            return false;
+        }
         return value >= 18;
     }
 }

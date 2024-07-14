@@ -1,5 +1,6 @@
 package bg.rentacar.service.user.impl;
 
+import bg.rentacar.exception.ObjectNotFound;
 import bg.rentacar.model.dto.UserLoginDTO;
 import bg.rentacar.model.dto.UserRegisterDTO;
 import bg.rentacar.model.entity.User;
@@ -35,7 +36,8 @@ public class UserServiceImpl implements UserService {
     public void register(UserRegisterDTO userRegisterDTO) {
         User user = mapper.map(userRegisterDTO, User.class);
         user.setPassword(encoder.encode(userRegisterDTO.getPassword()));
-        UserRole role = userRoleRepository.findByRole(Role.USER).get();
+        UserRole role = userRoleRepository.findByRole(Role.USER)
+                .orElseThrow(() -> new ObjectNotFound("This object cannot be found."));
         user.getRoles().add(role);
         userRepository.save(user);
     }
@@ -52,7 +54,8 @@ public class UserServiceImpl implements UserService {
             user.setAge(37);
             user.setPassword(encoder.encode("admin123"));
 
-            UserRole role = userRoleRepository.findByRole(Role.ADMIN).get();
+            UserRole role = userRoleRepository.findByRole(Role.ADMIN)
+                    .orElseThrow(() -> new ObjectNotFound("This object cannot be found."));
             role.setRole(Role.ADMIN);
 
             user.getRoles().add(role);
@@ -84,7 +87,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getUserByName(String name) {
-        return userRepository.findByUsername(name).get();
+        return userRepository.findByUsername(name)
+                .orElseThrow(() -> new ObjectNotFound("This object cannot be found."));
     }
 
 
