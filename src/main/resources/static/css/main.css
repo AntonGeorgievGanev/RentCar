@@ -1,8 +1,10 @@
 body {
-   background-image: url("../images/5584425-toyota-wallpapers-min.jpg");
+   /*background-image: url("../images/5584425-toyota-wallpapers-min.jpg");
   /* -webkit-linear-gradient(rgba(22, 1, 1, 0.8), rgba(53, 1, 1, 0.8)), */
   /*background: */
   /*  url("/static/images/5584425-toyota-wallpapers-min.jpg");*/
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3),
+                         rgba(0, 0, 0, 0.3)), url("../images/5584425-toyota-wallpapers-min.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -14,6 +16,7 @@ body {
   justify-content: center;
   align-items: center;
   margin-top: 3em;
+  margin-bottom: 1em;
   color: white;
 }
 
@@ -26,7 +29,6 @@ body {
   justify-content: center;
   flex-wrap: wrap;
   align-items: center;
-  margin-top: 1em;
   text-align: center;
   font-weight: 500;
   color: white;
@@ -245,3 +247,4 @@ a {
 #lang{
   border-radius: 10px;
 }
+

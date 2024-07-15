@@ -44,19 +44,14 @@
   }
 }
 
-/*@media only screen and (max-width: 380px) {*/
-/*  .social {*/
-/*    display: none;*/
-/*  }*/
+@media only screen and (max-width: 1010px) {
+    .main-message {
+        padding: 0 1em;
+        font-size: 0.95em;
+      }
 
-/*  button {*/
-/*    margin-top: 1em;*/
-/*  }*/
-/*}*/
+      .social-aaa{
+          display: none;
+        }
+}
 
-/* @media only screen and (max-height: 800px) {
-  .social {
-    display: none;
-  }
-
-} */
