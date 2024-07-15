@@ -1,6 +1,8 @@
 package bg.rentacar.service.user.impl;
 
 import bg.rentacar.exception.ObjectNotFound;
+import bg.rentacar.model.dto.AllUsersInfoDTO;
+import bg.rentacar.model.dto.UserInfoDTO;
 import bg.rentacar.model.dto.UserLoginDTO;
 import bg.rentacar.model.dto.UserRegisterDTO;
 import bg.rentacar.model.entity.User;
@@ -13,6 +15,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -89,5 +93,13 @@ public class UserServiceImpl implements UserService {
     public User getUserByName(String name) {
         return userRepository.findByUsername(name)
                 .orElseThrow(() -> new ObjectNotFound("This object cannot be found."));
+    }
+
+    @Override
+    public AllUsersInfoDTO getAllUserInfo() {
+        List<UserInfoDTO> usersDTO = userRepository.findAll().stream().filter(user -> user.getRoles().size() == 1 &&
+                user.getRoles().getFirst().getRole().name().equals(Role.USER.name()))
+                .map(user -> mapper.map(user, UserInfoDTO.class)).toList();
+        return new AllUsersInfoDTO(usersDTO);
     }
 }

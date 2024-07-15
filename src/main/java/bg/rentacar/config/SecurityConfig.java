@@ -21,7 +21,7 @@ public class SecurityConfig {
                                 .requestMatchers("/", "/login", "/register", "/fleet",
                                         "/login-error").permitAll()
                                 .requestMatchers("/add-car", "/add-extra","/manage-fleet",
-                                        "/manage-fleet/**", "/manage-orders", "/manage-orders/**").hasRole(Role.ADMIN.name())
+                                        "/manage-fleet/**", "/manage-orders", "/manage-orders/**", "/users-info").hasRole(Role.ADMIN.name())
                                 .anyRequest().authenticated()
                 )
                 .formLogin(formLogin -> {

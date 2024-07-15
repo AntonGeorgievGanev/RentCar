@@ -1,5 +1,6 @@
 package bg.rentacar.service.user;
 
+import bg.rentacar.model.dto.AllUsersInfoDTO;
 import bg.rentacar.model.dto.UserLoginDTO;
 import bg.rentacar.model.dto.UserRegisterDTO;
 import bg.rentacar.model.entity.User;
@@ -17,4 +18,6 @@ public interface UserService {
     boolean validateLogin(UserLoginDTO userLoginDTO);
 
     User getUserByName(String name);
+
+    AllUsersInfoDTO getAllUserInfo();
 }

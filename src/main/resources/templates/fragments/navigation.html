@@ -39,6 +39,10 @@
                     <a class="nav-link p-2" th:href="@{/manage-orders}" th:text="#{nav_bar_manage_orders}">
                         Manage orders</a>
                 </li>
+                <li class="nav-item" sec:authorize="hasRole('ROLE_ADMIN')">
+                    <a class="nav-link p-2" th:href="@{/users-info}" th:text="#{nav_bar_users_info}">
+                        Users info</a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link p-2" th:href="@{/my-orders}" sec:authorize="hasRole('ROLE_USER')" th:text="#{nav_bar_my_orders}">
                         My orders</a>

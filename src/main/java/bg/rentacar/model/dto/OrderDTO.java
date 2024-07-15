@@ -4,6 +4,7 @@ import bg.rentacar.constant.OrderConstants;
 import bg.rentacar.model.enums.RentOrderStatus;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
