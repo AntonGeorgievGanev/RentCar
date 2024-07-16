@@ -4,10 +4,7 @@ import bg.rentacar.model.dto.AllOrdersByStatus;
 import bg.rentacar.service.order.OrderService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class ManageOrdersController {
@@ -39,6 +36,12 @@ public class ManageOrdersController {
     @PostMapping("/manage-orders/cancel/{id}")
     public String cancelOrder(@PathVariable Long id){
         orderService.cancelOrder(id);
+        return "redirect:/manage-orders";
+    }
+
+    @DeleteMapping("/manage-orders/delete/{id}")
+    public String deleteOrder(@PathVariable Long id){
+        orderService.deleteOrder(id);
         return "redirect:/manage-orders";
     }
 }

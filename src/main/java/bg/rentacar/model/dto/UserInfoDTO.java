@@ -7,6 +7,7 @@ public class UserInfoDTO {
     private String lastName;
     private String email;
     private String phoneNumber;
+    private Integer age;
 
     public Long getId() {
         return id;
@@ -54,5 +55,13 @@ public class UserInfoDTO {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
     }
 }

@@ -18,23 +18,19 @@
         offers and make your next trip more comfortable, enjoyable and experience the
         freedom of having your own vehicle wherever you go!
     </p>
-    <p class="main-message" sec:authorize="!isAuthenticated()" th:utext="${#messages.msg('index_service_message', '/login', '/register')}">To use our
-            services&nbsp;<span><a th:href="@{/login}">Login</a></span>&nbsp;,
-            or if you don`t have an account &nbsp;<span><a
+    <p class="main-message" sec:authorize="!isAuthenticated()"
+       th:utext="${#messages.msg('index_service_message', '/login', '/register')}">To use our
+        services&nbsp;<span><a th:href="@{/login}">Login</a></span>&nbsp;,
+        or if you don`t have an account &nbsp;<span><a
                 th:href="@{/register}">Register</a></span>&nbsp; for free.</p>
 
 </div>
 
-<section class="social mb-4 text-center fixed-bottom">
-    <a class="btn btn-outline-light btn-floating m-1" href="https://www.facebook.com/anton.ganev.9/" role="button"><i
-            class="fab fa-facebook-f"></i></a>
-    <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-google"></i></a>
-    <a class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com/a_ganev/" role="button"><i
-            class="fab fa-instagram"></i></a>
-    <a class="btn btn-outline-light btn-floating m-1" href="https://www.linkedin.com/in/anton-ganev-029b89318/"
-       role="button"><i class="fab fa-linkedin-in"></i></a>
-    <a class="btn btn-outline-light btn-floating m-1" href="https://github.com/AntonGeorgievGanev" role="button"><i
-            class="fab fa-github"></i></a>
+<section class="social mb-4 text-center">
+    <a class="btn btn-outline-light btn-floating m-1" href="https://www.facebook.com/anton.ganev.9/" role="button"><i class="fab fa-facebook-f"></i></a>
+    <a class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com/a_ganev/" role="button"><i class="fab fa-instagram"></i></a>
+    <a class="btn btn-outline-light btn-floating m-1" href="https://www.linkedin.com/in/anton-ganev-029b89318/" role="button"><i class="fab fa-linkedin-in"></i></a>
+    <a class="btn btn-outline-light btn-floating m-1" href="https://github.com/AntonGeorgievGanev" role="button"><i class="fab fa-github"></i></a>
 </section>
 
 <th:block th:replace="~{fragments/footer}"></th:block>

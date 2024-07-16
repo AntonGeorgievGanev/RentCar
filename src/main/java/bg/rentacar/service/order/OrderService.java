@@ -15,4 +15,5 @@ public interface OrderService {
     void approveOrder(Long id);
     void cancelOrder(Long id);
     void finishOrder();
+    void deleteOrder(Long id);
 }

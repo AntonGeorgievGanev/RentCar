@@ -24,7 +24,6 @@ import java.security.Principal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class OrderServiceImpl implements OrderService {
@@ -144,26 +143,24 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public void approveOrder(Long id) {
-        Optional<Order> optionalOrder = orderRepository.findById(id);
-        if (optionalOrder.isPresent()) {
-            Order order = optionalOrder.get();
-            order.setStatus(RentOrderStatus.APPROVED);
-            orderRepository.save(order);
-        }
+        Order order = orderRepository.findById(id)
+                .orElseThrow(() -> new ObjectNotFound("This object cannot be found."));
+        order.setStatus(RentOrderStatus.APPROVED);
+        orderRepository.save(order);
+
     }
 
     @Override
     public void cancelOrder(Long id) {
-        Optional<Order> optionalOrder = orderRepository.findById(id);
-        if (optionalOrder.isPresent()) {
-            Order order = optionalOrder.get();
-            Car car = order.getCar();
-            order.setCar(null);
-            car.setAvailable(true);
-            carRepository.save(car);
-            order.setStatus(RentOrderStatus.CANCELED);
-            orderRepository.save(order);
-        }
+        Order order = orderRepository.findById(id)
+                .orElseThrow(() -> new ObjectNotFound("This object cannot be found."));
+        Car car = order.getCar();
+        order.setCar(null);
+        car.setAvailable(true);
+        carRepository.save(car);
+        order.setStatus(RentOrderStatus.CANCELED);
+        orderRepository.save(order);
+
     }
 
     @Override
@@ -188,6 +185,11 @@ public class OrderServiceImpl implements OrderService {
                 }
             }
         }
+    }
+
+    @Override
+    public void deleteOrder(Long id) {
+        orderRepository.deleteById(id);
     }
 
 
