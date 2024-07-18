@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<th:block th:replace="~{fragments/head.html}"></th:block>
+
+<body>
+
+<th:block th:replace="~{fragments/navigation.html}"></th:block>
+
+<div class="review-container">
+
+    <h2 class="review-tittle"> Our Happy Clients </h2>
+
+    <!-- Clients Review Section -->
+    <div class="reviewSection">
+
+        <!-- Clients Review-1 Section Starts from Here  -->
+        <div class="reviewItem">
+            <div class="top">
+                <div class="clientImage">
+                    <span>Raju Sheoran</span>
+                </div>
+                <div>
+                    <span>Raiting: 3/5 <i class="fa-solid fa-star"></i> </span>
+                </div>
+            </div>
+            <article>
+                <p class="review">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit beatae ipsa
+                    voluptatibus perferendis quos eaque nemo error tempora harum quas, laudantium tenetur, neque,
+                    facere exercitationem!</p>
+                <p>Jan 01, 2023</p>
+            </article>
+        </div>
+
+    </div>
+</div>
+
+<section class="social mb-4 text-center">
+    <a class="btn btn-outline-light btn-floating m-1" href="https://www.facebook.com/anton.ganev.9/" role="button"><i class="fab fa-facebook-f"></i></a>
+    <a class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com/a_ganev/" role="button"><i class="fab fa-instagram"></i></a>
+    <a class="btn btn-outline-light btn-floating m-1" href="https://www.linkedin.com/in/anton-ganev-029b89318/" role="button"><i class="fab fa-linkedin-in"></i></a>
+    <a class="btn btn-outline-light btn-floating m-1" href="https://github.com/AntonGeorgievGanev" role="button"><i class="fab fa-github"></i></a>
+</section>
+
+<th:block th:replace="~{fragments/footer}"></th:block>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>
