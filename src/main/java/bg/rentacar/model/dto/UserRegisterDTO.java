@@ -1,12 +1,10 @@
 package bg.rentacar.model.dto;
 
 import bg.rentacar.constant.UserConstants;
-import bg.rentacar.validation.annotation.Over18;
-import bg.rentacar.validation.annotation.UniqueEmail;
-import bg.rentacar.validation.annotation.UniquePhoneNumber;
-import bg.rentacar.validation.annotation.UniqueUsername;
+import bg.rentacar.validation.annotation.*;
 import jakarta.validation.constraints.*;
 
+@PasswordsMatch
 public class UserRegisterDTO {
     @NotBlank(message = UserConstants.USER_FIRST_NAME_EMPTY)
     @Size(min = 3, max = 20, message = UserConstants.USER_FIRST_NAME_LENGTH)

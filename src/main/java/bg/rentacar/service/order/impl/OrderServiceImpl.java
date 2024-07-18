@@ -160,7 +160,6 @@ public class OrderServiceImpl implements OrderService {
         carRepository.save(car);
         order.setStatus(RentOrderStatus.CANCELED);
         orderRepository.save(order);
-
     }
 
     @Override
