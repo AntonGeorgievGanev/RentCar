@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<th:block th:replace="~{fragments/head.html}"></th:block>
+
+<body>
+
+<th:block th:replace="~{fragments/navigation.html}"></th:block>
+
+<div class="table-wrapper mt-5 pt-5">
+    <h2 class="form-title-text">My reviews</h2>
+    <table class="table table-dark table-hover">
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Rating</th>
+            <th>Description</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody id="tbody">
+        <tr>
+            <td>Title</td>
+            <td>Rating</td>
+            <td>Description</td>
+            <td>
+<!--                th:action="@{/my-reviews/delete/{id}(id=${review.id})}"-->
+                <form  th:method="DELETE"
+                      onsubmit="return confirm('Are you sure you want to delete this review?');">
+                    <button class="btn btn-danger" type="submit">
+                        Delete
+                    </button>
+                </form>
+            </td>
+        </tbody>
+    </table>
+</div>
+
+<section class="social mb-4 text-center">
+    <a class="btn btn-outline-light btn-floating m-1" href="https://www.facebook.com/anton.ganev.9/" role="button"><i class="fab fa-facebook-f"></i></a>
+    <a class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com/a_ganev/" role="button"><i class="fab fa-instagram"></i></a>
+    <a class="btn btn-outline-light btn-floating m-1" href="https://www.linkedin.com/in/anton-ganev-029b89318/" role="button"><i class="fab fa-linkedin-in"></i></a>
+    <a class="btn btn-outline-light btn-floating m-1" href="https://github.com/AntonGeorgievGanev" role="button"><i class="fab fa-github"></i></a>
+</section>
+
+<th:block th:replace="~{fragments/footer}"></th:block>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>

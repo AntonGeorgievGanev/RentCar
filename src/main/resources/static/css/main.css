@@ -261,20 +261,6 @@ a {
   width: 43%;
 }
 
-.clientImage {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-.clientImage span {
-  margin-left: 10px;
-}
-
-.clientImage img {
-  width: 40px;
-}
-
 .reviewSection {
   padding: 1rem;
   display: flex;
@@ -325,5 +311,9 @@ article p {
   font-weight: 100;
   margin-bottom: 1rem;
   font-family: system-ui;
+}
+
+i.fa-star{
+  color: orange;
 }
 

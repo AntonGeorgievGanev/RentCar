@@ -19,6 +19,10 @@
                     <a class="nav-link p-2" th:href="@{/fleet}" th:text="#{nav_bar_fleet}">
                         Fleet</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link p-2" sec:authorize="!hasRole('ROLE_ADMIN')" th:href="@{/customers-review}" th:text="#{nav_bar_customers_review}">
+                        Customers review</a>
+                </li>
                 <li class="nav-item" sec:authorize="hasRole('ROLE_USER')">
                     <a class="nav-link p-2" th:href="@{/book-car}" th:text="#{nav_bar_book_car}">
                         Book a car</a>
@@ -46,6 +50,14 @@
                 <li class="nav-item">
                     <a class="nav-link p-2" th:href="@{/my-orders}" sec:authorize="hasRole('ROLE_USER')" th:text="#{nav_bar_my_orders}">
                         My orders</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link p-2" th:href="@{/add-review}" sec:authorize="hasRole('ROLE_USER')" th:text="#{nav_bar_make_review}">
+                        Make review</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link p-2" th:href="@{/my-reviews}" sec:authorize="hasRole('ROLE_USER')" th:text="#{nav_bar_my_review}">
+                        My reviews</a>
                 </li>
             </ul>
 

@@ -19,7 +19,7 @@ public class SecurityConfig {
                         authorizedRequest -> authorizedRequest
                                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
                                 .requestMatchers("/", "/login", "/register", "/fleet",
-                                        "/login-error").permitAll()
+                                        "/login-error", "/customers-review").permitAll()
                                 .requestMatchers("/add-car", "/add-extra","/manage-fleet",
                                         "/manage-fleet/**", "/manage-orders", "/manage-orders/**", "/users-info").hasRole(Role.ADMIN.name())
                                 .anyRequest().authenticated()
