@@ -22,6 +22,7 @@ public class SecurityConfig {
                                         "/login-error", "/customers-review").permitAll()
                                 .requestMatchers("/add-car", "/add-extra","/manage-fleet",
                                         "/manage-fleet/**", "/manage-orders", "/manage-orders/**", "/users-info").hasRole(Role.ADMIN.name())
+                                .requestMatchers("/my-reviews/delete/**").hasRole(Role.USER.name())
                                 .anyRequest().authenticated()
                 )
                 .formLogin(formLogin -> {

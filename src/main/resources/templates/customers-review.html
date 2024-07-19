@@ -16,21 +16,21 @@
     <div class="reviewSection">
 
         <!-- Clients Review-1 Section Starts from Here  -->
-        <div class="reviewItem">
+        <div class="reviewItem" th:each="review : ${allReviewsDTO.reviews}">
             <div class="top">
                 <div>
-                    <span>Title</span>
+                    <span th:text="${review.title}">Title</span>
                 </div>
                 <div>
-                    <span>Raiting: 3/5 <i class="fa-solid fa-star"></i> </span>
+                    <span  th:text="'Rating: ' + ${review.rating} +'/5'"></span><span> <i class="fa-solid fa-star"></i></span>
                 </div>
             </div>
             <article>
-                <p class="review">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit beatae ipsa
+                <p class="review"  th:text="${review.description}">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit beatae ipsa
                     voluptatibus perferendis quos eaque nemo error tempora harum quas, laudantium tenetur, neque,
                     facere exercitationem!</p>
-                <p>Author: John Doe</p>
-                <p>Jan 01, 2023</p>
+                <p  th:text="${review.author}">Author: John Doe</p>
+                <p  th:text="${review.published}">Jan 01, 2023</p>
             </article>
         </div>
 

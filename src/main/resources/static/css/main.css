@@ -248,6 +248,13 @@ a {
   border-radius: 10px;
 }
 
+.review-container{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
 .review-tittle{
   font-size: 2rem;
     margin-bottom: 1rem;

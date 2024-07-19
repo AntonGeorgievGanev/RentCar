@@ -44,13 +44,13 @@
   }
 }
 
-@media only screen and (max-width: 1010px) {
+@media only screen and (max-width: 1100px) {
     .main-message {
         padding: 0 1em;
         font-size: 0.95em;
       }
 
-      .social-aaa{
+      .social{
           display: none;
         }
 }
@@ -59,6 +59,7 @@
 @media screen and (max-width:700px) {
   .review-container {
       height: auto;
+      margin-bottom: 3em;
   }
 
   .description {
@@ -73,10 +74,6 @@
 
   .reviewItem {
       width: 100%;
-  }
-
-  .clientImage {
-      margin-bottom: 0.6rem;
   }
 
   .top {
