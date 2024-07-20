@@ -12,7 +12,6 @@ import org.springframework.web.client.RestClient;
 
 import java.security.Principal;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -40,8 +39,7 @@ public class ReviewServiceImpl implements ReviewService {
 
     @Override
     public AllReviewsDTO fetchAllReviews() {
-        List<ReviewDTO> allReviews = new ArrayList<>();
-        allReviews = restClient.get()
+        List<ReviewDTO> allReviews = restClient.get()
                 .uri("http://localhost:8081/api/reviews")
                 .accept(MediaType.APPLICATION_JSON)
                 .retrieve()
@@ -53,9 +51,8 @@ public class ReviewServiceImpl implements ReviewService {
     @Override
     public AllReviewsDTO getUserReviews(Principal principal) {
         User user = userService.getUserByName(principal.getName());
-        List<ReviewDTO> allReviews = new ArrayList<>();
 
-        allReviews = restClient.get()
+        List<ReviewDTO> allReviews = restClient.get()
                 .uri("http://localhost:8081/api/reviews")
                 .accept(MediaType.APPLICATION_JSON)
                 .retrieve()
@@ -71,7 +68,7 @@ public class ReviewServiceImpl implements ReviewService {
     @Override
     public void deleteReview(Long id) {
         restClient.delete()
-                .uri("http://localhost:8081/api/reviews/delete/" + id)
+                .uri("http://localhost:8081/api/reviews/" + id)
                 .retrieve()
                 .toBodilessEntity();
     }
