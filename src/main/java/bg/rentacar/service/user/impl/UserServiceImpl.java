@@ -12,6 +12,7 @@ import bg.rentacar.repository.UserRepository;
 import bg.rentacar.repository.UserRoleRepository;
 import bg.rentacar.service.user.UserService;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -27,6 +28,12 @@ public class UserServiceImpl implements UserService {
     private final ModelMapper mapper;
 
     private final PasswordEncoder encoder;
+
+    @Value("${admin.password}")
+    private String adminPassword;
+
+    @Value("${admin.name}")
+    private String adminName;
 
     public UserServiceImpl(UserRepository userRepository, UserRoleRepository userRoleRepository, ModelMapper mapper, PasswordEncoder encoder) {
         this.userRepository = userRepository;
@@ -51,11 +58,11 @@ public class UserServiceImpl implements UserService {
             User user = new User();
             user.setFirstName("Anton");
             user.setLastName("Ganev");
-            user.setUsername("admin");
-            user.setEmail("a.g.ganev@abv.bg");
+            user.setUsername(adminName);
+            user.setEmail("admin@rentacar.com");
             user.setPhoneNumber("1234567890");
             user.setAge(37);
-            user.setPassword(encoder.encode("admin123"));
+            user.setPassword(encoder.encode(adminPassword));
 
             UserRole role = userRoleRepository.findByRole(Role.ADMIN)
                     .orElseThrow(() -> new ObjectNotFound("This object cannot be found."));

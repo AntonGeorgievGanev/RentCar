@@ -2,8 +2,8 @@ spring:
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/rent_car?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true&serverTimezone=UTC
-    username: root
-    password: admin
+    username: ${MY_SQL_USER}
+    password: ${MY_SQL_PASSWORD}
 
   sql:
     init:
@@ -37,17 +37,6 @@ spring:
       max-file-size: 3MB
       max-request-size: 3MB
 
-#  mail:
-#    rentCar: ${EMAIL:}
-#    host: smtp.gmail.com
-#    port: 587
-#    username: ${EMAIL:@gmail.com}
-#    password: ${EMAIL_PASSWORD:}
-
-#  remember:
-#    key: ${}
-
-
 cloudinary:
   cloud_name: ${CLOUDINARY_CLOUD_NAME}
   api_key: ${CLOUDINARY_API_KEY}
@@ -60,4 +49,5 @@ cloudinary:
 #       security: DEBUG
 
 admin:
+  name: admin
   password: ${ADMIN_PASSWORD}
