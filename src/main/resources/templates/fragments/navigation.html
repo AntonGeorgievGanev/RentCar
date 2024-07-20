@@ -59,6 +59,10 @@
                     <a class="nav-link p-2" th:href="@{/my-reviews}" sec:authorize="hasRole('ROLE_USER')" th:text="#{nav_bar_my_review}">
                         My reviews</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link p-2" th:href="@{/contacts}"  th:text="#{nav_bar_contacts}">
+                       Contacts</a>
+                </li>
             </ul>
 
             <ul class="navbar-nav">

@@ -364,3 +364,26 @@ i.fa-star{
 .car-specs div {
   margin-bottom: 10px;
 }
+
+/*Contacts*/
+
+.container-contacts {
+  max-width: 800px;
+  margin: 0 auto;
+  margin-top: 15em;
+  background-color: #ffffffd1;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+.header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.contact-details {
+  display: flex;
+  flex-direction: column;
+}
+.contact-details div {
+  margin-bottom: 15px;
+}
