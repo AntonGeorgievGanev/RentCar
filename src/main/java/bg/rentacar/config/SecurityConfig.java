@@ -18,11 +18,10 @@ public class SecurityConfig {
                 .authorizeHttpRequests(
                         authorizedRequest -> authorizedRequest
                                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-                                .requestMatchers("/", "/login", "/register", "/fleet",
+                                .requestMatchers("/", "/login", "/register", "/fleet", "/car-details/**",
                                         "/login-error", "/customers-review").permitAll()
                                 .requestMatchers("/add-car", "/add-extra","/manage-fleet",
                                         "/manage-fleet/**", "/manage-orders", "/manage-orders/**", "/users-info").hasRole(Role.ADMIN.name())
-                                .requestMatchers("/my-reviews/delete/**").hasRole(Role.USER.name())
                                 .anyRequest().authenticated()
                 )
                 .formLogin(formLogin -> {

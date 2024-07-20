@@ -32,7 +32,7 @@
                     </li>
                 </ul>
                 <div class="card-body">
-                    <a href="#" class="card-link">Details</a>
+                    <a th:href="@{/car-details/{id}(id=${compact.id})}" class="card-link">Details</a>
                 </div>
             </div>
         </li>
@@ -64,7 +64,7 @@
                     </li>
                 </ul>
                 <div class="card-body">
-                    <a href="#" class="card-link">Details</a>
+                    <a th:href="@{/car-details/{id}(id=${estate.id})}" class="card-link">Details</a>
                 </div>
             </div>
         </li>
@@ -95,7 +95,7 @@
                     </li>
                 </ul>
                 <div class="card-body">
-                    <a href="#" class="card-link">Details</a>
+                    <a th:href="@{/car-details/{id}(id=${suv.id})}" class="card-link">Details</a>
                 </div>
             </div>
         </li>
