@@ -57,13 +57,6 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public List<CarDTO> getAllCarsRest() {
-        List<Car> allCars = carRepository.findAll();
-        return allCars.stream().map(car -> mapper.map(car, CarDTO.class))
-                .collect(Collectors.toList());
-    }
-
-    @Override
     public void deleteCar(Long id) {
         carRepository.deleteById(id);
     }

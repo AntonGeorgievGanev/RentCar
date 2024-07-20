@@ -12,7 +12,6 @@ import java.util.List;
 public interface CarService {
     void addNewCar(CarDTO addCarDTO);
     CarDTO getCarById(Long id);
-    List<CarDTO> getAllCarsRest();
     void deleteCar(Long id);
     AllCarsDTO getAllAvailableCarsDTO();
     void addCarWithImage(CarDTO carDTO, MultipartFile file) throws IOException;

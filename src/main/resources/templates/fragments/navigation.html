@@ -60,7 +60,7 @@
                         My reviews</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link p-2" th:href="@{/contacts}"  th:text="#{nav_bar_contacts}">
+                    <a class="nav-link p-2" sec:authorize="!hasRole('ROLE_ADMIN')" th:href="@{/contacts}"  th:text="#{nav_bar_contacts}">
                        Contacts</a>
                 </li>
             </ul>
