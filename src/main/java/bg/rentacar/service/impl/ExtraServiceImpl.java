@@ -1,10 +1,10 @@
-package bg.rentacar.service.extra.impl;
+package bg.rentacar.service.impl;
 
 import bg.rentacar.model.dto.AllExtrasDTO;
 import bg.rentacar.model.dto.ExtraDTO;
 import bg.rentacar.model.entity.Extra;
 import bg.rentacar.repository.ExtraRepository;
-import bg.rentacar.service.extra.ExtraService;
+import bg.rentacar.service.ExtraService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 

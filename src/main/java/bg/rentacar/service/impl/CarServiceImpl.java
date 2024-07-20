@@ -1,4 +1,4 @@
-package bg.rentacar.service.car.impl;
+package bg.rentacar.service.impl;
 
 import bg.rentacar.exception.ObjectNotFound;
 import bg.rentacar.model.dto.AllCarsDTO;
@@ -10,15 +10,14 @@ import bg.rentacar.model.entity.Image;
 import bg.rentacar.model.enums.CarCategory;
 import bg.rentacar.repository.CarRepository;
 import bg.rentacar.repository.ImageRepository;
-import bg.rentacar.service.car.CarService;
-import bg.rentacar.service.cloudinary.CloudinaryService;
+import bg.rentacar.service.CarService;
+import bg.rentacar.service.CloudinaryService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class CarServiceImpl implements CarService {

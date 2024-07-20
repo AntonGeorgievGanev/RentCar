@@ -1,7 +1,7 @@
 package bg.rentacar.web;
 
 import bg.rentacar.model.dto.CarsByCategoryDTO;
-import bg.rentacar.service.car.CarService;
+import bg.rentacar.service.CarService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

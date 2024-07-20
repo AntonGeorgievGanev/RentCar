@@ -1,7 +1,7 @@
 package bg.rentacar.web;
 
 import bg.rentacar.model.dto.CarDTO;
-import bg.rentacar.service.car.CarService;
+import bg.rentacar.service.CarService;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;

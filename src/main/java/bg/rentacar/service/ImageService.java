@@ -1,4 +1,4 @@
-package bg.rentacar.service.image;
+package bg.rentacar.service;
 
 public interface ImageService {
     void initDefaultCarImageInDb();

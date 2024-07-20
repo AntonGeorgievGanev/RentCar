@@ -1,4 +1,4 @@
-package bg.rentacar.service.order;
+package bg.rentacar.service;
 
 import bg.rentacar.model.dto.AllOrdersByStatus;
 import bg.rentacar.model.dto.AllUserOrdersDTO;

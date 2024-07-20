@@ -1,10 +1,10 @@
-package bg.rentacar.service.review.impl;
+package bg.rentacar.service.impl;
 
 import bg.rentacar.model.dto.AllReviewsDTO;
 import bg.rentacar.model.dto.ReviewDTO;
 import bg.rentacar.model.entity.User;
-import bg.rentacar.service.review.ReviewService;
-import bg.rentacar.service.user.UserService;
+import bg.rentacar.service.ReviewService;
+import bg.rentacar.service.UserService;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;

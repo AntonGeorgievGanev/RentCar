@@ -1,6 +1,6 @@
 package bg.rentacar.scheduler;
 
-import bg.rentacar.service.order.OrderService;
+import bg.rentacar.service.OrderService;
 import jakarta.transaction.Transactional;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;

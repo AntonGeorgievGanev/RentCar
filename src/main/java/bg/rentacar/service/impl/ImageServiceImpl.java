@@ -1,8 +1,8 @@
-package bg.rentacar.service.image.impl;
+package bg.rentacar.service.impl;
 
 import bg.rentacar.model.entity.Image;
 import bg.rentacar.repository.ImageRepository;
-import bg.rentacar.service.image.ImageService;
+import bg.rentacar.service.ImageService;
 import org.springframework.stereotype.Service;
 
 import java.nio.file.Path;

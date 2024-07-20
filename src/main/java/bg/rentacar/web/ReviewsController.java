@@ -2,7 +2,7 @@ package bg.rentacar.web;
 
 import bg.rentacar.model.dto.AllReviewsDTO;
 import bg.rentacar.model.dto.ReviewDTO;
-import bg.rentacar.service.review.ReviewService;
+import bg.rentacar.service.ReviewService;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

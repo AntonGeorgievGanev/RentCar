@@ -1,7 +1,7 @@
 package bg.rentacar.web;
 
 import bg.rentacar.model.dto.AllOrdersByStatus;
-import bg.rentacar.service.order.OrderService;
+import bg.rentacar.service.OrderService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;

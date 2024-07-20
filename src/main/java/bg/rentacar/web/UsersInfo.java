@@ -1,7 +1,7 @@
 package bg.rentacar.web;
 
 import bg.rentacar.model.dto.AllUsersInfoDTO;
-import bg.rentacar.service.user.UserService;
+import bg.rentacar.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

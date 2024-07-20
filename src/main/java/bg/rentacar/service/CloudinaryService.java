@@ -1,4 +1,4 @@
-package bg.rentacar.service.cloudinary;
+package bg.rentacar.service;
 
 import org.springframework.web.multipart.MultipartFile;
 

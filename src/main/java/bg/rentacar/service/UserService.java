@@ -1,11 +1,9 @@
-package bg.rentacar.service.user;
+package bg.rentacar.service;
 
 import bg.rentacar.model.dto.AllUsersInfoDTO;
 import bg.rentacar.model.dto.UserLoginDTO;
 import bg.rentacar.model.dto.UserRegisterDTO;
 import bg.rentacar.model.entity.User;
-
-import java.util.Optional;
 
 public interface UserService {
 

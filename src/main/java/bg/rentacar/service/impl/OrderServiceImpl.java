@@ -1,4 +1,4 @@
-package bg.rentacar.service.order.impl;
+package bg.rentacar.service.impl;
 
 import bg.rentacar.exception.ObjectNotFound;
 import bg.rentacar.model.dto.AllOrdersByStatus;
@@ -13,7 +13,7 @@ import bg.rentacar.repository.CarRepository;
 import bg.rentacar.repository.ExtraRepository;
 import bg.rentacar.repository.OrderRepository;
 import bg.rentacar.repository.UserRepository;
-import bg.rentacar.service.order.OrderService;
+import bg.rentacar.service.OrderService;
 import bg.rentacar.web.LoginController;
 import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;

@@ -1,4 +1,4 @@
-package bg.rentacar.service.user.impl;
+package bg.rentacar.service.impl;
 
 import bg.rentacar.exception.ObjectNotFound;
 import bg.rentacar.model.dto.AllUsersInfoDTO;
@@ -10,7 +10,7 @@ import bg.rentacar.model.entity.UserRole;
 import bg.rentacar.model.enums.Role;
 import bg.rentacar.repository.UserRepository;
 import bg.rentacar.repository.UserRoleRepository;
-import bg.rentacar.service.user.UserService;
+import bg.rentacar.service.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.password.PasswordEncoder;

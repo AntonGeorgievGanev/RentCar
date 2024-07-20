@@ -1,10 +1,9 @@
-package bg.rentacar.service.review;
+package bg.rentacar.service;
 
 import bg.rentacar.model.dto.AllReviewsDTO;
 import bg.rentacar.model.dto.ReviewDTO;
 
 import java.security.Principal;
-import java.util.List;
 
 public interface ReviewService {
     void addReview(Principal principal, ReviewDTO reviewDTO);

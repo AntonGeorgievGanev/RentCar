@@ -1,7 +1,7 @@
 package bg.rentacar.init;
 
-import bg.rentacar.service.image.ImageService;
-import bg.rentacar.service.user.UserService;
+import bg.rentacar.service.ImageService;
+import bg.rentacar.service.UserService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 

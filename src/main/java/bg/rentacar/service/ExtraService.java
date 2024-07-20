@@ -1,4 +1,4 @@
-package bg.rentacar.service.extra;
+package bg.rentacar.service;
 
 
 import bg.rentacar.model.dto.AllExtrasDTO;

@@ -1,6 +1,6 @@
-package bg.rentacar.service.cloudinary.impl;
+package bg.rentacar.service.impl;
 
-import bg.rentacar.service.cloudinary.CloudinaryService;
+import bg.rentacar.service.CloudinaryService;
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
 import org.springframework.stereotype.Service;
