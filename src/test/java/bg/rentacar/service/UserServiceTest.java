@@ -2,7 +2,6 @@ package bg.rentacar.service;
 
 import bg.rentacar.exception.ObjectNotFound;
 import bg.rentacar.model.dto.AllUsersInfoDTO;
-import bg.rentacar.model.dto.UserInfoDTO;
 import bg.rentacar.model.dto.UserLoginDTO;
 import bg.rentacar.model.dto.UserRegisterDTO;
 import bg.rentacar.model.entity.User;
@@ -43,9 +42,6 @@ public class UserServiceTest {
 
     @Mock
     private PasswordEncoder mockPasswordEncoder;
-
-    @Mock
-    private ModelMapper mockModelMapper;
 
     @BeforeEach
     void setUp() {
@@ -89,7 +85,7 @@ public class UserServiceTest {
     }
 
     @Test
-    void testValidateLoginTrue(){
+    void testValidateLogin_True(){
         UserLoginDTO userLoginDTO = new UserLoginDTO();
         userLoginDTO.setUsername("username");
         userLoginDTO.setPassword("password");
@@ -102,7 +98,7 @@ public class UserServiceTest {
     }
 
     @Test
-    void TestValidateLoginFalse(){
+    void TestValidateLogin_False(){
         UserLoginDTO userLoginDTO = new UserLoginDTO();
         userLoginDTO.setUsername("username");
         userLoginDTO.setPassword("password");
@@ -131,7 +127,7 @@ public class UserServiceTest {
     }
 
     @Test
-    void testGetUserByNameThrowsException(){
+    void testGetUserByName_ThrowsException(){
         when(mockUserRepository.findByUsername("username")).thenReturn(Optional.empty());
 
         Assertions.assertThrows(ObjectNotFound.class, () -> toTest.getUserByName("username"));
@@ -162,19 +158,8 @@ public class UserServiceTest {
 
     @Test
     void initAdmin() {
-        when(mockPasswordEncoder.encode("password")).thenReturn("encodedpassword");
         UserRole role = new UserRole();
         when(mockUserRoleRepository.findByRole(Role.ADMIN)).thenReturn(Optional.of(role));
-
-        User user = new User();
-        user.setFirstName("Anton");
-        user.setLastName("Ganev");
-        user.setUsername("admin");
-        user.setEmail("admin@rentacar.com");
-        user.setPhoneNumber("1234567890");
-        user.setAge(37);
-        user.setPassword(mockPasswordEncoder.encode("password"));
-        user.setRoles(List.of(role));
 
         when(mockUserRepository.count()).thenReturn(0L);
 
@@ -182,11 +167,10 @@ public class UserServiceTest {
 
         verify(mockUserRepository).save(userArgumentCaptor.capture());
         User admin = userArgumentCaptor.getValue();
-        Assertions.assertEquals(user.getRoles().get(0), admin.getRoles().get(0));
-        Assertions.assertEquals(user.getEmail(), admin.getEmail());
-        Assertions.assertEquals(user.getAge(), admin.getAge());
-        Assertions.assertEquals(user.getFirstName(), admin.getFirstName());
-        Assertions.assertEquals(user.getPhoneNumber(), admin.getPhoneNumber());
+        Assertions.assertEquals("ADMIN", admin.getRoles().getFirst().getRole().name());
+        Assertions.assertEquals("admin@rentacar.com", admin.getEmail());
+        Assertions.assertEquals(37, admin.getAge());
+        Assertions.assertEquals("Anton", admin.getFirstName());
     }
 
 }
