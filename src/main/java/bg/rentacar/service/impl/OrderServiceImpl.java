@@ -147,7 +147,6 @@ public class OrderServiceImpl implements OrderService {
                 .orElseThrow(() -> new ObjectNotFound("This object cannot be found."));
         order.setStatus(RentOrderStatus.APPROVED);
         orderRepository.save(order);
-
     }
 
     @Override

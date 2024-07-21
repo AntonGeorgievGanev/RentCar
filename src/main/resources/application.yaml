@@ -50,4 +50,4 @@ cloudinary:
 
 admin:
   name: admin
-  password: ${ADMIN_PASSWORD}
+  password: 123456

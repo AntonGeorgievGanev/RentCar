@@ -1,0 +1,29 @@
+spring:
+  datasource:
+    driver-class-name: org.hsqldb.jdbc.JDBCDriver
+    url: jdbc:hsqldb:mem:testdb;sql.syntax_mys=true
+    username: sa
+    password:
+
+    properties:
+      hibernate:
+        format_sql: true
+    hibernate:
+      ddl-auto: update
+  sql:
+    init:
+      mode: never
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
+
+
+cloudinary:
+  cloud_name: ${CLOUDINARY_CLOUD_NAME}
+  api_key: ${CLOUDINARY_API_KEY}
+  api_secret: ${CLOUDINARY_API_SECRET}
+
+admin:
+  name: admin
+  password: 123456
