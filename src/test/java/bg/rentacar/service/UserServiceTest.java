@@ -56,7 +56,6 @@ public class UserServiceTest {
 
     @Test
     void testUserRegister(){
-
         UserRegisterDTO userDTO = new UserRegisterDTO();
         userDTO.setUsername("username");
         userDTO.setPassword("password");

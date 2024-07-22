@@ -7,6 +7,8 @@ import bg.rentacar.model.dto.CarsByCategoryDTO;
 import bg.rentacar.model.dto.EditCarDTO;
 import bg.rentacar.model.entity.Car;
 import bg.rentacar.model.enums.CarCategory;
+import bg.rentacar.model.enums.EngineType;
+import bg.rentacar.model.enums.Transmission;
 import bg.rentacar.repository.CarRepository;
 import bg.rentacar.repository.ImageRepository;
 import bg.rentacar.service.impl.CarServiceImpl;
@@ -32,6 +34,10 @@ public class CarServiceTest {
 
     private CarServiceImpl toTest;
 
+    private Car car;
+
+    private CarDTO carDTO;
+
     @Mock
     private CarRepository mockCarRepository;
 
@@ -54,12 +60,34 @@ public class CarServiceTest {
                 mockImageRepository,
                 mockCloudinaryService
         );
+
+        car = new Car();
+        car.setBrand("Vw");
+        car.setModel("Golf");
+        car.setYear(2020);
+        car.setEngineType(EngineType.DIESEL);
+        car.setCategory(CarCategory.COMPACT);
+        car.setTransmission(Transmission.MANUAL);
+        car.setSeats(4);
+        car.setFuelConsumption(5);
+        car.setTrunkVolume(350);
+        car.setPricePerDay(BigDecimal.valueOf(120));
+
+        carDTO = new CarDTO();
+        carDTO.setBrand("Vw");
+        carDTO.setModel("Golf");
+        carDTO.setYear(2020);
+        carDTO.setEngineType(EngineType.DIESEL);
+        carDTO.setCategory(CarCategory.COMPACT);
+        carDTO.setTransmission(Transmission.MANUAL);
+        carDTO.setSeats(4);
+        carDTO.setFuelConsumption(5);
+        carDTO.setTrunkVolume(350);
+        carDTO.setPricePerDay(BigDecimal.valueOf(120));
     }
 
     @Test
     void addNewCar_ShouldSaveCar() {
-        CarDTO carDTO = new CarDTO();
-        Car car;
 
         toTest.addNewCar(carDTO);
 
@@ -69,12 +97,7 @@ public class CarServiceTest {
     }
 
     @Test
-    void getCarById_ShouldReturnCarDTO_WhenCarExists() {
-        Car car = new Car();
-        car.setBrand("Audi");
-        car.setModel("A4");
-        car.setYear(2020);
-        car.setPricePerDay(BigDecimal.valueOf(200));
+    void getCarById_ReturnCarDTO_WhenCarExists() {
 
         when(mockCarRepository.findById(1L)).thenReturn(Optional.of(car));
 
@@ -87,7 +110,7 @@ public class CarServiceTest {
     }
 
     @Test
-    void getCarById_ShouldThrowException_WhenCarDoesNotExist() {
+    void getCarById_ThrowException_WhenCarDoesNotExist() {
         when(mockCarRepository.findById(1L)).thenReturn(Optional.empty());
 
         Assertions.assertThrows(ObjectNotFound.class, () -> toTest.getCarById(1L));
@@ -102,8 +125,7 @@ public class CarServiceTest {
 
     @Test
     void getAllAvailableCarsDTO_ShouldReturnAllAvailableCars() {
-        Car car = new Car();
-        car.setAvailable(true);
+       car.setAvailable(true);
         List<Car> cars = List.of(car);
         when(mockCarRepository.findAllByisAvailable(true)).thenReturn(cars);
 
@@ -132,13 +154,6 @@ public class CarServiceTest {
 
     @Test
     void testEditCar_updatesCar(){
-        Car car = new Car();
-        car.setBrand("Audi");
-        car.setModel("A4");
-        car.setYear(2020);
-        car.setPricePerDay(BigDecimal.valueOf(200));
-        car.setFuelConsumption(4);
-
         when(mockCarRepository.findById(1L)).thenReturn(Optional.of(car));
         EditCarDTO editCarDTO = new EditCarDTO();
         editCarDTO.setYear(2021);
@@ -151,9 +166,6 @@ public class CarServiceTest {
 
     @Test
     void getCarForEdit_ShouldReturnEditCarDTO_WhenCarExists() {
-        Car car = new Car();
-        car.setBrand("Test");
-
         when(mockCarRepository.findById(1L)).thenReturn(Optional.of(car));
         EditCarDTO result = toTest.getCarForEdit(1L);
         Assertions.assertEquals(car.getBrand(), result.getBrand());

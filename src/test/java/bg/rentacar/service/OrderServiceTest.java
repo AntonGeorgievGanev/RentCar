@@ -37,6 +37,10 @@ import static org.mockito.Mockito.*;
 @ExtendWith(MockitoExtension.class)
 public class OrderServiceTest {
 
+    private Order order;
+
+    private OrderDTO orderDTO;
+
     private OrderService toTest;
 
     @Mock
@@ -63,11 +67,16 @@ public class OrderServiceTest {
                 mockExtraRepository,
                 new ModelMapper()
         );
-    }
 
-    @Test
-    void registerOrder_ShouldSaveOrder() {
-        OrderDTO orderDTO = new OrderDTO();
+        order = new Order();
+        order.setLocation("Start");
+        order.setPickUpDate(LocalDate.now());
+        order.setPickUpTime(LocalTime.now());
+        order.setDropOffDate(LocalDate.parse("2024-07-24"));
+        order.setDropOffTime(LocalTime.now());
+        order.setReturnLocation("End");
+
+        orderDTO = new OrderDTO();
         orderDTO.setCarId(1L);
         orderDTO.setExtraId(1L);
         orderDTO.setLocation("Start");
@@ -76,7 +85,10 @@ public class OrderServiceTest {
         orderDTO.setDropOffDate(LocalDate.parse("2024-07-24"));
         orderDTO.setDropOffTime(LocalTime.now());
         orderDTO.setReturnLocation("End");
+    }
 
+    @Test
+    void registerOrder_ShouldSaveOrder() {
         Car car = new Car();
         car.setAvailable(true);
         car.setPricePerDay(BigDecimal.valueOf(100));
@@ -103,16 +115,12 @@ public class OrderServiceTest {
 
     @Test
     void registerOrder_ShouldThrowException_WhenCarNotFound() {
-        OrderDTO orderDTO = new OrderDTO();
-        orderDTO.setCarId(1L);
-
         when(mockCarRepository.findById(orderDTO.getCarId())).thenReturn(Optional.empty());
         Assertions.assertThrows(ObjectNotFound.class, () -> toTest.registerOrder(orderDTO, "username"));
     }
 
     @Test
     void getOrderById_ReturnOrder_WhenOrderExists() {
-        Order order = new Order();
         when(mockOrderRepository.findById(1L)).thenReturn(Optional.of(order));
 
         Order result = toTest.getOrderById(1L);
@@ -166,7 +174,6 @@ public class OrderServiceTest {
 
     @Test
     void approveOrder_UpdatesOrderStatus() {
-        Order order = new Order();
         order.setStatus(RentOrderStatus.PENDING);
         when(mockOrderRepository.findById(1L)).thenReturn(Optional.of(order));
 
@@ -178,7 +185,6 @@ public class OrderServiceTest {
 
     @Test
     void cancelOrder_UpdatesOrderStatusAndMakeCarAvailable() {
-        Order order = new Order();
         Car car = new Car();
         car.setAvailable(false);
         order.setCar(car);
@@ -195,7 +201,6 @@ public class OrderServiceTest {
 
     @Test
     void finishOrder_UpdateOrderStatusAndMakeCarAvailable() {
-        Order order = new Order();
         Car car = new Car();
         order.setCar(car);
         order.setStatus(RentOrderStatus.APPROVED);
@@ -224,7 +229,6 @@ public class OrderServiceTest {
         User user = new User();
         user.setId(1L);
         Principal principal = () -> "test";
-        Order order = new Order();
         order.setUser(user);
         List<Order> orders = List.of(order);
 
