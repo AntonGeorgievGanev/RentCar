@@ -20,9 +20,9 @@ spring:
 
 
 cloudinary:
-  cloud_name: ${CLOUDINARY_CLOUD_NAME}
-  api_key: ${CLOUDINARY_API_KEY}
-  api_secret: ${CLOUDINARY_API_SECRET}
+  cloud_name: ddw62fr4j
+  api_key: 539285532389766
+  api_secret: 4Iy6JZpZWz5Xn1tLG1RwIqDdx0s
 
 admin:
   name: admin

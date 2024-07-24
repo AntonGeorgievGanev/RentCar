@@ -29,12 +29,6 @@ public class UserServiceImpl implements UserService {
 
     private final PasswordEncoder encoder;
 
-//    @Value("${admin.password}")
-//    private String adminPassword;
-//
-//    @Value("${admin.name}")
-//    private String adminName;
-
     public UserServiceImpl(UserRepository userRepository, UserRoleRepository userRoleRepository, ModelMapper mapper, PasswordEncoder encoder) {
         this.userRepository = userRepository;
         this.userRoleRepository = userRoleRepository;
@@ -52,17 +46,19 @@ public class UserServiceImpl implements UserService {
         userRepository.save(user);
     }
 
+    @Value("${admin.password}") String password;
+    @Value("${admin.name}") String adminUsername;
     @Override
     public void initAdmin() {
         if (userRepository.count() == 0) {
             User user = new User();
             user.setFirstName("Anton");
             user.setLastName("Ganev");
-            user.setUsername("admin");
+            user.setUsername(adminUsername);
             user.setEmail("admin@rentacar.com");
             user.setPhoneNumber("1234567890");
             user.setAge(37);
-            user.setPassword(encoder.encode("123456"));
+            user.setPassword(encoder.encode(password));
 
             UserRole role = userRoleRepository.findByRole(Role.ADMIN)
                     .orElseThrow(() -> new ObjectNotFound("This object cannot be found."));

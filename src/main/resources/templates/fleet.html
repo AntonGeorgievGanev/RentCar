@@ -15,7 +15,7 @@
     <ul class="fleet-list">
 
         <li th:each="compact : ${carsByCategoryDTO.getCompactCars()}">
-            <div class="card" style="width: 18rem;">
+            <div class="card" style="width: 18rem; height: 28rem">
                 <img th:src="@{${compact.imageLocation.location}}" class="card-img-top" alt="car_image">
                 <div class="card-body">
                     <h5 class="card-title" th:text="${compact.brand + ' ' + compact.model}">Make model</h5>
@@ -47,7 +47,7 @@
     <ul class="fleet-list">
 
         <li th:each="estate : ${carsByCategoryDTO.getEstateCars()}">
-            <div class="card" style="width: 18rem;">
+            <div class="card" style="width: 18rem; height: 28rem">
                 <img th:src="@{${estate.imageLocation.location}}" class="card-img-top" alt="car_image">
                 <div class="card-body">
                     <h5 class="card-title" th:text="${estate.brand + ' ' + estate.model}">Make model</h5>
@@ -78,7 +78,7 @@
     <ul class="fleet-list">
 
         <li th:each="suv : ${carsByCategoryDTO.getSuvCars()}">
-            <div class="card" style="width: 18rem;">
+            <div class="card" style="width: 18rem; height: 28rem">
                 <img th:src="@{${suv.imageLocation.location}}" class="card-img-top" alt="car_image">
                 <div class="card-body">
                     <h5 class="card-title" th:text="${suv.brand + ' ' + suv.model}">Make model</h5>
