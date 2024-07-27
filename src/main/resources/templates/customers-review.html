@@ -16,7 +16,7 @@
     <div class="reviewSection">
 
         <!-- Clients Review-1 Section Starts from Here  -->
-        <div class="reviewItem" th:each="review : ${allReviewsDTO.reviews}">
+        <div class="reviewItem" style="width: 18rem; height: 18rem" th:each="review : ${allReviewsDTO.reviews}">
             <div class="top">
                 <div>
                     <span th:text="${review.title}">Title</span>

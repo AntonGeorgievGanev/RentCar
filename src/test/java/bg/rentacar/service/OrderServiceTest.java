@@ -13,6 +13,7 @@ import bg.rentacar.repository.CarRepository;
 import bg.rentacar.repository.ExtraRepository;
 import bg.rentacar.repository.OrderRepository;
 import bg.rentacar.repository.UserRepository;
+import bg.rentacar.service.impl.EmailServiceImpl;
 import bg.rentacar.service.impl.OrderServiceImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -23,6 +24,7 @@ import org.mockito.Captor;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.modelmapper.ModelMapper;
+import org.springframework.boot.test.mock.mockito.MockBean;
 
 import java.math.BigDecimal;
 import java.security.Principal;
@@ -36,6 +38,8 @@ import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 public class OrderServiceTest {
+
+    private User user;
 
     private Order order;
 
@@ -55,6 +59,9 @@ public class OrderServiceTest {
     @Mock
     private ExtraRepository mockExtraRepository;
 
+    @Mock
+    private EmailServiceImpl emailService;
+
     @Captor
     private ArgumentCaptor<Order> orderCaptor;
 
@@ -65,8 +72,16 @@ public class OrderServiceTest {
                 mockCarRepository,
                 mockUserRepository,
                 mockExtraRepository,
+                emailService,
                 new ModelMapper()
         );
+
+        user = new User();
+        user.setId(1L);
+        user.setFirstName("Test");
+        user.setLastName("Test");
+        user.setEmail("test@test.com");
+        user.setUsername("test");
 
         order = new Order();
         order.setLocation("Start");
@@ -75,6 +90,7 @@ public class OrderServiceTest {
         order.setDropOffDate(LocalDate.parse("2024-07-24"));
         order.setDropOffTime(LocalTime.now());
         order.setReturnLocation("End");
+        order.setUser(user);
 
         orderDTO = new OrderDTO();
         orderDTO.setCarId(1L);
@@ -175,6 +191,7 @@ public class OrderServiceTest {
     @Test
     void approveOrder_UpdatesOrderStatus() {
         order.setStatus(RentOrderStatus.PENDING);
+        when(mockUserRepository.findById(1L)).thenReturn(Optional.of(user));
         when(mockOrderRepository.findById(1L)).thenReturn(Optional.of(order));
 
         toTest.approveOrder(1L);
@@ -189,6 +206,7 @@ public class OrderServiceTest {
         car.setAvailable(false);
         order.setCar(car);
         order.setStatus(RentOrderStatus.PENDING);
+        when(mockUserRepository.findById(1L)).thenReturn(Optional.of(user));
         when(mockOrderRepository.findById(1L)).thenReturn(Optional.of(order));
 
         toTest.cancelOrder(1L);
@@ -206,6 +224,7 @@ public class OrderServiceTest {
         order.setStatus(RentOrderStatus.APPROVED);
         order.setDropOffDate(LocalDateTime.now().minusDays(1).toLocalDate());
         order.setDropOffTime(LocalDateTime.now().minusDays(1).toLocalTime());
+        when(mockUserRepository.findById(1L)).thenReturn(Optional.of(user));
         List<Order> orders = List.of(order);
 
         when(mockOrderRepository.findAllByStatus(RentOrderStatus.APPROVED)).thenReturn(orders);

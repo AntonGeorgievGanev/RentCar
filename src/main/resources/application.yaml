@@ -42,12 +42,19 @@ cloudinary:
   api_key: ${CLOUDINARY_API_KEY}
   api_secret: ${CLOUDINARY_API_SECRET}
 
+admin:
+  name: admin
+  password: 123456
+
+mail:
+  host: smtp.gmail.com
+  port: 587
+  username: rentcar00702030405@gmail.com
+  password: uzpnsccezpjgvidu
+
 #logging:
 #  level:
 #    org:
 #      springframework:
 #       security: DEBUG
 
-admin:
-  name: admin
-  password: 123456

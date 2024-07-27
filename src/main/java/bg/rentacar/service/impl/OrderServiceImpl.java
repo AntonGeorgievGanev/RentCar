@@ -1,5 +1,6 @@
 package bg.rentacar.service.impl;
 
+import bg.rentacar.constant.EmailConstants;
 import bg.rentacar.exception.ObjectNotFound;
 import bg.rentacar.model.dto.AllOrdersByStatus;
 import bg.rentacar.model.dto.AllUserOrdersDTO;
@@ -35,16 +36,19 @@ public class OrderServiceImpl implements OrderService {
 
     private final ExtraRepository extraRepository;
 
+    private final EmailServiceImpl emailService;
+
     private final ModelMapper mapper;
 
     private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 
     public OrderServiceImpl(OrderRepository orderRepository, CarRepository carRepository,
-                            UserRepository userRepository, ExtraRepository extraRepository, ModelMapper mapper) {
+                            UserRepository userRepository, ExtraRepository extraRepository, EmailServiceImpl emailService, ModelMapper mapper) {
         this.orderRepository = orderRepository;
         this.carRepository = carRepository;
         this.userRepository = userRepository;
         this.extraRepository = extraRepository;
+        this.emailService = emailService;
         this.mapper = mapper;
     }
 
@@ -72,6 +76,7 @@ public class OrderServiceImpl implements OrderService {
 
         order.setTotalPrice(order.calculateTotalPrice());
         orderRepository.save(order);
+        emailService.sendEmail(user.getEmail(), EmailConstants.MESSAGE_SUBJECT_ORDER_REGISTER, EmailConstants.MESSAGE_ORDER_REGISTER);
     }
 
     @Override
@@ -147,6 +152,9 @@ public class OrderServiceImpl implements OrderService {
                 .orElseThrow(() -> new ObjectNotFound("This object cannot be found."));
         order.setStatus(RentOrderStatus.APPROVED);
         orderRepository.save(order);
+        User user = userRepository.findById(order.getUser().getId())
+                .orElseThrow(() -> new ObjectNotFound("This object cannot be found."));
+        emailService.sendEmail(user.getEmail(), EmailConstants.MESSAGE_SUBJECT_ORDER_STATUS, EmailConstants.MESSAGE_ORDER_APPROVED);
     }
 
     @Override
@@ -159,6 +167,9 @@ public class OrderServiceImpl implements OrderService {
         carRepository.save(car);
         order.setStatus(RentOrderStatus.CANCELED);
         orderRepository.save(order);
+        User user = userRepository.findById(order.getUser().getId())
+                .orElseThrow(() -> new ObjectNotFound("This object cannot be found."));
+        emailService.sendEmail(user.getEmail(), EmailConstants.MESSAGE_SUBJECT_ORDER_STATUS, EmailConstants.MESSAGE_ORDER_CANCELED);
     }
 
     @Override
@@ -179,6 +190,9 @@ public class OrderServiceImpl implements OrderService {
 
                     car.setAvailable(true);
                     carRepository.save(car);
+                    User user = userRepository.findById(order.getUser().getId())
+                            .orElseThrow(() -> new ObjectNotFound("This object cannot be found."));
+                    emailService.sendEmail(user.getEmail(), EmailConstants.MESSAGE_SUBJECT_ORDER_STATUS, EmailConstants.MESSAGE_ORDER_FINISHED);
                     logger.info("Order with id: {} has been finished", order.getId());
                 }
             }

@@ -27,3 +27,10 @@ cloudinary:
 admin:
   name: admin
   password: 123456
+
+mail:
+  host: smtp.gmail.com
+  port: 587
+  username: rentcar00702030405@gmail.com
+  password: uzpnsccezpjgvidu
+
