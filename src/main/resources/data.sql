@@ -18,8 +18,8 @@ VALUES("Reanult", "Clio", 2022, "PETROL", "MANUAL", "COMPACT", 4, 5, 280, 80, 1,
       ("Skoda", "Superb", 2023, "DIESEL", "AUTOMATIC", "ESTATE", 4, 6, 500, 320, 1, 5),
       ("Dacia", "Spring", 2023, "ELECTRIC", "AUTOMATIC", "COMPACT", 4, 3, 200, 150, 1, 6),
       ("Hyundai", "Kona", 2024, "ELECTRIC", "AUTOMATIC", "SUV", 4, 5, 390, 200, 1, 7),
-      ("Citroen", "Ami", 2020, "ELECTRIC", "AUTOMATIC", "COMPACT", 2, 4, 200, 70, 1, 8),
-      ("Renault", "Twizy", 2021, "ELECTRIC", "AUTOMATIC", "COMPACT", 2, 5, 200, 85, 1, 9);
+      ("Citroen", "Ami", 2020, "ELECTRIC", "AUTOMATIC", "COMPACT", 2, 4, 100, 70, 1, 8),
+      ("Renault", "Twizy", 2021, "ELECTRIC", "AUTOMATIC", "COMPACT", 2, 5, 100, 85, 1, 9);
 
 INSERT INTO `extras` (`name`, `price`)
 VALUES ("GPS", 15),

@@ -50,8 +50,8 @@ public class CarDTO {
 
     @NotNull(message = CarConstants.CAR_EMPTY_TRUNK)
     @Positive(message = CarConstants.CAR_NEGATIVE_TRUNK)
-    @Min(value = 200, message = CarConstants.CAR_MIN_TRUNK)
-    @Max(value = 1000, message = CarConstants.CAR_MAX_TRUNK)
+    @Min(value = 100, message = CarConstants.CAR_MIN_TRUNK)
+    @Max(value = 600, message = CarConstants.CAR_MAX_TRUNK)
     private Integer trunkVolume;
 
     @NotNull(message = CarConstants.CAR_EMPTY_PRICE)

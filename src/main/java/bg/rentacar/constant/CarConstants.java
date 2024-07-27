@@ -19,8 +19,8 @@ public enum CarConstants {
     public static final String CAR_MIN_SEATS = "Minimum seats 2";
     public static final String CAR_MAX_SEATS = "Maximum seats 7";
     public static final String CAR_EMPTY_SEATS = "Please enter number of seats!";
-    public static final String CAR_MIN_TRUNK = "Minimum trunk volume 200 liters!";
-    public static final String CAR_MAX_TRUNK = "Maximum trunk volume 200 liters!";
+    public static final String CAR_MIN_TRUNK = "Minimum trunk volume 100 liters!";
+    public static final String CAR_MAX_TRUNK = "Maximum trunk volume 600 liters!";
     public static final String CAR_EMPTY_TRUNK = "Please enter trunk volume!";
     public static final String CAR_NEGATIVE_TRUNK = "Trunk volume can`t be negative!";
 
