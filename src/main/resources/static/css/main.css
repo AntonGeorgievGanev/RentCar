@@ -84,7 +84,8 @@ a {
   bottom: 50px;
   width: 100%;
   text-align: center;
-  margin: 0 auto
+  margin: 0 auto;
+  margin-top: 5em;
 }
 
 .form-title-text {
