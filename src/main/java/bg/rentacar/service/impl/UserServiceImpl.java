@@ -94,7 +94,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public User getUserByName(String name) {
         return userRepository.findByUsername(name)
-                .orElseThrow(() -> new ObjectNotFound("This object cannot be found."));
+                .orElseThrow(() -> new ObjectNotFound("This user cannot be found."));
     }
 
     @Override
@@ -103,5 +103,35 @@ public class UserServiceImpl implements UserService {
                 user.getRoles().getFirst().getRole().name().equals(Role.USER.name()))
                 .map(user -> mapper.map(user, UserInfoDTO.class)).toList();
         return new AllUsersInfoDTO(usersDTO);
+    }
+
+    @Override
+    public AllUsersInfoDTO getAllEmployeesInfo() {
+        UserRole employeeRole = userRoleRepository.findByRole(Role.EMPLOYEE)
+                .orElseThrow(() -> new ObjectNotFound("This role cannot be found."));
+        List<UserInfoDTO> employeesDTO = userRepository.findAll().stream().filter(user -> user.getRoles().contains(employeeRole))
+                .map(user -> mapper.map(user, UserInfoDTO.class)).toList();
+        return new AllUsersInfoDTO(employeesDTO);
+    }
+
+    @Override
+    public void promoteUserToEmployee(Long id) {
+        User userToPromote = userRepository.findById(id)
+                .orElseThrow(() -> new ObjectNotFound("This user cannot be found."));
+        UserRole employeeRole = userRoleRepository.findByRole(Role.EMPLOYEE)
+                .orElseThrow(() -> new ObjectNotFound("This role cannot be found."));
+        userToPromote.getRoles().add(employeeRole);
+        userRepository.save(userToPromote);
+    }
+
+    @Override
+    public void demoteEmployee(Long id) {
+        User userToDemote = userRepository.findById(id)
+                .orElseThrow(() -> new ObjectNotFound("This user cannot be found."));
+        UserRole employeeRole = userRoleRepository.findByRole(Role.EMPLOYEE)
+                .orElseThrow(() -> new ObjectNotFound("This role cannot be found."));
+
+        userToDemote.getRoles().remove(employeeRole);
+        userRepository.save(userToDemote);
     }
 }

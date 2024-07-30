@@ -4,7 +4,6 @@ import bg.rentacar.model.dto.AllUsersInfoDTO;
 import bg.rentacar.model.dto.UserLoginDTO;
 import bg.rentacar.model.dto.UserRegisterDTO;
 import bg.rentacar.model.entity.User;
-import org.springframework.beans.factory.annotation.Value;
 
 public interface UserService {
 
@@ -19,4 +18,10 @@ public interface UserService {
     User getUserByName(String name);
 
     AllUsersInfoDTO getAllUserInfo();
+
+    AllUsersInfoDTO getAllEmployeesInfo();
+
+    void promoteUserToEmployee(Long id);
+
+    void demoteEmployee(Long id);
 }

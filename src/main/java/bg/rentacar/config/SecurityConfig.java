@@ -20,8 +20,9 @@ public class SecurityConfig {
                                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
                                 .requestMatchers("/", "/login", "/register", "/fleet", "/car-details/**",
                                         "/login-error", "/customers-review", "/contacts").permitAll()
-                                .requestMatchers("/add-car", "/add-extra","/manage-fleet",
-                                        "/manage-fleet/**", "/manage-orders", "/manage-orders/**", "/users-info").hasRole(Role.ADMIN.name())
+                                .requestMatchers("manage-fleet", "/manage-fleet/**",
+                                        "/manage-orders","/manage-orders/**").hasAnyRole(Role.ADMIN.name(), Role.EMPLOYEE.name())
+                                .requestMatchers("/add-car", "/add-extra","/users-info").hasRole(Role.ADMIN.name())
                                 .anyRequest().authenticated()
                 )
                 .formLogin(formLogin -> {

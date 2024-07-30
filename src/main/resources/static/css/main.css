@@ -366,6 +366,12 @@ i.fa-star{
   margin-bottom: 10px;
 }
 
+.card-img-top{
+  width: 286px;
+  height: 180px;
+  object-fit: cover;
+}
+
 /*Contacts*/
 
 .container-contacts {

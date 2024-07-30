@@ -9,6 +9,41 @@
 <th:block th:replace="~{fragments/navigation.html}"></th:block>
 
 <div class="table-wrapper mt-5 pt-5">
+    <h2 class="form-title-text">Employees details</h2>
+    <table class="table table-dark table-hover">
+        <thead>
+        <tr>
+            <th scope="col">Username</th>
+            <th scope="col">First name</th>
+            <th scope="col">Last name</th>
+            <th scope="col">Age</th>
+            <th scope="col">Email</th>
+            <th scope="col">Phone number</th>
+            <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="employee : ${allEmployeesDTO.usersInfoDTO}">
+            <td th:text="${employee.username}">user</td>
+            <td th:text="${employee.firstName}">User</td>
+            <td th:text="${employee.lastName}">Userov</td>
+            <td th:text="${employee.age}">23</td>
+            <td th:text="${employee.email}">user@mail.com</td>
+            <td th:text="${employee.phoneNumber}">0111222222</td>
+            <td>
+                <form th:action="@{/users-info/demote/{id}(id=${employee.id})}" th:method="POST"
+                      onsubmit="return confirm('Are you sure do you want to demote this employee?');">
+                    <button class="btn btn-danger" type="submit">
+                        Demote to user
+                    </button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="table-wrapper mt-5 pt-5">
     <h2 class="form-title-text">Users details</h2>
     <table class="table table-dark table-hover">
         <thead>
@@ -19,6 +54,7 @@
             <th scope="col">Age</th>
             <th scope="col">Email</th>
             <th scope="col">Phone number</th>
+            <th scope="col">Action</th>
         </tr>
         </thead>
         <tbody>
@@ -29,6 +65,14 @@
             <td th:text="${user.age}">23</td>
             <td th:text="${user.email}">user@mail.com</td>
             <td th:text="${user.phoneNumber}">0111222222</td>
+            <td>
+                <form th:action="@{/users-info/promote/{id}(id=${user.id})}" th:method="POST"
+                      onsubmit="return confirm('Are you sure do you want to promote this user to employee?');">
+                    <button class="btn btn-primary" type="submit">
+                        Make employee
+                    </button>
+                </form>
+            </td>
         </tr>
         </tbody>
     </table>

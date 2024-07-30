@@ -30,6 +30,7 @@ public class ReviewServiceImpl implements ReviewService {
         User user = userService.getUserByName(principal.getName());
         reviewDTO.setAuthor(user.getFirstName() + " " + user.getLastName());
         reviewDTO.setUserId(user.getId());
+
         restClient.post()
                 .uri("http://localhost:8081/api/reviews")
                 .accept(MediaType.APPLICATION_JSON)

@@ -17,5 +17,4 @@ public class RestConfig {
                 .defaultHeader("Content-type", MediaType.APPLICATION_JSON_VALUE)
                 .build();
     }
-
 }
