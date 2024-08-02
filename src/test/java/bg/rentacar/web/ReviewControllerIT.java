@@ -45,7 +45,7 @@ public class ReviewControllerIT {
 
     @Test
     @WithMockUser(username = "test", roles = {"USER"})
-    void testAddReview() throws Exception {
+    void testAddReview_Success() throws Exception {
         User user = new User();
         user.setUsername("test");
         user.setFirstName("Test");
@@ -68,5 +68,32 @@ public class ReviewControllerIT {
                         .with(csrf()))
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl("/customers-review"));
+    }
+
+    @Test
+    @WithMockUser(username = "test", roles = {"USER"})
+    void testAddReview_Invalid() throws Exception {
+        User user = new User();
+        user.setUsername("test");
+        user.setFirstName("Test");
+        user.setLastName("Test");
+        user.setAge(33);
+        user.setEmail("test@mail.com");
+        user.setPhoneNumber("5656565656");
+        user.setPassword("test123");
+        userRepository.save(user);
+
+        ReviewDTO reviewDTO = new ReviewDTO();
+        reviewDTO.setTitle("");
+        reviewDTO.setDescription("T");
+        reviewDTO.setRating(-1);
+
+        mockMvc.perform(post("/add-review")
+                        .param("title", reviewDTO.getTitle())
+                        .param("description", reviewDTO.getDescription())
+                        .param("rating", String.valueOf(reviewDTO.getRating()))
+                        .with(csrf()))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(redirectedUrl("/add-review"));
     }
 }
