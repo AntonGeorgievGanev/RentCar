@@ -73,4 +73,12 @@ public class ReviewServiceImpl implements ReviewService {
                 .retrieve()
                 .toBodilessEntity();
     }
+
+    @Override
+    public ReviewDTO getReviewById(Long id) {
+        return restClient.get()
+                .uri("http://localhost:8081/api/reviews/" + id)
+                .accept(MediaType.APPLICATION_JSON)
+                .retrieve().toEntity(ReviewDTO.class).getBody();
+    }
 }

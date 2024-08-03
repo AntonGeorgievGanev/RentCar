@@ -10,4 +10,5 @@ public interface ReviewService {
     AllReviewsDTO fetchAllReviews();
     AllReviewsDTO getUserReviews(Principal principal);
     void deleteReview(Long id);
+    ReviewDTO getReviewById(Long id);
 }
