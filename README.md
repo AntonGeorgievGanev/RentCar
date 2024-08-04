@@ -16,6 +16,8 @@ Tech Stack:
 
 -**CSS**
 
+-**Bootstrap**
+
 Application use external API for image hosting https://cloudinary.com/.
 The API needs some environment variables to work:
 
