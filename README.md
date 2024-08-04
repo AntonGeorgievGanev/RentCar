@@ -8,7 +8,7 @@ Tech Stack:
 
 -**Java Spring**
 
--**MYSQL**
+-**MySQL**
 
 -**JavaScript**
 
