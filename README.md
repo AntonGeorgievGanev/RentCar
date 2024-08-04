@@ -4,6 +4,8 @@ My final project for SoftUni.
 
 Project is web application for renting cars.
 
+---
+
 Tech Stack:
 
 -**Java Spring**
