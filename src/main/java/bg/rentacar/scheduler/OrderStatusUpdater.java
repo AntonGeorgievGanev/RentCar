@@ -13,7 +13,7 @@ public class OrderStatusUpdater {
         this.orderService = orderService;
     }
 
-    @Scheduled(cron = "0 */1 * * * *") // "0 0 * * * *" every hour || "0 */1 * * * *" every minute for testing
+    @Scheduled(cron = "0 */1 * * * *") // "0 0 * * * *" every hour || "0 */1 * * * *" every minute || "0/10 * * ? * *" every 10 seconds
     @Transactional
     public void updateStatus(){
        orderService.finishOrder();

@@ -12,18 +12,18 @@
 
     <form class="login-form row g-3 needs-validation overflow-auto d-flex justify-content-center"
           th:method="post" th:action="@{/login}" th:object="${userLoginDTO}">
-        <h2 class="form-title-text">Login</h2>
+        <h2 class="form-title-text" th:text="#{login_title}">Login</h2>
 
-        <div class="login-error" th:if="${badCredentials}" th:text="'Incorrect username or password!'"></div>
+        <div class="login-error" th:if="${badCredentials}" th:text="#{login_bad_credentials}"></div>
 
         <div class="col-md-10">
-            <label class="form-label" for="username">Username</label>
+            <label class="form-label" for="username" th:text="#{login_username}">Username</label>
             <input type="text" class="form-control" id="username" placeholder="Username"
                    name="username"  th:field="*{username}" th:errorclass="'is-invalid'" required>
             <div class="invalid-feedback" th:errors="*{username}"> Please enter your username.</div>
         </div>
         <div class="col-md-10">
-            <label for="password" class="form-label">Password</label>
+            <label for="password" class="form-label" th:text="#{login_password}">Password</label>
             <input type="password" class="form-control" id="password" placeholder="Password"
                    name="password"
                    th:field="*{password}" required>
@@ -31,11 +31,11 @@
         </div>
 
         <div class="col-md-10">
-            <button class="btn btn-primary register-button login-btn" type="submit">Login</button>
+            <button class="btn btn-primary register-button login-btn" type="submit" th:text="#{login_btn}">Login</button>
         </div>
 
     </form>
-    <p class="form-text">If you don`t have an account &nbsp;<span><a th:href="@{register}">Register</a></span> now!
+    <p class="form-text" th:utext="${#messages.msg('login_text_registration', '/register')}">If you don`t have an account &nbsp;<span><a th:href="@{register}">Register</a></span> now!
     </p>
 </div>
 

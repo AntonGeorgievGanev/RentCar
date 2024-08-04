@@ -11,10 +11,10 @@
     <form class="reg-form row g-3 needs-validation" novalidate th:action="@{/book-car}" th:method="post"
           th:object="${orderDTO}">
 
-        <h2 class="form-title-text">Book now</h2>
+        <h2 class="form-title-text" th:text="#{book_car_title}">Book now</h2>
 
         <div class="col-md-12">
-            <label for="location" class="form-label">Pick up location</label>
+            <label for="location" class="form-label" th:text="#{book_car_pick_up_location}">Pick up location</label>
             <input type="text" class="form-control" id="location" value="" placeholder="Pick up location"
                    name="location" required th:field="*{location}" th:errorclass="'is-invalid'">
             <div th:errors="*{location}" class="invalid-feedback">
@@ -23,7 +23,7 @@
         </div>
 
         <div class="col-md-6">
-            <label for="pickUpDate" class="form-label">Pick-up date</label>
+            <label for="pickUpDate" class="form-label" th:text="#{book_car_pick_up_date}">Pick-up date</label>
             <input type="date" class="form-control" id="pickUpDate" value="" name="pickUpDate" required
                    th:field="*{pickUpDate}" th:errorclass="'is-invalid'">
             <div th:errors="*{pickUpDate}" class="invalid-feedback">
@@ -32,7 +32,7 @@
         </div>
 
         <div class="col-md-6">
-            <label for="pickUpTime" class="form-label">Pick-up time</label>
+            <label for="pickUpTime" class="form-label" th:text="#{book_car_pick_up_time}">Pick-up time</label>
             <input type="time" class="form-control" id="pickUpTime" value="" name="pickUpDate" required
                    th:field="*{pickUpTime}" th:errorclass="'is-invalid'">
             <div th:errors="*{pickUpTime}" class="invalid-feedback">
@@ -41,7 +41,7 @@
         </div>
 
         <div class="col-md-6">
-            <label for="dropOffDate" class="form-label">Drop off date</label>
+            <label for="dropOffDate" class="form-label" th:text="#{book_car_drop_off_date}">Drop off date</label>
             <input type="date" class="form-control" id="dropOffDate" value="" name="dropOffDate" required
                    th:field="*{dropOffDate}" th:errorclass="'is-invalid'">
             <div th:errors="*{dropOffDate}" class="invalid-feedback">
@@ -50,7 +50,7 @@
         </div>
 
         <div class="col-md-6">
-            <label for="dropOffTime" class="form-label">Drop off time</label>
+            <label for="dropOffTime" class="form-label" th:text="#{book_car_drop_off_time}">Drop off time</label>
             <input type="time" class="form-control" id="dropOffTime" value="" name="dropOffTime" required
                    th:field="*{dropOffTime}" th:errorclass="'is-invalid'">
             <div th:errors="*{dropOffTime}" class="invalid-feedback">
@@ -59,7 +59,7 @@
         </div>
 
         <div class="col-md-12">
-            <label for="returnLocation" class="form-label">Location</label>
+            <label for="returnLocation" class="form-label" th:text="#{book_car_return_location}">Return location</label>
             <input type="text" class="form-control" id="returnLocation" value="" placeholder="Return location"
                    name="returnLocation" required th:field="*{returnLocation}" th:errorclass="'is-invalid'">
             <div th:errors="*{returnLocation}" class="invalid-feedback">
@@ -68,9 +68,9 @@
         </div>
 
         <div class="col-md-12">
-            <p>Select from available cars</p>
+            <p th:text="#{book_car_select_car}">Select from available cars</p>
             <select th:onchange="price()" class="col-md-12 select-row" th:field="*{carId}" th:errorclass="'is-invalid'">
-                <option value="">Select Car</option>
+                <option value="">Select car</option>
                 <option th:each="car : ${allCarsDTO.getAllCarsDTO()}"
                         th:text="${car}"
                         th:value="${car.id}">
@@ -78,12 +78,12 @@
                 </option>
             </select>
             <div th:errors="*{carId}" class="invalid-feedback">
-                Enter location.
+                Select car
             </div>
         </div>
 
         <div class="col-md-12">
-            <p>Select some extra (optional)</p>
+            <p th:text="#{book_car_select_extra}">Select some extra (optional)</p>
             <select th:onchange="price()" class="col-md-12 select-row" th:field="*{extraId}">
                 <option value="">Select extra</option>
                 <option th:each="extra : ${allExtrasDTO.getAllExtrasDTO()}"
@@ -95,15 +95,15 @@
 
         <div class="result">
             <ul class="price-list">
-                <li id="carPrice">Price for the car: </li>
-                <li id="extraPrice">Price for extra: </li>
-                <li id="totalPrice">Total price: </li>
+                <li id="carPrice" th:text="#{book_car_car_price}">Price for the car: </li>
+                <li id="extraPrice" th:text="#{book_car_extra_price}">Price for extra: </li>
+                <li id="totalPrice" th:text="#{book_car_total_price}">Total price: </li>
             </ul>
         </div>
 
         <div class="col-12 register-button search-cars">
             <form action="">
-                <button class="btn btn-primary register-button search-cars-btn" type="submit">Submit</button>
+                <button class="btn btn-primary register-button search-cars-btn" type="submit" th:text="#{book_car_btn_submit}">Submit</button>
             </form>
         </div>
     </form>

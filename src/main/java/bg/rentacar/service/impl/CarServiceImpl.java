@@ -70,15 +70,20 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public void addCarWithImage(CarDTO carDTO, MultipartFile file) throws IOException {
+    public void addCarWithImage(CarDTO carDTO, MultipartFile file) {
         Car car = mapper.map(carDTO, Car.class);
         Image image = new Image();
 
         if (!file.isEmpty()) {
-            String imageUrl = cloudinaryService.uploadImage(file);
-            image.setName(file.getOriginalFilename());
-            image.setLocation(imageUrl);
-            imageRepository.save(image);
+            try {
+                String imageUrl = cloudinaryService.uploadImage(file);
+                image.setName(file.getOriginalFilename());
+                image.setLocation(imageUrl);
+                imageRepository.save(image);
+            }catch (IOException e){
+                image = imageRepository.findById(1L)
+                        .orElseThrow(() -> new ObjectNotFound("This object cannot be found."));
+            }
 
         } else {
             image = imageRepository.findById(1L)
