@@ -2,6 +2,7 @@ package bg.rentacar.web;
 
 import bg.rentacar.model.entity.User;
 import bg.rentacar.repository.UserRepository;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,11 @@ public class RegisterControllerIT {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+
+    @AfterEach
+    void clean(){
+        userRepository.deleteAll();
+    }
 
     @Test
     void testGetRegister() throws Exception {
