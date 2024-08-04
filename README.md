@@ -1,10 +1,10 @@
 # RentCar- Spring MVC Application
 
-My final project for SoftUni
+My final project for SoftUni.
 
 Project is web application for renting cars.
 
-Tech Stack
+Tech Stack:
 
 -**Java Spring**
 
@@ -16,7 +16,19 @@ Tech Stack
 
 -**CSS**
 
-When the project is started an admin user is initialized with username:admin and password:123456.
+Application use external API for image hosting https://cloudinary.com/.
+The API needs some environment variables to work:
+
+cloudinary:
+
+cloud_name: ${CLOUDINARY_CLOUD_NAME}
+
+api_key: ${CLOUDINARY_API_KEY}
+
+api_secret: ${CLOUDINARY_API_SECRET}
+
+
+When the project is started an admin user is initialized with username: admin and password: 123456(it can be changed in application.yaml file).
 There are 3 types of users: ADMIN,USER and EMPLOYEE.
 ADMIN can promote users to EMPLOYEE or demote them.
 Admin can add cars, add extras, manage fleet and manage orders.
@@ -40,12 +52,12 @@ With logged in employee
 
 Managing fleet:
 ![alt text](src/main/resources/static/readmeImg/manage_fleet.png)
-Admin and Employee can manage fleet.
-Edit available cars (not booked) brand, model, year, fuel consumption and price per day.Also, can be deleted.
+ADMIN and EMPLOYEE can manage fleet.
+Edit available cars (not booked) brand, model, year, fuel consumption and price per day.
 
 Managing orders:
 ![alt text](src/main/resources/static/readmeImg/manage_orders.png)
-Admin and Employee can manage fleet.
+ADMIN and EMPLOYEE can manage fleet.
 There are four category of orders depends on their status.
 Pending orders can be approved or canceled.
 Approved order are automatically finished with scheduler when drop off date and time expired.
@@ -54,7 +66,7 @@ When an order is approved, canceled or finished the user receive email.
 
 User details:
 ![alt text](src/main/resources/static/readmeImg/users_details.png)
-Only admin have access to this section.He can promote user to employee or demote him.
+Only ADMIN have access to this section.He can promote user to employee or demote him.
 
 Book a car:
 ![alt text](src/main/resources/static/readmeImg/book_car.png)
