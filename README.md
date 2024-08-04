@@ -5,10 +5,15 @@ My final project for SoftUni
 Project is web application for renting cars.
 
 Tech Stack
+
 -**Java Spring**
+
 -**MYSQL**
+
 -**JavaScript**
+
 -**HTML**
+
 -**CSS**
 
 When the project is started an admin user is initialized with username:admin and password:123456.
