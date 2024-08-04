@@ -85,7 +85,3 @@ Fleet:
 
 Car details:
 ![alt text](src/main/resources/static/readmeImg/car_details.png)
-
-
-
-
