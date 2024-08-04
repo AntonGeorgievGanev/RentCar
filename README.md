@@ -1,4 +1,4 @@
-# RentCar- Spring MVC Application
+# RentCar - Spring MVC Application
 
 My final project for SoftUni
 
