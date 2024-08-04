@@ -1,6 +1,7 @@
 # RentCar- Spring MVC Application
 
 My final project for SoftUni
+
 Project is web application for renting cars.
 
 Tech Stack
