@@ -18,6 +18,8 @@ Tech Stack:
 
 -**Bootstrap**
 
+---
+
 Application use external API for image hosting https://cloudinary.com/.
 The API needs some environment variables to work:
 
@@ -39,6 +41,7 @@ User can book car, make review, delete his own review, view his orders.
 
 Reviews are consumed by another REST microservice (https://github.com/AntonGeorgievGanev/ReviewREST)
 
+---
 
 Index page:
 ![alt text](src/main/resources/static/readmeImg/index.png)
