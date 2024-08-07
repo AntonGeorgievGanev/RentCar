@@ -64,7 +64,7 @@ Edit available cars (not booked) brand, model, year, fuel consumption and price 
 
 Managing orders:
 ![alt text](src/main/resources/static/readmeImg/manage_orders.png)
-ADMIN and EMPLOYEE can manage fleet.
+ADMIN and EMPLOYEE can manage orders.
 There are four category of orders depends on their status.
 Pending orders can be approved or canceled.
 Approved order are automatically finished with scheduler when drop off date and time expired.
