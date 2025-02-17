@@ -1,0 +1,36 @@
+spring:
+  datasource:
+    driver-class-name: org.hsqldb.jdbc.JDBCDriver
+    url: jdbc:hsqldb:mem:testdb;sql.syntax_mys=true
+    username: sa
+    password:
+
+    properties:
+      hibernate:
+        format_sql: true
+    hibernate:
+      ddl-auto: update
+  sql:
+    init:
+      mode: never
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
+
+
+cloudinary:
+  cloud_name: ddw62fr4j
+  api_key: 539285532389766
+  api_secret: 4Iy6JZpZWz5Xn1tLG1RwIqDdx0s
+
+admin:
+  name: admin
+  password: 123456
+
+mail:
+  host: smtp.gmail.com
+  port: 587
+  username: rentcar00702030405@gmail.com
+  password: uzpnsccezpjgvidu
+

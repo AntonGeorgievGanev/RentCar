@@ -1,0 +1,60 @@
+spring:
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/rent_car?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true&serverTimezone=UTC
+    username: ${MY_SQL_USER}
+    password: ${MY_SQL_PASSWORD}
+
+  sql:
+    init:
+      mode: never
+
+  jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
+    defer-datasource-initialization: true
+    properties:
+      hibernate:
+        format_sql: true
+        show_sql: false
+    hibernate:
+      ddl-auto: update
+
+  thymeleaf:
+    cache: false
+    mode: HTML
+    encoding: UTF-8
+  messages:
+    encoding: UTF-8
+    basename: messages
+
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 3MB
+      max-request-size: 3MB
+
+cloudinary:
+  cloud_name: ${CLOUDINARY_CLOUD_NAME}
+  api_key: ${CLOUDINARY_API_KEY}
+  api_secret: ${CLOUDINARY_API_SECRET}
+
+admin:
+  name: admin
+  password: 123456
+
+mail:
+  host: smtp.gmail.com
+  port: 587
+  username: rentcar00702030405@gmail.com
+  password: uzpnsccezpjgvidu
+
+#logging:
+#  level:
+#    org:
+#      springframework:
+#       security: DEBUG
+

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<th:block th:replace="~{fragments/head.html}"></th:block>
+
+<body>
+
+    <th:block th:replace="~{fragments/navigation.html}"></th:block>
+
+    <div class="add-car-form">
+        <form class="reg-form row g-3 needs-validation overflow-auto" novalidate
+        th:action="@{/add-car}" th:method="post" th:object="${addCarDTO}" enctype="multipart/form-data">
+            <h2>Add new car to the fleet</h2>
+            <div class="col-md-12">
+                <label for="brand" class="form-label">Brand</label>
+                <input type="text" class="form-control" id="brand" value="" placeholder="Brand"
+                    name="brand" required th:field="*{brand}" th:errorclass="'is-invalid'">
+                <div th:errors="*{brand}" class="invalid-feedback">
+                    Please enter brand!
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <label for="model" class="form-label">Model</label>
+                <input type="text" class="form-control" id="model" value="" placeholder="Model"
+                    name="model" required th:field="*{model}" th:errorclass="'is-invalid'">
+                <div th:errors="*{model}" class="invalid-feedback">
+                    Please enter model!
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <label for="year" class="form-label">Year</label>
+                <input type="number" class="form-control" id="year" value="" placeholder="Year"
+                    name="year" required th:field="*{year}" th:errorclass="'is-invalid'">
+                <div th:errors="*{year}" class="invalid-feedback">
+                    Please enter year!
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <label for="engine" class="form-label">Engine Type</label>
+                <select th:errorclass="'is-invalid'" class="col-md-12 select-row browser-default custom-select"
+                        name="engineType" id="engine">
+                    <option value="">Select engine type</option>
+                    <option th:each="engine : ${T(bg.rentacar.model.enums.EngineType).values()}"
+                            th:value="${engine}"
+                            th:text="${engine}"
+                            th:selected="${engine} == *{engineType}"></option>
+                </select>
+                <div class="invalid-feedback">
+                    Please select engine type!
+                </div>
+            </div>
+            
+
+            <div class="col-md-12">
+                <label for="transmission" class="form-label">Transmission</label>
+                <select th:errorclass="'is-invalid'" class="col-md-12 select-row browser-default custom-select"
+                        name="transmission" id="transmission">
+                    <option value="">Select transmission</option>
+                    <option th:each="t : ${T(bg.rentacar.model.enums.Transmission).values()}"
+                            th:value="${t}"
+                            th:text="${t}"
+                            th:selected="${t} == *{transmission}"></option>
+                </select>
+                <div class="invalid-feedback">
+                    Please select transmission!
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <label for="category" class="form-label">Category</label>
+                <select th:errorclass="'is-invalid'" class="col-md-12 select-row browser-default custom-select"
+                        name="category" id="category">
+                    <option value="">Select Category</option>
+                    <option th:each="cc : ${T(bg.rentacar.model.enums.CarCategory).values()}"
+                            th:value="${cc}"
+                            th:text="${cc}"
+                            th:selected="${cc} == *{category}"></option>
+                </select>
+                <div class="invalid-feedback">
+                    Please select category!
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <label for="seats" class="form-label">Seats</label>
+                <input type="number" class="form-control" id="seats" value="" placeholder="Seats"
+                    name="seats" required th:field="*{seats}" th:errorclass="'is-invalid'">
+                <div th:errors="*{seats}" class="invalid-feedback">
+                    Please enter seats!
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <label for="fuelConsumption" class="form-label">Fuel consumption</label>
+                <input type="number" class="form-control" id="fuelConsumption" value="" placeholder="Fuel consumption"
+                    name="fuelConsumption" required th:field="*{fuelConsumption}" th:errorclass="'is-invalid'">
+                <div th:errors="*{fuelConsumption}" class="invalid-feedback">
+                    Please enter fuel consumption!
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <label for="trunkVolume" class="form-label">Trunk volume</label>
+                <input type="number" class="form-control" id="trunkVolume" value="" placeholder="Trunk volume"
+                    name="trunkVolume" required th:field="*{trunkVolume}" th:errorclass="'is-invalid'">
+                <div th:errors="*{trunkVolume}" class="invalid-feedback">
+                    Please enter trunk volume!
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <label for="pricePerDay" class="form-label">Price per day</label>
+                <input type="number" class="form-control" id="pricePerDay" value="" placeholder="Price per day"
+                    name="pricePerDay" required th:field="*{pricePerDay}" th:errorclass="'is-invalid'">
+                <div th:errors="*{pricePerDay}" class="invalid-feedback">
+                    Please enter price per day!
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <label for="carImage" class="form-label">Upload image (optional)</label>
+                <input type="file" class="form-control" id="carImage" value="" placeholder="Upload image"
+                       name="carImage"  th:field="*{carImage}" th:errorclass="'is-invalid'">
+                <div th:errors="*{carImage}" class="invalid-feedback">
+                    Invalid image format!
+                </div>
+            </div>
+
+            
+            <div class="col-12 register-button">
+                <div>
+                    <button class="btn btn-primary register-button search-cars-btn" type="submit">Add car</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+  <th:block th:replace="~{fragments/social}"></th:block>
+
+  <th:block th:replace="~{fragments/footer}"></th:block>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>

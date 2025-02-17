@@ -1,0 +1,95 @@
+@media only screen and (max-width: 600px) {
+
+  .main-message {
+    padding: 0 1em;
+    font-size: 0.95em;
+  }
+
+  .reg-form {
+    font-size: 10px;
+    /*margin: 0 auto;*/
+  }
+
+  input,
+  input::-webkit-input-placeholder {
+    font-size: 10px;
+  }
+
+  .row > * {
+    margin-top: 0;
+  }
+
+  .form-text {
+    font-size: 12px;
+  }
+
+  button {
+    margin-top: 1em;
+  }
+
+  .select-row{
+    width: 100%;
+  }
+
+  .form-container{
+    margin-bottom: 15em;
+  }
+
+  .social-relative{
+    display: none;
+  }
+
+  .social{
+    display: none;
+  }
+}
+
+@media only screen and (max-height: 800px) {
+    .social{
+        display: none;
+    }
+
+    .social-relative{
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 1100px) {
+    .main-message {
+        padding: 0 1em;
+        font-size: 0.95em;
+      }
+
+      .social{
+          display: none;
+        }
+}
+
+
+@media screen and (max-width:700px) {
+  .review-container {
+      height: auto;
+      margin-bottom: 3em;
+  }
+
+  .description {
+      width: 90%;
+  }
+}
+
+@media screen and (max-width:375px) {
+  .reviewSection {
+      padding: 0;
+  }
+
+  .reviewItem {
+      width: 100%;
+  }
+
+  .top {
+      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+  }
+}
+

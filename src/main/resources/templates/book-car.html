@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<th:block th:replace="~{fragments/head.html}"></th:block>
+
+<body>
+
+<th:block th:replace="~{fragments/navigation.html}"></th:block>
+
+<div class="reg-form-container">
+    <form class="reg-form row g-3 needs-validation" novalidate th:action="@{/book-car}" th:method="post"
+          th:object="${orderDTO}">
+
+        <h2 class="form-title-text" th:text="#{book_car_title}">Book now</h2>
+
+        <div class="col-md-12">
+            <label for="location" class="form-label" th:text="#{book_car_pick_up_location}">Pick up location</label>
+            <input type="text" class="form-control" id="location" value="" placeholder="Pick up location"
+                   name="location" required th:field="*{location}" th:errorclass="'is-invalid'">
+            <div th:errors="*{location}" class="invalid-feedback">
+                Enter location.
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <label for="pickUpDate" class="form-label" th:text="#{book_car_pick_up_date}">Pick-up date</label>
+            <input type="date" class="form-control" id="pickUpDate" value="" name="pickUpDate" required
+                   th:field="*{pickUpDate}" th:errorclass="'is-invalid'">
+            <div th:errors="*{pickUpDate}" class="invalid-feedback">
+                Select pick up date.
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <label for="pickUpTime" class="form-label" th:text="#{book_car_pick_up_time}">Pick-up time</label>
+            <input type="time" class="form-control" id="pickUpTime" value="" name="pickUpDate" required
+                   th:field="*{pickUpTime}" th:errorclass="'is-invalid'">
+            <div th:errors="*{pickUpTime}" class="invalid-feedback">
+                Select pick up time.
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <label for="dropOffDate" class="form-label" th:text="#{book_car_drop_off_date}">Drop off date</label>
+            <input type="date" class="form-control" id="dropOffDate" value="" name="dropOffDate" required
+                   th:field="*{dropOffDate}" th:errorclass="'is-invalid'">
+            <div th:errors="*{dropOffDate}" class="invalid-feedback">
+                Select drop off date.
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <label for="dropOffTime" class="form-label" th:text="#{book_car_drop_off_time}">Drop off time</label>
+            <input type="time" class="form-control" id="dropOffTime" value="" name="dropOffTime" required
+                   th:field="*{dropOffTime}" th:errorclass="'is-invalid'">
+            <div th:errors="*{dropOffTime}" class="invalid-feedback">
+                Select drop off time.
+            </div>
+        </div>
+
+        <div class="col-md-12">
+            <label for="returnLocation" class="form-label" th:text="#{book_car_return_location}">Return location</label>
+            <input type="text" class="form-control" id="returnLocation" value="" placeholder="Return location"
+                   name="returnLocation" required th:field="*{returnLocation}" th:errorclass="'is-invalid'">
+            <div th:errors="*{returnLocation}" class="invalid-feedback">
+                Enter return location.
+            </div>
+        </div>
+
+        <div class="col-md-12">
+            <p th:text="#{book_car_select_car}">Select from available cars</p>
+            <select th:onchange="price()" class="col-md-12 select-row" th:field="*{carId}" th:errorclass="'is-invalid'">
+                <option value="">Select car</option>
+                <option th:each="car : ${allCarsDTO.getAllCarsDTO()}"
+                        th:text="${car}"
+                        th:value="${car.id}">
+                    <!--                      th:selected="(${car.id} == *{car.id})"-->
+                </option>
+            </select>
+            <div th:errors="*{carId}" class="invalid-feedback">
+                Select car
+            </div>
+        </div>
+
+        <div class="col-md-12">
+            <p th:text="#{book_car_select_extra}">Select some extra (optional)</p>
+            <select th:onchange="price()" class="col-md-12 select-row" th:field="*{extraId}">
+                <option value="">Select extra</option>
+                <option th:each="extra : ${allExtrasDTO.getAllExtrasDTO()}"
+                        th:text="${extra}"
+                        th:value="${extra.extraId}">
+                </option>
+            </select>
+        </div>
+
+        <div class="result">
+            <ul class="price-list">
+                <li id="carPrice" th:text="#{book_car_car_price}">Price for the car: </li>
+                <li id="extraPrice" th:text="#{book_car_extra_price}">Price for extra: </li>
+                <li id="totalPrice" th:text="#{book_car_total_price}">Total price: </li>
+            </ul>
+        </div>
+
+        <div class="col-12 register-button search-cars">
+            <form action="">
+                <button class="btn btn-primary register-button search-cars-btn" type="submit" th:text="#{book_car_btn_submit}">Submit</button>
+            </form>
+        </div>
+    </form>
+</div>
+
+<th:block th:replace="~{fragments/social.html}"></th:block>
+
+<th:block th:replace="~{fragments/footer.html}"></th:block>
+
+<script type="text/javascript" th:src="@{/js/bookCarPrice.js}"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>

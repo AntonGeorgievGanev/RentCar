@@ -1,0 +1,397 @@
+body {
+   /*background-image: url("../images/5584425-toyota-wallpapers-min.jpg");
+  /* -webkit-linear-gradient(rgba(22, 1, 1, 0.8), rgba(53, 1, 1, 0.8)), */
+  /*background: */
+  /*  url("/static/images/5584425-toyota-wallpapers-min.jpg");*/
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3),
+                         rgba(0, 0, 0, 0.3)), url("../images/5584425-toyota-wallpapers-min.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3em;
+  margin-bottom: 1em;
+  color: white;
+}
+
+.navbar {
+  background-color: black;
+}
+
+.main-message {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  text-align: center;
+  font-weight: 500;
+  color: white;
+  font-size: 1.5em;
+  padding: 1em 8em;
+}
+
+a {
+  text-decoration: none;
+}
+
+.footer-text {
+  color: grey;
+  text-align: center;
+  background-color: black;
+  margin: 0 auto;
+  padding: 1em 1em;
+}
+
+.container {
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.reg-form {
+  max-width: 800px;
+  margin: 0 auto;
+  align-content: center;
+  padding: 2em 2em;
+  background-color: rgb(29 28 28 / 75%);
+  color: white;
+  border-radius: 1em;
+  margin-top: 10em;
+}
+
+.register-button {
+  text-align: center;
+  width: 100%;
+  margin-top: 1em;
+}
+
+.social {
+  position: fixed;
+  bottom: 50px;
+  width: 100%;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.social-relative{
+  position: relative;
+  bottom: 50px;
+  width: 100%;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 5em;
+}
+
+.form-title-text {
+  text-align: center;
+  color: white;
+  margin: 0;
+  margin-bottom: 0.5em;
+}
+
+.form-text {
+  font-size: 1.2em;
+  text-align: center;
+  color: white;
+}
+
+.login-form {
+  max-width: 520px;
+  margin: 0 auto;
+  align-content: center;
+  padding: 2em 2em;
+  background-color: rgb(29 28 28 / 75%);
+  color: white;
+  border-radius: 1em;
+}
+
+.login-btn{
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.search-cars-btn{
+    margin-top: 1em;
+}
+
+.card-list{
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 3em;
+  overflow: auto;
+  margin-top: 1em;
+  margin-bottom: 4em;
+}
+
+.category-car-title{
+  text-align: center;
+  color: white;
+}
+
+.card{
+  background-color:white;
+}
+
+.select-row{
+  height: 38px;
+  border-radius: 4px;
+}
+
+.add-car-form{
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-top: 5em;
+  margin-bottom: 5em;
+}
+
+.form-container{
+  max-width: 1200px;
+  height: 100%;
+  margin: 0 auto;
+  margin-top: 10em;
+  margin-bottom: 12em;
+}
+
+.reg-form-container{
+  max-width: 1200px;
+  height: 100%;
+  margin: 0 auto;
+  margin-top: 6em;
+  margin-bottom: 8em;
+}
+
+.fleet-wrapper{
+  margin-top: 5em;
+  margin-bottom: 5em;
+}
+
+.home-container{
+  margin: 0 auto;
+  margin-bottom: 30em;
+}
+
+.table-wrapper{
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-top: 8em;
+}
+
+.admin-tables-wrapper{
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: stretch;
+}
+
+.action-buttons{
+  display: flex;
+  gap: 1em;
+  justify-content: center;
+}
+
+.action-td{
+  text-align: center;
+}
+
+.logout-btn{
+  background-color: transparent;
+  border: none;
+}
+
+.login-error{
+      color: #d70f21;
+      font-size: 1em;
+      margin: 0 auto;
+      margin-top: 1em;
+      max-width: 350px;
+      text-align: center;
+}
+
+.price-list{
+  margin-bottom: 0;
+  padding: 0;
+}
+
+.fleet-list{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2em;
+  justify-content: center;
+}
+
+.edit-car-form{
+  max-width: 800px;
+  margin: 0 auto;
+  margin-top: 7em;
+  margin-bottom: 7em;
+  color: white;
+  background-color: rgb(29 28 28 / 75%);
+  padding: 2em;
+  border-radius: 1em;
+}
+
+.welcome-username{
+  color: red;
+}
+
+#lang{
+  border-radius: 10px;
+}
+
+/*Review*/
+
+.review-container{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.review-tittle{
+  font-size: 2rem;
+    margin-bottom: 1rem;
+    margin-top: 3em;
+    text-align: center;
+    color: white;
+}
+
+.description {
+  text-align: center;
+  width: 43%;
+}
+
+.reviewSection {
+  padding: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.reviewItem {
+  width: 300px;
+  padding: 10px;
+  margin: 1rem;
+  cursor: pointer;
+  border-radius: 10px;
+  background-color: #0909211c;
+  color: white;
+  border: 1px solid #10102a;
+  transition: all .2s linear;
+}
+
+.reviewItem:hover {
+  border-color: aqua;
+  transform: scale(1.01);
+  background-color: white;
+  color: black;
+  box-shadow: 0 0px 5px 0px #cbc0c0;
+}
+
+.top {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.top ul {
+  display: flex;
+  list-style: none;
+}
+
+.top ul li {
+  padding-left: 4px;
+}
+
+article p {
+  font-size: 15px;
+  font-weight: 100;
+  margin-bottom: 1rem;
+  font-family: system-ui;
+}
+
+i.fa-star{
+  color: orange;
+}
+
+/*Car Details*/
+
+.container-car-details {
+  max-width: 800px;
+  margin: 0 auto;
+  margin-top: 8em;
+  margin-bottom: 5em;
+  background-color: #ffffffd1;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+.header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.car-details {
+  display: flex;
+  flex-wrap: wrap;
+}
+.car-details div {
+  flex: 1;
+  padding: 10px;
+}
+.car-image {
+  text-align: center;
+}
+.car-image img {
+  max-width: 100%;
+  border-radius: 8px;
+}
+.car-specs {
+  display: flex;
+  flex-direction: column;
+}
+.car-specs div {
+  margin-bottom: 10px;
+}
+
+.card-img-top{
+  width: 286px;
+  height: 180px;
+  object-fit: cover;
+}
+
+/*Contacts*/
+
+.container-contacts {
+  max-width: 800px;
+  margin: 0 auto;
+  margin-top: 15em;
+  background-color: #ffffffd1;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+.header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.contact-details {
+  display: flex;
+  flex-direction: column;
+}
+.contact-details div {
+  margin-bottom: 15px;
+}
